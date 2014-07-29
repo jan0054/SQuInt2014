@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  PeopleTabViewController.h
 //  SQuInt2014
 //
 //  Created by csjan on 4/17/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface PeopleTabViewController : UIViewController
 
 @end

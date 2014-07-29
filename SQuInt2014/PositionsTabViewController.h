@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  PositionsTabViewController.h
 //  SQuInt2014
 //
 //  Created by csjan on 4/17/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface PositionsTabViewController : UIViewController
 
 @end

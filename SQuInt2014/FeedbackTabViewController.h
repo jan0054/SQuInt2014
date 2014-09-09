@@ -11,8 +11,8 @@
 
 @interface FeedbackTabViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIView *about_squint_view;
-@property (strong, nonatomic) IBOutlet UIView *about_app_view;
+@property (strong, nonatomic) IBOutlet UITableView *settingstable;
+
 
 
 @end

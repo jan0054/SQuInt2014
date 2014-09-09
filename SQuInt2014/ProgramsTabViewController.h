@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface ProgramsTabViewController : UIViewController
+
+@interface ProgramsTabViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *talkview;
 @property (strong, nonatomic) IBOutlet UIView *posterview;
 @property (strong, nonatomic) IBOutlet UITableView *postertable;

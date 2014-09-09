@@ -10,6 +10,7 @@
 #import "VenueCellTableViewCell.h"
 
 @interface TravelTabViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *venuetable;
 
 
 @end

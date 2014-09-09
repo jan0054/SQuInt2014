@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE07E6837049403190F2C7BD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7919DEC6922146BB89E03A91 /* libPods.a */; };
 		B43D265E18FFC9980072B753 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D265D18FFC9980072B753 /* Foundation.framework */; };
 		B43D266018FFC9980072B753 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D265F18FFC9980072B753 /* CoreGraphics.framework */; };
 		B43D266218FFC9980072B753 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D266118FFC9980072B753 /* UIKit.framework */; };
@@ -37,8 +38,14 @@
 		B499BD101905172500C99CFE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B499BD0F1905172500C99CFE /* MapKit.framework */; };
 		B499BD131905186300C99CFE /* VenueCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B499BD121905186300C99CFE /* VenueCellTableViewCell.m */; };
 		B499BD1519051DDA00C99CFE /* profile_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B499BD1419051DDA00C99CFE /* profile_pic@2x.png */; };
-		B499BD19190640C900C99CFE /* squintlaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = B499BD18190640C900C99CFE /* squintlaunch.png */; };
 		B499BD1C1906475800C99CFE /* PersonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B499BD1B1906475800C99CFE /* PersonDetailViewController.m */; };
+		B4EAF4E319BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E219BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m */; };
+		B4EAF4E619BEE5D00075E259 /* SettingPushCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E519BEE5D00075E259 /* SettingPushCellTableViewCell.m */; };
+		B4EAF4E919BEE5E00075E259 /* SettingLoginCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E819BEE5E00075E259 /* SettingLoginCellTableViewCell.m */; };
+		B4F74E5D19B461C000F3A565 /* CustomLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F74E5C19B461C000F3A565 /* CustomLogInViewController.m */; };
+		B4F74E6019B461D400F3A565 /* CustomSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F74E5F19B461D400F3A565 /* CustomSignUpViewController.m */; };
+		B4F74E6219B5A1FD00F3A565 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F74E6119B5A1FD00F3A565 /* settings@2x.png */; };
+		B4F74E6519B5A28D00F3A565 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F74E6419B5A28D00F3A565 /* TestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E6D221BA96E46BABEB7A66D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		7919DEC6922146BB89E03A91 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43D265A18FFC9980072B753 /* SQuInt2014.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SQuInt2014.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43D265D18FFC9980072B753 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B43D265F18FFC9980072B753 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -94,9 +103,21 @@
 		B499BD111905186300C99CFE /* VenueCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueCellTableViewCell.h; sourceTree = "<group>"; };
 		B499BD121905186300C99CFE /* VenueCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueCellTableViewCell.m; sourceTree = "<group>"; };
 		B499BD1419051DDA00C99CFE /* profile_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_pic@2x.png"; sourceTree = "<group>"; };
-		B499BD18190640C900C99CFE /* squintlaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squintlaunch.png; sourceTree = "<group>"; };
 		B499BD1A1906475800C99CFE /* PersonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDetailViewController.h; sourceTree = "<group>"; };
 		B499BD1B1906475800C99CFE /* PersonDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonDetailViewController.m; sourceTree = "<group>"; };
+		B4EAF4E119BEE5BC0075E259 /* GeneralSettingCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSettingCellTableViewCell.h; sourceTree = "<group>"; };
+		B4EAF4E219BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralSettingCellTableViewCell.m; sourceTree = "<group>"; };
+		B4EAF4E419BEE5D00075E259 /* SettingPushCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingPushCellTableViewCell.h; sourceTree = "<group>"; };
+		B4EAF4E519BEE5D00075E259 /* SettingPushCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingPushCellTableViewCell.m; sourceTree = "<group>"; };
+		B4EAF4E719BEE5E00075E259 /* SettingLoginCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingLoginCellTableViewCell.h; sourceTree = "<group>"; };
+		B4EAF4E819BEE5E00075E259 /* SettingLoginCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingLoginCellTableViewCell.m; sourceTree = "<group>"; };
+		B4F74E5B19B461C000F3A565 /* CustomLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLogInViewController.h; sourceTree = "<group>"; };
+		B4F74E5C19B461C000F3A565 /* CustomLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLogInViewController.m; sourceTree = "<group>"; };
+		B4F74E5E19B461D400F3A565 /* CustomSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSignUpViewController.h; sourceTree = "<group>"; };
+		B4F74E5F19B461D400F3A565 /* CustomSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSignUpViewController.m; sourceTree = "<group>"; };
+		B4F74E6119B5A1FD00F3A565 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		B4F74E6319B5A28D00F3A565 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		B4F74E6419B5A28D00F3A565 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +130,7 @@
 				B43D266018FFC9980072B753 /* CoreGraphics.framework in Frameworks */,
 				B43D266218FFC9980072B753 /* UIKit.framework in Frameworks */,
 				B43D265E18FFC9980072B753 /* Foundation.framework in Frameworks */,
+				AE07E6837049403190F2C7BD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +156,7 @@
 				B43D268518FFC9980072B753 /* SQuInt2014Tests */,
 				B43D265C18FFC9980072B753 /* Frameworks */,
 				B43D265B18FFC9980072B753 /* Products */,
+				1E6D221BA96E46BABEB7A66D /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,6 +178,7 @@
 				B43D265F18FFC9980072B753 /* CoreGraphics.framework */,
 				B43D266118FFC9980072B753 /* UIKit.framework */,
 				B43D267F18FFC9980072B753 /* XCTest.framework */,
+				7919DEC6922146BB89E03A91 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -169,8 +193,6 @@
 				B43D269B18FFD0C50072B753 /* ProgramsTabViewController.m */,
 				B43D269D18FFD0D40072B753 /* TravelTabViewController.h */,
 				B43D269E18FFD0D40072B753 /* TravelTabViewController.m */,
-				B499BD111905186300C99CFE /* VenueCellTableViewCell.h */,
-				B499BD121905186300C99CFE /* VenueCellTableViewCell.m */,
 				B43D26A018FFD0E20072B753 /* PeopleTabViewController.h */,
 				B43D26A118FFD0E20072B753 /* PeopleTabViewController.m */,
 				B499BD1A1906475800C99CFE /* PersonDetailViewController.h */,
@@ -183,6 +205,13 @@
 				B43D26A718FFD1050072B753 /* FeedbackTabViewController.m */,
 				B499BD071904ED0C00C99CFE /* ChatViewController.h */,
 				B499BD081904ED0C00C99CFE /* ChatViewController.m */,
+				B4F74E5B19B461C000F3A565 /* CustomLogInViewController.h */,
+				B4F74E5C19B461C000F3A565 /* CustomLogInViewController.m */,
+				B4F74E5E19B461D400F3A565 /* CustomSignUpViewController.h */,
+				B4F74E5F19B461D400F3A565 /* CustomSignUpViewController.m */,
+				B4F74E6319B5A28D00F3A565 /* TestViewController.h */,
+				B4F74E6419B5A28D00F3A565 /* TestViewController.m */,
+				B4EAF4E019BEE57F0075E259 /* Cells */,
 				B43D267818FFC9980072B753 /* Images.xcassets */,
 				B43D266418FFC9980072B753 /* Supporting Files */,
 			);
@@ -229,7 +258,7 @@
 		B43D269618FFD03A0072B753 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				B499BD18190640C900C99CFE /* squintlaunch.png */,
+				B4F74E6119B5A1FD00F3A565 /* settings@2x.png */,
 				B499BD1419051DDA00C99CFE /* profile_pic@2x.png */,
 				B43D26CB190130020072B753 /* feedback@2x.png */,
 				B43D26CC190130020072B753 /* people@2x.png */,
@@ -248,6 +277,21 @@
 			name = Include;
 			sourceTree = "<group>";
 		};
+		B4EAF4E019BEE57F0075E259 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B499BD111905186300C99CFE /* VenueCellTableViewCell.h */,
+				B499BD121905186300C99CFE /* VenueCellTableViewCell.m */,
+				B4EAF4E119BEE5BC0075E259 /* GeneralSettingCellTableViewCell.h */,
+				B4EAF4E219BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m */,
+				B4EAF4E419BEE5D00075E259 /* SettingPushCellTableViewCell.h */,
+				B4EAF4E519BEE5D00075E259 /* SettingPushCellTableViewCell.m */,
+				B4EAF4E719BEE5E00075E259 /* SettingLoginCellTableViewCell.h */,
+				B4EAF4E819BEE5E00075E259 /* SettingLoginCellTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -255,9 +299,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B43D268F18FFC9980072B753 /* Build configuration list for PBXNativeTarget "SQuInt2014" */;
 			buildPhases = (
+				6B24FB4E20244EA6B275446C /* Check Pods Manifest.lock */,
 				B43D265618FFC9980072B753 /* Sources */,
 				B43D265718FFC9980072B753 /* Frameworks */,
 				B43D265818FFC9980072B753 /* Resources */,
+				8A1F21E4AED049CB8A03A98C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -325,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B43D267918FFC9980072B753 /* Images.xcassets in Resources */,
+				B4F74E6219B5A1FD00F3A565 /* settings@2x.png in Resources */,
 				B499BD1519051DDA00C99CFE /* profile_pic@2x.png in Resources */,
 				B43D26D2190130020072B753 /* positions@2x.png in Resources */,
 				B43D266818FFC9980072B753 /* InfoPlist.strings in Resources */,
@@ -333,7 +380,6 @@
 				B43D26D0190130020072B753 /* feedback@2x.png in Resources */,
 				B43D267118FFC9980072B753 /* Main.storyboard in Resources */,
 				B43D269918FFD0A40072B753 /* squint_logo@2x.png in Resources */,
-				B499BD19190640C900C99CFE /* squintlaunch.png in Resources */,
 				B43D26D1190130020072B753 /* people@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,19 +394,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6B24FB4E20244EA6B275446C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8A1F21E4AED049CB8A03A98C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B43D265618FFC9980072B753 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4F74E6019B461D400F3A565 /* CustomSignUpViewController.m in Sources */,
 				B43D269F18FFD0D40072B753 /* TravelTabViewController.m in Sources */,
+				B4F74E6519B5A28D00F3A565 /* TestViewController.m in Sources */,
+				B4EAF4E319BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m in Sources */,
+				B4F74E5D19B461C000F3A565 /* CustomLogInViewController.m in Sources */,
 				B499BD0C1904EDE600C99CFE /* PositionDetailViewController.m in Sources */,
 				B43D266E18FFC9980072B753 /* AppDelegate.m in Sources */,
 				B43D269C18FFD0C50072B753 /* ProgramsTabViewController.m in Sources */,
 				B499BD1C1906475800C99CFE /* PersonDetailViewController.m in Sources */,
 				B43D266A18FFC9980072B753 /* main.m in Sources */,
+				B4EAF4E619BEE5D00075E259 /* SettingPushCellTableViewCell.m in Sources */,
 				B43D26A218FFD0E20072B753 /* PeopleTabViewController.m in Sources */,
 				B43D26A818FFD1050072B753 /* FeedbackTabViewController.m in Sources */,
+				B4EAF4E919BEE5E00075E259 /* SettingLoginCellTableViewCell.m in Sources */,
 				B499BD091904ED0C00C99CFE /* ChatViewController.m in Sources */,
 				B43D26A518FFD0F10072B753 /* PositionsTabViewController.m in Sources */,
 				B499BD131905186300C99CFE /* VenueCellTableViewCell.m in Sources */,
@@ -429,7 +514,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -467,7 +553,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -485,9 +572,11 @@
 		};
 		B43D269018FFC9980072B753 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E6D221BA96E46BABEB7A66D /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SQuInt2014/SQuInt2014-Prefix.pch";
 				INFOPLIST_FILE = "SQuInt2014/SQuInt2014-Info.plist";
@@ -498,9 +587,11 @@
 		};
 		B43D269118FFC9980072B753 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E6D221BA96E46BABEB7A66D /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SQuInt2014/SQuInt2014-Prefix.pch";
 				INFOPLIST_FILE = "SQuInt2014/SQuInt2014-Info.plist";

@@ -31,4 +31,12 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)venue_call_action:(UIButton *)sender {
+}
+
+- (IBAction)venue_navigate_action:(UIButton *)sender {
+}
+
+- (IBAction)venue_website_action:(UIButton *)sender {
+}
 @end

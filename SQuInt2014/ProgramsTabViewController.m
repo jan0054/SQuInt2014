@@ -79,10 +79,10 @@
 // Sent to the delegate when the log in screen is dismissed.
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
     [self.navigationController popViewControllerAnimated:YES];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning"
-                                                    message:@"Log in from the settings tab to chat with other users and save your schedule "
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:@"You can log in later from the settings tab"
                                                    delegate:self
-                                          cancelButtonTitle:@"確定"
+                                          cancelButtonTitle:@"Done"
                                           otherButtonTitles:nil];
     [alert show];
     
@@ -178,19 +178,51 @@
 }
 
 - (IBAction)segaction:(UISegmentedControl *)sender {
+    /*
+    switch (self.programseg.selectedSegmentIndex) {
+        case 0:
+            self.talkview.hidden=NO;
+            self.posterview.hidden=YES;
+            self.abstractview.hidden=YES;
+            break;
+        case 1:
+            self.talkview.hidden=YES;
+            self.posterview.hidden=NO;
+            self.abstractview.hidden=YES;
+            break;
+        case 2:
+            self.talkview.hidden=YES;
+            self.posterview.hidden=YES;
+            self.abstractview.hidden=NO;
+            break;
+        default:
+            break;
+    }
+    */
+    
     if (self.programseg.selectedSegmentIndex==0)
     {
-        self.talkview.hidden=NO;
-        self.posterview.hidden=YES;
-        self.talkview.userInteractionEnabled=YES;
-        self.posterview.userInteractionEnabled=NO;
+        [UIView animateWithDuration:0.5 animations:^{
+            self.talkview.frame= CGRectMake(0, self.talkview.frame.origin.y, self.talkview.frame.size.width, self.talkview.frame.size.height);
+            self.posterview.frame= CGRectMake(320, self.posterview.frame.origin.y, self.posterview.frame.size.width, self.posterview.frame.size.height);
+            self.abstractview.frame= CGRectMake(320, self.abstractview.frame.origin.y, self.abstractview.frame.size.width, self.abstractview.frame.size.height);
+        }];
     }
     else if (self.programseg.selectedSegmentIndex==1)
     {
-        self.talkview.hidden=YES;
-        self.posterview.hidden=NO;
-        self.talkview.userInteractionEnabled=NO;
-        self.posterview.userInteractionEnabled=YES;
+        [UIView animateWithDuration:0.5 animations:^{
+            self.talkview.frame= CGRectMake(-320, self.talkview.frame.origin.y, self.talkview.frame.size.width, self.talkview.frame.size.height);
+            self.posterview.frame= CGRectMake(0, self.posterview.frame.origin.y, self.posterview.frame.size.width, self.posterview.frame.size.height);
+            self.abstractview.frame= CGRectMake(320, self.abstractview.frame.origin.y, self.abstractview.frame.size.width, self.abstractview.frame.size.height);
+        }];
+    }
+    else if (self.programseg.selectedSegmentIndex==2)
+    {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.talkview.frame= CGRectMake(-320, self.talkview.frame.origin.y, self.talkview.frame.size.width, self.talkview.frame.size.height);
+            self.posterview.frame= CGRectMake(-320, self.posterview.frame.origin.y, self.posterview.frame.size.width, self.posterview.frame.size.height);
+            self.abstractview.frame= CGRectMake(0, self.abstractview.frame.origin.y, self.abstractview.frame.size.width, self.abstractview.frame.size.height);
+        }];
     }
 }
 

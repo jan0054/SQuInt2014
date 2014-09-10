@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface PositionDetailViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIView *jobreqview;
-@property (strong, nonatomic) IBOutlet UIView *jobmoreview;
+@property (strong, nonatomic) IBOutlet UILabel *career_position_label;
+@property (strong, nonatomic) IBOutlet UILabel *career_institution_label;
+@property (strong, nonatomic) IBOutlet UILabel *career_posted_by;
+@property (strong, nonatomic) IBOutlet UILabel *career_notes;
+
 
 @end

@@ -39,6 +39,15 @@
 		B499BD131905186300C99CFE /* VenueCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B499BD121905186300C99CFE /* VenueCellTableViewCell.m */; };
 		B499BD1519051DDA00C99CFE /* profile_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B499BD1419051DDA00C99CFE /* profile_pic@2x.png */; };
 		B499BD1C1906475800C99CFE /* PersonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B499BD1B1906475800C99CFE /* PersonDetailViewController.m */; };
+		B4B719F919C02DD70036811A /* TalkCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B719F819C02DD70036811A /* TalkCellTableViewCell.m */; };
+		B4B719FC19C02DEE0036811A /* PosterCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B719FB19C02DEE0036811A /* PosterCellTableViewCell.m */; };
+		B4B719FF19C02DFB0036811A /* AbstractCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B719FE19C02DFB0036811A /* AbstractCellTableViewCell.m */; };
+		B4B71A0219C039120036811A /* CareerCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B71A0119C039120036811A /* CareerCellTableViewCell.m */; };
+		B4B71A0519C0460C0036811A /* PersonCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B71A0419C0460C0036811A /* PersonCellTableViewCell.m */; };
+		B4B71A0819C046200036811A /* SelfCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B71A0719C046200036811A /* SelfCellTableViewCell.m */; };
+		B4B71A0B19C0528D0036811A /* PersonDetailEventCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B71A0A19C0528D0036811A /* PersonDetailEventCellTableViewCell.m */; };
+		B4B71A0E19C0539B0036811A /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B71A0D19C0539B0036811A /* EventDetailViewController.m */; };
+		B4B71A1119C053BA0036811A /* AbstractPdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B71A1019C053BA0036811A /* AbstractPdfViewController.m */; };
 		B4EAF4E319BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E219BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m */; };
 		B4EAF4E619BEE5D00075E259 /* SettingPushCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E519BEE5D00075E259 /* SettingPushCellTableViewCell.m */; };
 		B4EAF4E919BEE5E00075E259 /* SettingLoginCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E819BEE5E00075E259 /* SettingLoginCellTableViewCell.m */; };
@@ -105,6 +114,24 @@
 		B499BD1419051DDA00C99CFE /* profile_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_pic@2x.png"; sourceTree = "<group>"; };
 		B499BD1A1906475800C99CFE /* PersonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDetailViewController.h; sourceTree = "<group>"; };
 		B499BD1B1906475800C99CFE /* PersonDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonDetailViewController.m; sourceTree = "<group>"; };
+		B4B719F719C02DD70036811A /* TalkCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkCellTableViewCell.h; sourceTree = "<group>"; };
+		B4B719F819C02DD70036811A /* TalkCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkCellTableViewCell.m; sourceTree = "<group>"; };
+		B4B719FA19C02DEE0036811A /* PosterCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PosterCellTableViewCell.h; sourceTree = "<group>"; };
+		B4B719FB19C02DEE0036811A /* PosterCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PosterCellTableViewCell.m; sourceTree = "<group>"; };
+		B4B719FD19C02DFB0036811A /* AbstractCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCellTableViewCell.h; sourceTree = "<group>"; };
+		B4B719FE19C02DFB0036811A /* AbstractCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractCellTableViewCell.m; sourceTree = "<group>"; };
+		B4B71A0019C039120036811A /* CareerCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareerCellTableViewCell.h; sourceTree = "<group>"; };
+		B4B71A0119C039120036811A /* CareerCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareerCellTableViewCell.m; sourceTree = "<group>"; };
+		B4B71A0319C0460C0036811A /* PersonCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCellTableViewCell.h; sourceTree = "<group>"; };
+		B4B71A0419C0460C0036811A /* PersonCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCellTableViewCell.m; sourceTree = "<group>"; };
+		B4B71A0619C046200036811A /* SelfCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfCellTableViewCell.h; sourceTree = "<group>"; };
+		B4B71A0719C046200036811A /* SelfCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfCellTableViewCell.m; sourceTree = "<group>"; };
+		B4B71A0919C0528D0036811A /* PersonDetailEventCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDetailEventCellTableViewCell.h; sourceTree = "<group>"; };
+		B4B71A0A19C0528D0036811A /* PersonDetailEventCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonDetailEventCellTableViewCell.m; sourceTree = "<group>"; };
+		B4B71A0C19C0539B0036811A /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
+		B4B71A0D19C0539B0036811A /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
+		B4B71A0F19C053BA0036811A /* AbstractPdfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractPdfViewController.h; sourceTree = "<group>"; };
+		B4B71A1019C053BA0036811A /* AbstractPdfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractPdfViewController.m; sourceTree = "<group>"; };
 		B4EAF4E119BEE5BC0075E259 /* GeneralSettingCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSettingCellTableViewCell.h; sourceTree = "<group>"; };
 		B4EAF4E219BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralSettingCellTableViewCell.m; sourceTree = "<group>"; };
 		B4EAF4E419BEE5D00075E259 /* SettingPushCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingPushCellTableViewCell.h; sourceTree = "<group>"; };
@@ -209,6 +236,10 @@
 				B4F74E5C19B461C000F3A565 /* CustomLogInViewController.m */,
 				B4F74E5E19B461D400F3A565 /* CustomSignUpViewController.h */,
 				B4F74E5F19B461D400F3A565 /* CustomSignUpViewController.m */,
+				B4B71A0C19C0539B0036811A /* EventDetailViewController.h */,
+				B4B71A0D19C0539B0036811A /* EventDetailViewController.m */,
+				B4B71A0F19C053BA0036811A /* AbstractPdfViewController.h */,
+				B4B71A1019C053BA0036811A /* AbstractPdfViewController.m */,
 				B4F74E6319B5A28D00F3A565 /* TestViewController.h */,
 				B4F74E6419B5A28D00F3A565 /* TestViewController.m */,
 				B4EAF4E019BEE57F0075E259 /* Cells */,
@@ -288,6 +319,20 @@
 				B4EAF4E519BEE5D00075E259 /* SettingPushCellTableViewCell.m */,
 				B4EAF4E719BEE5E00075E259 /* SettingLoginCellTableViewCell.h */,
 				B4EAF4E819BEE5E00075E259 /* SettingLoginCellTableViewCell.m */,
+				B4B719F719C02DD70036811A /* TalkCellTableViewCell.h */,
+				B4B719F819C02DD70036811A /* TalkCellTableViewCell.m */,
+				B4B719FA19C02DEE0036811A /* PosterCellTableViewCell.h */,
+				B4B719FB19C02DEE0036811A /* PosterCellTableViewCell.m */,
+				B4B719FD19C02DFB0036811A /* AbstractCellTableViewCell.h */,
+				B4B719FE19C02DFB0036811A /* AbstractCellTableViewCell.m */,
+				B4B71A0019C039120036811A /* CareerCellTableViewCell.h */,
+				B4B71A0119C039120036811A /* CareerCellTableViewCell.m */,
+				B4B71A0319C0460C0036811A /* PersonCellTableViewCell.h */,
+				B4B71A0419C0460C0036811A /* PersonCellTableViewCell.m */,
+				B4B71A0619C046200036811A /* SelfCellTableViewCell.h */,
+				B4B71A0719C046200036811A /* SelfCellTableViewCell.m */,
+				B4B71A0919C0528D0036811A /* PersonDetailEventCellTableViewCell.h */,
+				B4B71A0A19C0528D0036811A /* PersonDetailEventCellTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -437,12 +482,21 @@
 				B4F74E6519B5A28D00F3A565 /* TestViewController.m in Sources */,
 				B4EAF4E319BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m in Sources */,
 				B4F74E5D19B461C000F3A565 /* CustomLogInViewController.m in Sources */,
+				B4B71A0819C046200036811A /* SelfCellTableViewCell.m in Sources */,
+				B4B71A0B19C0528D0036811A /* PersonDetailEventCellTableViewCell.m in Sources */,
+				B4B719FC19C02DEE0036811A /* PosterCellTableViewCell.m in Sources */,
 				B499BD0C1904EDE600C99CFE /* PositionDetailViewController.m in Sources */,
+				B4B71A0219C039120036811A /* CareerCellTableViewCell.m in Sources */,
 				B43D266E18FFC9980072B753 /* AppDelegate.m in Sources */,
 				B43D269C18FFD0C50072B753 /* ProgramsTabViewController.m in Sources */,
 				B499BD1C1906475800C99CFE /* PersonDetailViewController.m in Sources */,
 				B43D266A18FFC9980072B753 /* main.m in Sources */,
 				B4EAF4E619BEE5D00075E259 /* SettingPushCellTableViewCell.m in Sources */,
+				B4B719F919C02DD70036811A /* TalkCellTableViewCell.m in Sources */,
+				B4B71A0E19C0539B0036811A /* EventDetailViewController.m in Sources */,
+				B4B71A1119C053BA0036811A /* AbstractPdfViewController.m in Sources */,
+				B4B71A0519C0460C0036811A /* PersonCellTableViewCell.m in Sources */,
+				B4B719FF19C02DFB0036811A /* AbstractCellTableViewCell.m in Sources */,
 				B43D26A218FFD0E20072B753 /* PeopleTabViewController.m in Sources */,
 				B43D26A818FFD1050072B753 /* FeedbackTabViewController.m in Sources */,
 				B4EAF4E919BEE5E00075E259 /* SettingLoginCellTableViewCell.m in Sources */,

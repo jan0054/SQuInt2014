@@ -17,5 +17,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *talktable;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *programseg;
 - (IBAction)segaction:(UISegmentedControl *)sender;
+@property (strong, nonatomic) IBOutlet UIView *abstractview;
+@property (strong, nonatomic) IBOutlet UITableView *abstracttable;
 
 @end

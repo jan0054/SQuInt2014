@@ -24,4 +24,11 @@
 
 
 
+- (IBAction)person_detail_seg_action:(UISegmentedControl *)sender {
+}
+- (IBAction)person_email_button_tap:(UIButton *)sender {
+}
+
+- (IBAction)person_link_button_tap:(UIButton *)sender {
+}
 @end

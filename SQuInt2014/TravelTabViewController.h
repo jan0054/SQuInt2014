@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "VenueCellTableViewCell.h"
+#import <Parse/Parse.h>
 
 @interface TravelTabViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *venuetable;
-
+@property NSMutableArray *venue_array;
 
 @end

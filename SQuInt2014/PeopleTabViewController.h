@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import "SelfCellTableViewCell.h"
+#import "PersonCellTableViewCell.h"
 
 @interface PeopleTabViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *peopletable;
+@property NSMutableArray *person_array;
 
 @end

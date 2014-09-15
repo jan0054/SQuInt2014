@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import "CareerCellTableViewCell.h"
 
 @interface PositionsTabViewController : UIViewController
-
+@property (strong, nonatomic) IBOutlet UITableView *careertable;
+@property NSMutableArray *career_array;
 @end

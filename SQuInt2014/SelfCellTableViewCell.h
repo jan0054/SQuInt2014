@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface SelfCellTableViewCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *name_label;
+@property (strong, nonatomic) IBOutlet UILabel *institution_label;
+@property (strong, nonatomic) IBOutlet UIButton *edit_button;
+- (IBAction)edit_button_tap:(UIButton *)sender;
 
 @end

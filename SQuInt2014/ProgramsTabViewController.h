@@ -19,5 +19,8 @@
 - (IBAction)segaction:(UISegmentedControl *)sender;
 @property (strong, nonatomic) IBOutlet UIView *abstractview;
 @property (strong, nonatomic) IBOutlet UITableView *abstracttable;
-
+@property NSMutableArray *session_array;
+@property NSMutableDictionary *session_and_talk;
+@property NSMutableArray *poster_array;
+@property NSMutableArray *abstract_array;
 @end

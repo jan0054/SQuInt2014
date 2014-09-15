@@ -59,7 +59,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="h1d-xJ-EAd" customClass="AbstractCellTableViewCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="abstractcell" rowHeight="100" id="h1d-xJ-EAd" customClass="AbstractCellTableViewCell">
                                                 <rect key="frame" x="0.0" y="22" width="320" height="100"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h1d-xJ-EAd" id="jUq-jq-K50">
@@ -114,7 +114,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="talkcell" id="EzI-gT-4qZ" customClass="PosterCellTableViewCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postercell" id="EzI-gT-4qZ" customClass="PosterCellTableViewCell">
                                                 <rect key="frame" x="0.0" y="22" width="320" height="200"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EzI-gT-4qZ" id="kMu-E5-q0t">
@@ -193,7 +193,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postercell" rowHeight="200" id="76X-Tq-XXB" customClass="TalkCellTableViewCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="talkcell" rowHeight="200" id="76X-Tq-XXB" customClass="TalkCellTableViewCell">
                                                 <rect key="frame" x="0.0" y="22" width="320" height="200"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="76X-Tq-XXB" id="gWl-d0-VIg">
@@ -366,12 +366,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Career" id="DXF-IB-Y2J"/>
+                    <connections>
+                        <outlet property="careertable" destination="mok-r8-Gi8" id="qfA-MY-gko"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cb8-7L-E0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="394" y="620"/>
         </scene>
-        <!--Travel Tab View Controller - Travel & Accomodations-->
+        <!--Travel Tab View Controller - Venue-->
         <scene sceneID="EEZ-f6-m3F">
             <objects>
                 <viewController id="6JJ-TF-JMN" customClass="TravelTabViewController" sceneMemberID="viewController">
@@ -473,7 +476,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Travel &amp; Accomodations" id="ngv-1p-wK6"/>
+                    <navigationItem key="navigationItem" title="Venue" id="ngv-1p-wK6"/>
                     <connections>
                         <outlet property="venuetable" destination="DjQ-31-y5c" id="U8O-Sx-ddi"/>
                     </connections>
@@ -646,7 +649,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="meinfocell" rowHeight="66" id="DG6-NP-VZk">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mecell" rowHeight="66" id="DG6-NP-VZk" customClass="SelfCellTableViewCell">
                                         <rect key="frame" x="0.0" y="86" width="320" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DG6-NP-VZk" id="xCK-Rm-cTa">
@@ -672,11 +675,19 @@
                                                     <state key="normal" title="Edit">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="edit_button_tap:" destination="DG6-NP-VZk" eventType="touchUpInside" id="vdo-Jf-hfs"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="edit_button" destination="qdM-aD-bRP" id="KHd-oN-QYd"/>
+                                            <outlet property="institution_label" destination="hjI-Gx-ZZw" id="AcA-F5-mmj"/>
+                                            <outlet property="name_label" destination="4W4-v0-y2R" id="OYg-iZ-v4D"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="peopleinfocell" rowHeight="66" id="c0m-Ea-ZSG">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="personcell" rowHeight="66" id="c0m-Ea-ZSG" customClass="PersonCellTableViewCell">
                                         <rect key="frame" x="0.0" y="152" width="320" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c0m-Ea-ZSG" id="XK8-Rk-l1S">
@@ -697,6 +708,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="institution_label" destination="l5c-6b-QBA" id="lpX-wH-dQR"/>
+                                            <outlet property="name_label" destination="ZmQ-0d-9am" id="eN3-zf-R4b"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -709,6 +724,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="People" id="FFh-Nh-M0k"/>
                     <connections>
+                        <outlet property="peopletable" destination="XjU-z0-1x2" id="HQ6-Sy-puO"/>
                         <segue destination="WOo-YV-aTd" kind="push" identifier="persondetailsegue" id="36Z-0v-hbQ"/>
                     </connections>
                 </viewController>
@@ -1085,11 +1101,11 @@
             </objects>
             <point key="canvasLocation" x="783" y="-717"/>
         </scene>
-        <!--Navigation Controller - Travel-->
+        <!--Navigation Controller - Venue-->
         <scene sceneID="ZgJ-eB-Dq3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aKr-F5-8MA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Travel" image="travel.png" id="VdN-Yh-zkz"/>
+                    <tabBarItem key="tabBarItem" title="Venue" image="travel.png" id="VdN-Yh-zkz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Srz-TH-1WS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

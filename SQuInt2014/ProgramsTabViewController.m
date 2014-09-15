@@ -9,19 +9,32 @@
 #import "ProgramsTabViewController.h"
 #import "CustomLogInViewController.h"
 #import "CustomSignUpViewController.h"
+#import "PosterCellTableViewCell.h"
+#import "TalkCellTableViewCell.h"
+#import "AbstractCellTableViewCell.h"
 
 @interface ProgramsTabViewController ()
 
 @end
 
 @implementation ProgramsTabViewController
-
+@synthesize session_array;
+@synthesize poster_array;
+@synthesize session_and_talk;
+@synthesize abstract_array;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.posterview.hidden=YES;
-    self.posterview.userInteractionEnabled=NO;
+    
+    //initialize elements
+    self.session_array = [[NSMutableArray alloc] init];
+    self.poster_array = [[NSMutableArray alloc] init];
+    self.session_and_talk = [[NSMutableDictionary alloc] init];
+    
+    [self get_session_and_talk_data];
+    [self get_poster_data];
+    [self get_abstract_data];
     
     if (![PFUser currentUser])
     {
@@ -142,34 +155,62 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    if (tableView.tag==1)
+    {
+        return self.session_array.count;
+    }
+    else if (tableView.tag==2)
+    {
+        return 1;
+    }
+    else
+    {
+        return 1;
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    return 5;
+    if (tableView.tag==1)
+    {
+        PFObject *session_obj = [self.session_array objectAtIndex:section];
+        NSMutableArray *talk_temparray = [self.session_and_talk objectForKey:session_obj];
+        return [talk_temparray count];
+    }
+    else if (tableView.tag==2)
+    {
+        return self.poster_array.count;
+    }
+    else
+    {
+        return self.abstract_array.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    UITableViewCell *talkcell = [tableView dequeueReusableCellWithIdentifier:@"talkcell"];
-    
-    UITableViewCell *postercell = [tableView dequeueReusableCellWithIdentifier:@"postercell"];
-    
-    talkcell.selectionStyle = UITableViewCellSelectionStyleNone;
-    postercell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     if (tableView.tag==1)
     {
+        TalkCellTableViewCell *talkcell = [tableView dequeueReusableCellWithIdentifier:@"talkcell"];
+        PFObject *session = [self.session_array objectAtIndex:indexPath.section];
+        NSMutableArray *talks = [self.session_and_talk objectForKey:session];
+        PFObject *talk = [talks objectAtIndex:indexPath.row];
+        talkcell.talk_name_label.text = talk[@"name"];
         return talkcell;
+    }
+    else if (tableView.tag==2)
+    {
+        PosterCellTableViewCell *postercell = [tableView dequeueReusableCellWithIdentifier:@"postercell"];
+        PFObject *poster = [self.poster_array objectAtIndex:indexPath.row];
+        postercell.poster_topic_label.text = poster[@"name"];
+        return postercell;
     }
     else
     {
-        return postercell;
+        AbstractCellTableViewCell *abstractcell = [tableView dequeueReusableCellWithIdentifier:@"abstractcell"];
+        return abstractcell;
     }
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -178,27 +219,6 @@
 }
 
 - (IBAction)segaction:(UISegmentedControl *)sender {
-    /*
-    switch (self.programseg.selectedSegmentIndex) {
-        case 0:
-            self.talkview.hidden=NO;
-            self.posterview.hidden=YES;
-            self.abstractview.hidden=YES;
-            break;
-        case 1:
-            self.talkview.hidden=YES;
-            self.posterview.hidden=NO;
-            self.abstractview.hidden=YES;
-            break;
-        case 2:
-            self.talkview.hidden=YES;
-            self.posterview.hidden=YES;
-            self.abstractview.hidden=NO;
-            break;
-        default:
-            break;
-    }
-    */
     
     if (self.programseg.selectedSegmentIndex==0)
     {
@@ -224,6 +244,68 @@
             self.abstractview.frame= CGRectMake(0, self.abstractview.frame.origin.y, self.abstractview.frame.size.width, self.abstractview.frame.size.height);
         }];
     }
+}
+
+- (void) get_session_and_talk_data
+{
+    PFQuery *sessionquery = [PFQuery queryWithClassName:@"session"];
+    [sessionquery orderByDescending:@"start_time"];
+    [sessionquery includeKey:@"location"];
+    [sessionquery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"sessionquery success");
+        for (PFObject *session_pfobj in objects)
+        {
+            NSMutableArray *temp_talkarray = [[NSMutableArray alloc] init];
+            PFQuery *talk_subquery = [PFQuery queryWithClassName:@"talk"];
+            [talk_subquery whereKey:@"session" equalTo:session_pfobj];
+            [talk_subquery includeKey:@"location"];
+            [talk_subquery includeKey:@"abstract"];
+            [talk_subquery includeKey:@"author"];
+            [talk_subquery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                NSLog(@"talk sub query success");
+                for (PFObject *talk_pfobj in objects)
+                {
+                    [temp_talkarray addObject:talk_pfobj];
+                }
+                [self.talktable reloadData];
+            }];
+            [self.session_and_talk setObject:temp_talkarray forKey:session_pfobj];
+            [self.session_array addObject:session_pfobj];
+        }
+        
+    }];
+}
+
+- (void) get_poster_data
+{
+    PFQuery *posterquery = [PFQuery queryWithClassName:@"poster"];
+    [posterquery orderByDescending:@"name"];
+    [posterquery includeKey:@"author"];
+    [posterquery includeKey:@"abstract"];
+    [posterquery includeKey:@"location"];
+    [posterquery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"poster query success");
+        for (PFObject *poster_obj in objects)
+        {
+            [self.poster_array addObject:poster_obj];
+        }
+        [self.postertable reloadData];
+    }];
+}
+
+- (void) get_abstract_data
+{
+    PFQuery *abstractquery = [PFQuery queryWithClassName:@"abstract"];
+    [abstractquery orderByDescending:@"name"];
+    [abstractquery includeKey:@"author"];
+    [abstractquery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"abstract query success");
+        for (PFObject *abstract_obj in objects)
+        {
+            [self.abstract_array addObject:abstract_obj];
+        }
+        [self.abstracttable reloadData];
+    }];
 }
 
 

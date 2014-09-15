@@ -32,6 +32,8 @@
 		B43D26D2190130020072B753 /* positions@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B43D26CD190130020072B753 /* positions@2x.png */; };
 		B43D26D3190130020072B753 /* program@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B43D26CE190130020072B753 /* program@2x.png */; };
 		B43D26D4190130020072B753 /* travel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B43D26CF190130020072B753 /* travel@2x.png */; };
+		B495C43F19C6D21E008D5D5F /* Talk_obj.m in Sources */ = {isa = PBXBuildFile; fileRef = B495C43E19C6D21E008D5D5F /* Talk_obj.m */; };
+		B495C44219C6D22F008D5D5F /* Session_obj.m in Sources */ = {isa = PBXBuildFile; fileRef = B495C44119C6D22F008D5D5F /* Session_obj.m */; };
 		B499BD061904EAB700C99CFE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B499BD051904EAB700C99CFE /* QuartzCore.framework */; };
 		B499BD091904ED0C00C99CFE /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B499BD081904ED0C00C99CFE /* ChatViewController.m */; };
 		B499BD0C1904EDE600C99CFE /* PositionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B499BD0B1904EDE600C99CFE /* PositionDetailViewController.m */; };
@@ -103,6 +105,10 @@
 		B43D26CD190130020072B753 /* positions@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "positions@2x.png"; sourceTree = "<group>"; };
 		B43D26CE190130020072B753 /* program@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "program@2x.png"; sourceTree = "<group>"; };
 		B43D26CF190130020072B753 /* travel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel@2x.png"; sourceTree = "<group>"; };
+		B495C43D19C6D21E008D5D5F /* Talk_obj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Talk_obj.h; sourceTree = "<group>"; };
+		B495C43E19C6D21E008D5D5F /* Talk_obj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Talk_obj.m; sourceTree = "<group>"; };
+		B495C44019C6D22F008D5D5F /* Session_obj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session_obj.h; sourceTree = "<group>"; };
+		B495C44119C6D22F008D5D5F /* Session_obj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session_obj.m; sourceTree = "<group>"; };
 		B499BD051904EAB700C99CFE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B499BD071904ED0C00C99CFE /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		B499BD081904ED0C00C99CFE /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
@@ -242,6 +248,7 @@
 				B4B71A1019C053BA0036811A /* AbstractPdfViewController.m */,
 				B4F74E6319B5A28D00F3A565 /* TestViewController.h */,
 				B4F74E6419B5A28D00F3A565 /* TestViewController.m */,
+				B495C44319C7022A008D5D5F /* DataObjects */,
 				B4EAF4E019BEE57F0075E259 /* Cells */,
 				B43D267818FFC9980072B753 /* Images.xcassets */,
 				B43D266418FFC9980072B753 /* Supporting Files */,
@@ -306,6 +313,17 @@
 			children = (
 			);
 			name = Include;
+			sourceTree = "<group>";
+		};
+		B495C44319C7022A008D5D5F /* DataObjects */ = {
+			isa = PBXGroup;
+			children = (
+				B495C43D19C6D21E008D5D5F /* Talk_obj.h */,
+				B495C43E19C6D21E008D5D5F /* Talk_obj.m */,
+				B495C44019C6D22F008D5D5F /* Session_obj.h */,
+				B495C44119C6D22F008D5D5F /* Session_obj.m */,
+			);
+			name = DataObjects;
 			sourceTree = "<group>";
 		};
 		B4EAF4E019BEE57F0075E259 /* Cells */ = {
@@ -479,6 +497,7 @@
 			files = (
 				B4F74E6019B461D400F3A565 /* CustomSignUpViewController.m in Sources */,
 				B43D269F18FFD0D40072B753 /* TravelTabViewController.m in Sources */,
+				B495C44219C6D22F008D5D5F /* Session_obj.m in Sources */,
 				B4F74E6519B5A28D00F3A565 /* TestViewController.m in Sources */,
 				B4EAF4E319BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m in Sources */,
 				B4F74E5D19B461C000F3A565 /* CustomLogInViewController.m in Sources */,
@@ -488,6 +507,7 @@
 				B499BD0C1904EDE600C99CFE /* PositionDetailViewController.m in Sources */,
 				B4B71A0219C039120036811A /* CareerCellTableViewCell.m in Sources */,
 				B43D266E18FFC9980072B753 /* AppDelegate.m in Sources */,
+				B495C43F19C6D21E008D5D5F /* Talk_obj.m in Sources */,
 				B43D269C18FFD0C50072B753 /* ProgramsTabViewController.m in Sources */,
 				B499BD1C1906475800C99CFE /* PersonDetailViewController.m in Sources */,
 				B43D266A18FFC9980072B753 /* main.m in Sources */,

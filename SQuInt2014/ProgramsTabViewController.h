@@ -22,5 +22,9 @@
 @property NSMutableArray *session_array;
 @property NSMutableDictionary *session_and_talk;
 @property NSMutableArray *poster_array;
+- (IBAction)poster_detail_tap:(UIButton *)sender;
 @property NSMutableArray *abstract_array;
+- (IBAction)abstract_detail_tap:(UIButton *)sender;
+- (IBAction)talk_detail_tap:(UIButton *)sender;
+
 @end

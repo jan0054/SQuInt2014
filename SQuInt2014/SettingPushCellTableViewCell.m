@@ -31,4 +31,6 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)push_status_switch_tap:(UISwitch *)sender {
+}
 @end

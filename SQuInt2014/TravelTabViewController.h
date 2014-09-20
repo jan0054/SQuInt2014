@@ -13,5 +13,8 @@
 @interface TravelTabViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *venuetable;
 @property NSMutableArray *venue_array;
+- (IBAction)venue_call_tap:(UIButton *)sender;
+- (IBAction)venue_navigate_tap:(UIButton *)sender;
+- (IBAction)venue_website_tap:(UIButton *)sender;
 
 @end

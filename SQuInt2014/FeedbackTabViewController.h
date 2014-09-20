@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <Parse/Parse.h>
+#import "SettingLoginCellTableViewCell.h"
+#import "SettingPushCellTableViewCell.h"
+#import "GeneralSettingCellTableViewCell.h"
+#import "CustomLogInViewController.h"
+#import "CustomSignUpViewController.h"
 
 @interface FeedbackTabViewController : UIViewController
 

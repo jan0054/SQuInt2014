@@ -77,4 +77,25 @@
 
 }
 
+- (IBAction)venue_call_tap:(UIButton *)sender {
+    VenueCellTableViewCell *cell = (VenueCellTableViewCell *)[[[sender superview] superview] superview];
+    NSIndexPath *tapped_path = [self.venuetable indexPathForCell:cell];
+    NSLog(@"venue_call_tap: %ld", (long)tapped_path.row);
+
+}
+
+- (IBAction)venue_navigate_tap:(UIButton *)sender {
+    VenueCellTableViewCell *cell = (VenueCellTableViewCell *)[[[sender superview] superview] superview];
+    NSIndexPath *tapped_path = [self.venuetable indexPathForCell:cell];
+    NSLog(@"venue_navigate_tap: %ld", (long)tapped_path.row);
+
+}
+
+- (IBAction)venue_website_tap:(UIButton *)sender {
+    VenueCellTableViewCell *cell = (VenueCellTableViewCell *)[[[sender superview] superview] superview];
+    NSIndexPath *tapped_path = [self.venuetable indexPathForCell:cell];
+    NSLog(@"venue_website_tap: %ld", (long)tapped_path.row);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.apple.com"]];
+
+}
 @end

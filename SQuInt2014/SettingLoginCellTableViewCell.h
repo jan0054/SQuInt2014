@@ -10,4 +10,9 @@
 
 @interface SettingLoginCellTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *login_name_label;
+@property (strong, nonatomic) IBOutlet UIButton *login_action_button;
+- (IBAction)login_action_button_tap:(UIButton *)sender;
+
+
 @end

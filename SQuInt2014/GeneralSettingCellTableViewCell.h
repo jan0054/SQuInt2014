@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GeneralSettingCellTableViewCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *general_name_label;
 
 @end

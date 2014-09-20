@@ -30,6 +30,7 @@
     //initialize elements
     self.session_array = [[NSMutableArray alloc] init];
     self.poster_array = [[NSMutableArray alloc] init];
+    self.abstract_array = [[NSMutableArray alloc] init];
     self.session_and_talk = [[NSMutableDictionary alloc] init];
     
     [self get_session_and_talk_data];
@@ -41,7 +42,6 @@
         // Customize the Log In View Controller
         CustomLogInViewController *logInViewController = [[CustomLogInViewController alloc] init];
         [logInViewController setDelegate:self];
-        [logInViewController setFacebookPermissions:[NSArray arrayWithObjects:@"user_friends", nil]];
         [logInViewController setFields: PFLogInFieldsDismissButton | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword ];
         
         // Create the sign up view controller
@@ -209,6 +209,8 @@
     else
     {
         AbstractCellTableViewCell *abstractcell = [tableView dequeueReusableCellWithIdentifier:@"abstractcell"];
+        PFObject *abstract = [self.abstract_array objectAtIndex:indexPath.row];
+        abstractcell.abstract_title_label.text = abstract[@"name"];
         return abstractcell;
     }
 }
@@ -308,7 +310,28 @@
     }];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
 
 
 
+- (IBAction)poster_detail_tap:(UIButton *)sender {
+    PosterCellTableViewCell *cell = (PosterCellTableViewCell *)[[[sender superview] superview] superview];
+    NSIndexPath *tapped_path = [self.postertable indexPathForCell:cell];
+    NSLog(@"poster_detail_tap: %ld", (long)tapped_path.row);
+}
+- (IBAction)abstract_detail_tap:(UIButton *)sender {
+    AbstractCellTableViewCell *cell = (AbstractCellTableViewCell *)[[[sender superview] superview] superview];
+    NSIndexPath *tapped_path = [self.abstracttable indexPathForCell:cell];
+    NSLog(@"abstract_detail_tap: %ld", (long)tapped_path.row);
+}
+
+- (IBAction)talk_detail_tap:(UIButton *)sender {
+    TalkCellTableViewCell *cell = (TalkCellTableViewCell *)[[[sender superview] superview] superview];
+    NSIndexPath *tapped_path = [self.talktable indexPathForCell:cell];
+    NSLog(@"poster_detail_tap: %ld, %ld", (long)tapped_path.section, (long)tapped_path.row);
+}
 @end

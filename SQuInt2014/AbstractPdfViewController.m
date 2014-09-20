@@ -13,37 +13,36 @@
 @end
 
 @implementation AbstractPdfViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize abstract_name;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.abstract_name_label.text = self.abstract_name;
+    [self get_abstract_data];
 }
 
-- (void)didReceiveMemoryWarning
+- (void) get_abstract_data
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    PFQuery *abstractquery = [PFQuery queryWithClassName:@"abstract"];
+    [abstractquery includeKey:@"author"];
+    [abstractquery getObjectInBackgroundWithId:self.abstract_objid block:^(PFObject *object, NSError *error) {
+        NSLog(@" single abstract query success");
+        self.abstract_content_label.text = object[@"content"];
+        PFObject *author = object[@"author"];
+        self.abstract_author_label.text = [NSString stringWithFormat:@"Author: %@, %@", author[@"last_name"], author[@"first_name"]];
+        PFFile *abstract_pdf = object[@"pdf"];
+        NSString *pdf_url_str = abstract_pdf.url;
+        NSURL *pdf_url = [NSURL URLWithString:pdf_url_str];
+        NSURLRequest *loadpdf = [NSURLRequest requestWithURL:pdf_url];
+        [self.abstract_pdf_webview loadRequest:loadpdf];
+        /*
+        [abstract_pdf getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            NSLog(@"pdf file fetch success");
+            
+        }];
+        */
+    }];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingPushCellTableViewCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *push_status_label;
+@property (strong, nonatomic) IBOutlet UISwitch *push_status_switch;
+- (IBAction)push_status_switch_tap:(UISwitch *)sender;
 
 @end

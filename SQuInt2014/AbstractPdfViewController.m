@@ -33,15 +33,10 @@
         self.abstract_author_label.text = [NSString stringWithFormat:@"Author: %@, %@", author[@"last_name"], author[@"first_name"]];
         PFFile *abstract_pdf = object[@"pdf"];
         NSString *pdf_url_str = abstract_pdf.url;
+        NSLog(@"ULR: %@", pdf_url_str );
         NSURL *pdf_url = [NSURL URLWithString:pdf_url_str];
         NSURLRequest *loadpdf = [NSURLRequest requestWithURL:pdf_url];
         [self.abstract_pdf_webview loadRequest:loadpdf];
-        /*
-        [abstract_pdf getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            NSLog(@"pdf file fetch success");
-            
-        }];
-        */
     }];
 }
 

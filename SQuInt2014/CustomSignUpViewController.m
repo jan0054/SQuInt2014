@@ -7,6 +7,7 @@
 //
 
 #import "CustomSignUpViewController.h"
+#import "UIColor+ProjectColors.h"
 
 @interface CustomSignUpViewController ()
 
@@ -14,36 +15,44 @@
 
 @implementation CustomSignUpViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor main_blue];
+    [self.signUpView setLogo:[[UIImageView alloc] initWithImage:nil]];
+    
+    [self.signUpView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateNormal];
+    [self.signUpView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateHighlighted];
+    
+    [self.signUpView.signUpButton setBackgroundColor:[UIColor shade_blue]];
+    [self.signUpView.signUpButton setBackgroundImage:nil forState:UIControlStateNormal];
+    [self.signUpView.signUpButton setBackgroundImage:nil forState:UIControlStateHighlighted];
+    [self.signUpView.signUpButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0]];
+    //[self.signUpView.signUpButton setTitle:@"註冊" forState:UIControlStateNormal];
+    //[self.signUpView.signUpButton setTitle:@"註冊" forState:UIControlStateHighlighted];
+    
+    // Remove text shadow
+    CALayer *layer = self.signUpView.usernameField.layer;
+    layer.shadowOpacity = 0.0;
+    layer = self.signUpView.passwordField.layer;
+    layer.shadowOpacity = 0.0;
+    layer = self.signUpView.emailField.layer;
+    layer.shadowOpacity = 0.0;
+    
+    [self.signUpView.usernameField setBackgroundColor:[UIColor whiteColor]];
+    [self.signUpView.passwordField setBackgroundColor:[UIColor whiteColor]];
+    [self.signUpView.emailField setBackgroundColor:[UIColor whiteColor]];
+    //self.signUpView.usernameField.placeholder= @"帳號";
+    //self.signUpView.passwordField.placeholder=@"密碼";
+    [self.signUpView.usernameField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
+    [self.signUpView.passwordField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
+    [self.signUpView.emailField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

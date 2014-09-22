@@ -23,7 +23,12 @@
 
 - (IBAction)btn1:(UIButton *)sender {
     NSLog(@"BTN1 PRESSED");
-    
+    for (NSString *familyName in [UIFont familyNames]){
+        NSLog(@"Family name: %@", familyName);
+        for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
+            NSLog(@"--Font name: %@", fontName);
+        }
+    }
 }
 
 - (IBAction)btn2:(UIButton *)sender {

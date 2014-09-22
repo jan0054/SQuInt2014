@@ -13,4 +13,6 @@
 @interface PositionsTabViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *careertable;
 @property NSMutableArray *career_array;
+- (IBAction)career_detail_tap:(UIButton *)sender;
+
 @end

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "UIColor+ProjectColors.h"
 
 @implementation AppDelegate
 
@@ -19,6 +20,19 @@
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
+    
+    // This sets the background color of the navigation
+    [[UINavigationBar appearance] setBarTintColor:[UIColor shade_blue]];
+    
+    // This sets the text color of the navigation links
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    // This sets the title color of the navigation bar
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0]}];
+    
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setBarTintColor:[UIColor dark_blue]];
+    [[UITabBar appearance] setTranslucent:NO];
     return YES;
 }
 

@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     
     //initialize elements
     self.session_array = [[NSMutableArray alloc] init];

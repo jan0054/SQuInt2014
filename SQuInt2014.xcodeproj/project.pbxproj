@@ -49,6 +49,8 @@
 		B4B71A0B19C0528D0036811A /* PersonDetailEventCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B71A0A19C0528D0036811A /* PersonDetailEventCellTableViewCell.m */; };
 		B4B71A0E19C0539B0036811A /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B71A0D19C0539B0036811A /* EventDetailViewController.m */; };
 		B4B71A1119C053BA0036811A /* AbstractPdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B71A1019C053BA0036811A /* AbstractPdfViewController.m */; };
+		B4BC89AC19D005F200F1A9AD /* UIColor+ProjectColors.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BC89AB19D005F200F1A9AD /* UIColor+ProjectColors.m */; };
+		B4BC89DE19D0AC2B00F1A9AD /* cancelwhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4BC89DD19D0AC2B00F1A9AD /* cancelwhite@2x.png */; };
 		B4EAF4E319BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E219BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m */; };
 		B4EAF4E619BEE5D00075E259 /* SettingPushCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E519BEE5D00075E259 /* SettingPushCellTableViewCell.m */; };
 		B4EAF4E919BEE5E00075E259 /* SettingLoginCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E819BEE5E00075E259 /* SettingLoginCellTableViewCell.m */; };
@@ -135,6 +137,9 @@
 		B4B71A0D19C0539B0036811A /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
 		B4B71A0F19C053BA0036811A /* AbstractPdfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractPdfViewController.h; sourceTree = "<group>"; };
 		B4B71A1019C053BA0036811A /* AbstractPdfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractPdfViewController.m; sourceTree = "<group>"; };
+		B4BC89AA19D005F200F1A9AD /* UIColor+ProjectColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ProjectColors.h"; sourceTree = "<group>"; };
+		B4BC89AB19D005F200F1A9AD /* UIColor+ProjectColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ProjectColors.m"; sourceTree = "<group>"; };
+		B4BC89DD19D0AC2B00F1A9AD /* cancelwhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancelwhite@2x.png"; sourceTree = "<group>"; };
 		B4EAF4E119BEE5BC0075E259 /* GeneralSettingCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSettingCellTableViewCell.h; sourceTree = "<group>"; };
 		B4EAF4E219BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralSettingCellTableViewCell.m; sourceTree = "<group>"; };
 		B4EAF4E419BEE5D00075E259 /* SettingPushCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingPushCellTableViewCell.h; sourceTree = "<group>"; };
@@ -219,6 +224,8 @@
 				B43D266C18FFC9980072B753 /* AppDelegate.h */,
 				B43D266D18FFC9980072B753 /* AppDelegate.m */,
 				B43D266F18FFC9980072B753 /* Main.storyboard */,
+				B4BC89AA19D005F200F1A9AD /* UIColor+ProjectColors.h */,
+				B4BC89AB19D005F200F1A9AD /* UIColor+ProjectColors.m */,
 				B43D269A18FFD0C50072B753 /* ProgramsTabViewController.h */,
 				B43D269B18FFD0C50072B753 /* ProgramsTabViewController.m */,
 				B43D269D18FFD0D40072B753 /* TravelTabViewController.h */,
@@ -295,6 +302,7 @@
 		B43D269618FFD03A0072B753 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B4BC89DD19D0AC2B00F1A9AD /* cancelwhite@2x.png */,
 				B4F74E6119B5A1FD00F3A565 /* settings@2x.png */,
 				B499BD1419051DDA00C99CFE /* profile_pic@2x.png */,
 				B43D26CB190130020072B753 /* feedback@2x.png */,
@@ -430,6 +438,7 @@
 			files = (
 				B43D267918FFC9980072B753 /* Images.xcassets in Resources */,
 				B4F74E6219B5A1FD00F3A565 /* settings@2x.png in Resources */,
+				B4BC89DE19D0AC2B00F1A9AD /* cancelwhite@2x.png in Resources */,
 				B499BD1519051DDA00C99CFE /* profile_pic@2x.png in Resources */,
 				B43D26D2190130020072B753 /* positions@2x.png in Resources */,
 				B43D266818FFC9980072B753 /* InfoPlist.strings in Resources */,
@@ -501,6 +510,7 @@
 				B499BD0C1904EDE600C99CFE /* PositionDetailViewController.m in Sources */,
 				B4B71A0219C039120036811A /* CareerCellTableViewCell.m in Sources */,
 				B43D266E18FFC9980072B753 /* AppDelegate.m in Sources */,
+				B4BC89AC19D005F200F1A9AD /* UIColor+ProjectColors.m in Sources */,
 				B43D269C18FFD0C50072B753 /* ProgramsTabViewController.m in Sources */,
 				B499BD1C1906475800C99CFE /* PersonDetailViewController.m in Sources */,
 				B43D266A18FFC9980072B753 /* main.m in Sources */,

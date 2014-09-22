@@ -71,6 +71,9 @@
     }];
 }
 
-
-
+- (IBAction)career_detail_tap:(UIButton *)sender {
+    CareerCellTableViewCell *cell = (CareerCellTableViewCell *)[[[sender superview] superview] superview];
+    NSIndexPath *tapped_path = [self.careertable indexPathForCell:cell];
+    NSLog(@"career_detail_tap: %ld", (long)tapped_path.row);
+}
 @end

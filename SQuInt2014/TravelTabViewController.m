@@ -25,6 +25,14 @@
     [self get_venue_data];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.venuetable.tableFooterView = [[UIView alloc] init];
+}
+
+- (void) viewDidLayoutSubviews
+{
+    if ([self.venuetable respondsToSelector:@selector(layoutMargins)]) {
+        self.venuetable.layoutMargins = UIEdgeInsetsZero;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -44,6 +52,8 @@
     
     PFObject *venue = [self.venue_array objectAtIndex:indexPath.row];
     venuecell.venue_name_label.text = venue[@"name"];
+    venuecell.venue_address_label.text = venue[@"address"];
+    venuecell.venue_description_label.text = venue[@"description"];
     
     PFGeoPoint *coord = venue[@"coord"];
     CLLocationCoordinate2D zoomLocation;
@@ -53,7 +63,10 @@
     [venuecell.venuemap setRegion:viewRegion animated:NO];
     
     venuecell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    if ([venuecell respondsToSelector:@selector(layoutMargins)]) {
+        venuecell.layoutMargins = UIEdgeInsetsZero;
+    }
+
     return venuecell;
 }
 
@@ -81,21 +94,48 @@
     VenueCellTableViewCell *cell = (VenueCellTableViewCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.venuetable indexPathForCell:cell];
     NSLog(@"venue_call_tap: %ld", (long)tapped_path.row);
-
+    PFObject *venue = [self.venue_array objectAtIndex:tapped_path.row];
+    NSString *rawphone = venue[@"phone"];
+    NSString *phonenumber = [@"tel:" stringByAppendingString:rawphone];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phonenumber]];
 }
 
 - (IBAction)venue_navigate_tap:(UIButton *)sender {
     VenueCellTableViewCell *cell = (VenueCellTableViewCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.venuetable indexPathForCell:cell];
     NSLog(@"venue_navigate_tap: %ld", (long)tapped_path.row);
-
+    PFObject *venue = [self.venue_array objectAtIndex:tapped_path.row];
+    PFGeoPoint *location = venue[@"coord"];
+    double lat = location.latitude;
+    double lon = location.longitude;
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(lat, lon) addressDictionary:nil];
+    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+    [mapItem setName:venue[@"name"]];
+    [self displayRegionCenteredOnMapItem:mapItem];
 }
 
 - (IBAction)venue_website_tap:(UIButton *)sender {
     VenueCellTableViewCell *cell = (VenueCellTableViewCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.venuetable indexPathForCell:cell];
     NSLog(@"venue_website_tap: %ld", (long)tapped_path.row);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.apple.com"]];
+    PFObject *venue = [self.venue_array objectAtIndex:tapped_path.row];
+    NSString *urlstr = venue[@"url"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlstr]];
 
 }
+
+- (void)displayRegionCenteredOnMapItem:(MKMapItem*)from {
+    CLLocation* fromLocation = from.placemark.location;
+    
+    // Create a region centered on the starting point with a 2km span
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(fromLocation.coordinate, 2000, 2000);
+    
+    // Open the item in Maps, specifying the map region to display.
+    [MKMapItem openMapsWithItems:[NSArray arrayWithObject:from]
+                   launchOptions:[NSDictionary dictionaryWithObjectsAndKeys:
+                                  [NSValue valueWithMKCoordinate:region.center], MKLaunchOptionsMapCenterKey,
+                                  [NSValue valueWithMKCoordinateSpan:region.span], MKLaunchOptionsMapSpanKey, nil]];
+}
+
+
 @end

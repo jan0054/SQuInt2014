@@ -224,8 +224,6 @@
 				B43D266C18FFC9980072B753 /* AppDelegate.h */,
 				B43D266D18FFC9980072B753 /* AppDelegate.m */,
 				B43D266F18FFC9980072B753 /* Main.storyboard */,
-				B4BC89AA19D005F200F1A9AD /* UIColor+ProjectColors.h */,
-				B4BC89AB19D005F200F1A9AD /* UIColor+ProjectColors.m */,
 				B43D269A18FFD0C50072B753 /* ProgramsTabViewController.h */,
 				B43D269B18FFD0C50072B753 /* ProgramsTabViewController.m */,
 				B43D269D18FFD0D40072B753 /* TravelTabViewController.h */,
@@ -242,10 +240,6 @@
 				B43D26A718FFD1050072B753 /* FeedbackTabViewController.m */,
 				B499BD071904ED0C00C99CFE /* ChatViewController.h */,
 				B499BD081904ED0C00C99CFE /* ChatViewController.m */,
-				B4F74E5B19B461C000F3A565 /* CustomLogInViewController.h */,
-				B4F74E5C19B461C000F3A565 /* CustomLogInViewController.m */,
-				B4F74E5E19B461D400F3A565 /* CustomSignUpViewController.h */,
-				B4F74E5F19B461D400F3A565 /* CustomSignUpViewController.m */,
 				B4B71A0C19C0539B0036811A /* EventDetailViewController.h */,
 				B4B71A0D19C0539B0036811A /* EventDetailViewController.m */,
 				B4B71A0F19C053BA0036811A /* AbstractPdfViewController.h */,
@@ -254,6 +248,7 @@
 				B4F74E6419B5A28D00F3A565 /* TestViewController.m */,
 				B495C44419C9876A008D5D5F /* AboutViewController.h */,
 				B495C44519C9876A008D5D5F /* AboutViewController.m */,
+				B4BC89DF19D0B4EA00F1A9AD /* Utilities */,
 				B495C44319C7022A008D5D5F /* DataObjects */,
 				B4EAF4E019BEE57F0075E259 /* Cells */,
 				B43D267818FFC9980072B753 /* Images.xcassets */,
@@ -327,6 +322,19 @@
 			children = (
 			);
 			name = DataObjects;
+			sourceTree = "<group>";
+		};
+		B4BC89DF19D0B4EA00F1A9AD /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B4BC89AA19D005F200F1A9AD /* UIColor+ProjectColors.h */,
+				B4BC89AB19D005F200F1A9AD /* UIColor+ProjectColors.m */,
+				B4F74E5B19B461C000F3A565 /* CustomLogInViewController.h */,
+				B4F74E5C19B461C000F3A565 /* CustomLogInViewController.m */,
+				B4F74E5E19B461D400F3A565 /* CustomSignUpViewController.h */,
+				B4F74E5F19B461D400F3A565 /* CustomSignUpViewController.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		B4EAF4E019BEE57F0075E259 /* Cells */ = {

@@ -26,5 +26,6 @@
 @property NSMutableArray *abstract_array;
 - (IBAction)abstract_detail_tap:(UIButton *)sender;
 - (IBAction)talk_detail_tap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIView *bottom_view;
 
 @end

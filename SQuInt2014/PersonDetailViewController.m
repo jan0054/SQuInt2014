@@ -13,7 +13,7 @@
 @end
 
 @implementation PersonDetailViewController
-
+@synthesize person_objid;
 
 - (void)viewDidLoad
 {

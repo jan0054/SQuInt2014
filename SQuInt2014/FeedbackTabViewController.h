@@ -18,6 +18,7 @@
 @interface FeedbackTabViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITableView *settingstable;
+- (IBAction)login_button_tap:(UIButton *)sender;
 
 
 

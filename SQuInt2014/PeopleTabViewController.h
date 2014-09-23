@@ -14,5 +14,6 @@
 @interface PeopleTabViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *peopletable;
 @property NSMutableArray *person_array;
+- (IBAction)person_detail_button_tap:(UIButton *)sender;
 
 @end

@@ -11,5 +11,6 @@
 @interface PersonCellTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *name_label;
 @property (strong, nonatomic) IBOutlet UILabel *institution_label;
+@property (strong, nonatomic) IBOutlet UIButton *person_detail_button;
 
 @end

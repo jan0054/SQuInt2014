@@ -19,5 +19,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *person_link_button;
 - (IBAction)person_email_button_tap:(UIButton *)sender;
 - (IBAction)person_link_button_tap:(UIButton *)sender;
+@property NSString *person_objid;
 
 @end

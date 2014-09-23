@@ -12,6 +12,7 @@
 #import "PosterCellTableViewCell.h"
 #import "TalkCellTableViewCell.h"
 #import "AbstractCellTableViewCell.h"
+#import "UIColor+ProjectColors.h"
 
 @interface ProgramsTabViewController ()
 
@@ -33,6 +34,18 @@
     self.poster_array = [[NSMutableArray alloc] init];
     self.abstract_array = [[NSMutableArray alloc] init];
     self.session_and_talk = [[NSMutableDictionary alloc] init];
+    
+    self.talktable.tableFooterView = [[UIView alloc] init];
+    self.postertable.tableFooterView = [[UIView alloc] init];
+    self.abstracttable.tableFooterView = [[UIView alloc] init];
+    
+    self.bottom_view.backgroundColor = [UIColor shade_blue];
+    self.talkview.backgroundColor = [UIColor shade_blue];
+    self.posterview.backgroundColor = [UIColor shade_blue];
+    self.abstractview.backgroundColor = [UIColor shade_blue];
+    self.talktable.backgroundColor = [UIColor shade_blue];
+    self.postertable.backgroundColor = [UIColor shade_blue];
+    self.abstracttable.backgroundColor = [UIColor shade_blue];
     
     [self get_session_and_talk_data];
     [self get_poster_data];
@@ -57,6 +70,16 @@
         
     }
 }
+
+- (void) viewDidLayoutSubviews
+{
+    if ([self.talktable respondsToSelector:@selector(layoutMargins)]) {
+        self.talktable.layoutMargins = UIEdgeInsetsZero;
+        self.postertable.layoutMargins = UIEdgeInsetsZero;
+        self.abstracttable.layoutMargins = UIEdgeInsetsZero;
+    }
+}
+
 
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
@@ -198,6 +221,11 @@
         NSMutableArray *talks = [self.session_and_talk objectForKey:session];
         PFObject *talk = [talks objectAtIndex:indexPath.row];
         talkcell.talk_name_label.text = talk[@"name"];
+        if ([talkcell respondsToSelector:@selector(layoutMargins)]) {
+            talkcell.layoutMargins = UIEdgeInsetsZero;
+        }
+        talkcell.selectionStyle = UITableViewCellSelectionStyleNone;
+        talkcell.backgroundColor = [UIColor clearColor];
         return talkcell;
     }
     else if (tableView.tag==2)
@@ -205,6 +233,11 @@
         PosterCellTableViewCell *postercell = [tableView dequeueReusableCellWithIdentifier:@"postercell"];
         PFObject *poster = [self.poster_array objectAtIndex:indexPath.row];
         postercell.poster_topic_label.text = poster[@"name"];
+        if ([postercell respondsToSelector:@selector(layoutMargins)]) {
+            postercell.layoutMargins = UIEdgeInsetsZero;
+        }
+        postercell.selectionStyle = UITableViewCellSelectionStyleNone;
+        postercell.backgroundColor = [UIColor clearColor];
         return postercell;
     }
     else
@@ -212,6 +245,11 @@
         AbstractCellTableViewCell *abstractcell = [tableView dequeueReusableCellWithIdentifier:@"abstractcell"];
         PFObject *abstract = [self.abstract_array objectAtIndex:indexPath.row];
         abstractcell.abstract_title_label.text = abstract[@"name"];
+        if ([abstractcell respondsToSelector:@selector(layoutMargins)]) {
+            abstractcell.layoutMargins = UIEdgeInsetsZero;
+        }
+        abstractcell.selectionStyle = UITableViewCellSelectionStyleNone;
+        abstractcell.backgroundColor = [UIColor clearColor];
         return abstractcell;
     }
 }

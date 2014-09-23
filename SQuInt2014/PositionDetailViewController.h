@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface PositionDetailViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UILabel *career_position_label;
 @property (strong, nonatomic) IBOutlet UILabel *career_institution_label;
 @property (strong, nonatomic) IBOutlet UILabel *career_posted_by;
 @property (strong, nonatomic) IBOutlet UILabel *career_notes;
+@property NSString *career_objid;
 
 
 @end

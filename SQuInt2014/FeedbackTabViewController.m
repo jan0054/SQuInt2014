@@ -7,7 +7,7 @@
 //
 
 #import "FeedbackTabViewController.h"
-
+#import "UIColor+ProjectColors.h"
 @interface FeedbackTabViewController ()
 
 @end
@@ -18,8 +18,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.settingstable.backgroundColor = [UIColor main_blue];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.settingstable.tableFooterView = [[UIView alloc] init];
+
+}
+
+- (void) viewDidLayoutSubviews
+{
+    if ([self.settingstable respondsToSelector:@selector(layoutMargins)]) {
+        self.settingstable.layoutMargins = UIEdgeInsetsZero;
+    }
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -79,7 +88,7 @@
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED");
-    
+    [self.settingstable reloadData];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -133,7 +142,7 @@
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED");
-    
+    [self.settingstable reloadData];
     // Dismiss the PFSignUpViewController
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"sign up controller dismissed");
@@ -173,7 +182,7 @@
     {
         [logincell.login_action_button setTitle:@"Log In" forState:UIControlStateNormal];
         [logincell.login_action_button setTitle:@"Log In" forState:UIControlStateHighlighted];
-        NSString *name = @"Log in or sign up to message other users";
+        NSString *name = @"Log in to message other users";
         
         if ([PFUser currentUser])
         {
@@ -183,29 +192,55 @@
             [logincell.login_action_button setTitle:@"Log Out" forState:UIControlStateNormal];
             [logincell.login_action_button setTitle:@"Log Out" forState:UIControlStateHighlighted];
         }
+        logincell.login_action_button.titleLabel.textColor = [UIColor bright_orange];
         logincell.login_name_label.text = name;
         logincell.selectionStyle = UITableViewCellSelectionStyleNone;
+        logincell.backgroundColor = [UIColor clearColor];
+        logincell.login_name_label.textColor = [UIColor whiteColor];
+        if ([logincell respondsToSelector:@selector(layoutMargins)]) {
+            logincell.layoutMargins = UIEdgeInsetsZero;
+        }
         return logincell;
     }
     else if (indexPath.row==1)
     {
-        pushcell.push_status_label.text = @"Push notifications are ON";
+        pushcell.push_status_label.text = @"Notifications are ON";
+        pushcell.push_status_label.textColor = [UIColor whiteColor];
         pushcell.selectionStyle = UITableViewCellSelectionStyleNone;
+        pushcell.backgroundColor = [UIColor clearColor];
+        if ([pushcell respondsToSelector:@selector(layoutMargins)]) {
+            pushcell.layoutMargins = UIEdgeInsetsZero;
+        }
         return pushcell;
     }
     else if (indexPath.row==2)
     {
         generalsettingcell.general_name_label.text = @"About Us";
+        generalsettingcell.general_name_label.textColor = [UIColor whiteColor];
+        generalsettingcell.backgroundColor = [UIColor clearColor];
+        if ([generalsettingcell respondsToSelector:@selector(layoutMargins)]) {
+            generalsettingcell.layoutMargins = UIEdgeInsetsZero;
+        }
         return generalsettingcell;
     }
     else if (indexPath.row==3)
     {
         generalsettingcell.general_name_label.text = @"Feedback";
+        generalsettingcell.general_name_label.textColor = [UIColor whiteColor];
+        generalsettingcell.backgroundColor = [UIColor clearColor];
+        if ([generalsettingcell respondsToSelector:@selector(layoutMargins)]) {
+            generalsettingcell.layoutMargins = UIEdgeInsetsZero;
+        }
         return generalsettingcell;
     }
     else
     {
         generalsettingcell.general_name_label.text = @"Privacy Notice and Terms of Service";
+        generalsettingcell.general_name_label.textColor = [UIColor whiteColor];
+        generalsettingcell.backgroundColor = [UIColor clearColor];
+        if ([generalsettingcell respondsToSelector:@selector(layoutMargins)]) {
+            generalsettingcell.layoutMargins = UIEdgeInsetsZero;
+        }
         return generalsettingcell;
     }
     
@@ -226,6 +261,22 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://tapgo.cc/tw/?page_id=1060"]];
     }
 }
+
+
+- (IBAction)login_button_tap:(UIButton *)sender {
+    if (![PFUser currentUser])
+    {
+        [self log_in];
+    }
+    else
+    {
+        [self log_out];
+        [self.settingstable reloadData];
+    }
+}
+
+
+
 
 
 @end

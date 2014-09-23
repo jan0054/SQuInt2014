@@ -38,4 +38,8 @@
     return [UIColor colorWithRed:230.0/255.0 green:166.0/255.0 blue:127.0/255.0 alpha:1];
 }
 
++ (UIColor*)bright_orange {
+    return [UIColor colorWithRed:255.0/255.0 green:121.0/255.0 blue:61.0/255.0 alpha:1];
+}
+
 @end

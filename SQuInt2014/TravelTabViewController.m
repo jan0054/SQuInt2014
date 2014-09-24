@@ -7,6 +7,7 @@
 //
 
 #import "TravelTabViewController.h"
+#import "UIColor+ProjectColors.h"
 
 @interface TravelTabViewController ()
 
@@ -66,7 +67,10 @@
     if ([venuecell respondsToSelector:@selector(layoutMargins)]) {
         venuecell.layoutMargins = UIEdgeInsetsZero;
     }
-
+    
+    venuecell.card_view.backgroundColor = [UIColor main_blue];
+    venuecell.venue_address_label.textColor = [UIColor light_blue];
+    
     return venuecell;
 }
 

@@ -36,6 +36,9 @@
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateHighlighted];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateSelected];
+    
+    [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     return YES;
 }
 

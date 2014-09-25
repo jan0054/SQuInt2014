@@ -22,6 +22,7 @@ NSString *tapped_person_objid;
 {
     [super viewDidLoad];
     self.person_array = [[NSMutableArray alloc] init];
+    self.peopletable.backgroundColor = [UIColor reallylight_blue];
     
     [self get_person_info];
     
@@ -60,6 +61,7 @@ NSString *tapped_person_objid;
         personcell.layoutMargins = UIEdgeInsetsZero;
     }
     personcell.selectionStyle = UITableViewCellSelectionStyleNone;
+    personcell.person_trim_view.backgroundColor = [UIColor main_orange];
     return personcell;
 }
 

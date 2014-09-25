@@ -23,6 +23,8 @@
     
     self.venue_array = [[NSMutableArray alloc] init];
     
+    self.venuetable.backgroundColor = [UIColor reallylight_blue];
+    
     [self get_venue_data];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -70,7 +72,7 @@
     
     venuecell.card_view.backgroundColor = [UIColor main_blue];
     venuecell.venue_address_label.textColor = [UIColor light_blue];
-    
+    venuecell.venue_trim_view.backgroundColor = [UIColor main_orange];
     return venuecell;
 }
 

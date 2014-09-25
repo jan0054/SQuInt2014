@@ -12,5 +12,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *name_label;
 @property (strong, nonatomic) IBOutlet UILabel *institution_label;
 @property (strong, nonatomic) IBOutlet UIButton *person_detail_button;
+@property (strong, nonatomic) IBOutlet UIView *person_card_view;
+@property (strong, nonatomic) IBOutlet UIView *person_trim_view;
 
 @end

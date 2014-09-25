@@ -11,5 +11,9 @@
 @interface AboutViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIButton *email_us_button;
 - (IBAction)email_us_tap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UILabel *company_title_label;
+@property (strong, nonatomic) IBOutlet UILabel *company_description_label;
+@property (strong, nonatomic) IBOutlet UIView *company_background_view;
+@property (strong, nonatomic) IBOutlet UILabel *company_description_two_label;
 
 @end

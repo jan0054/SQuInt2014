@@ -13,5 +13,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *abstract_title_label;
 @property (strong, nonatomic) IBOutlet UIButton *abstract_detail_button;
 - (IBAction)abstract_detail_button_tap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIView *abstract_card_view;
+@property (strong, nonatomic) IBOutlet UIView *abstract_trim_view;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "PositionsTabViewController.h"
 #import "PositionDetailViewController.h"
+#import "UIColor+ProjectColors.h"
 
 @interface PositionsTabViewController ()
 
@@ -23,6 +24,8 @@ NSString *tapped_objid;
     [super viewDidLoad];
     
     self.career_array = [[NSMutableArray alloc] init];
+    
+    self.careertable.backgroundColor = [UIColor reallylight_blue];
     
     [self get_career_data];
     
@@ -62,6 +65,8 @@ NSString *tapped_objid;
     if ([careercell respondsToSelector:@selector(layoutMargins)]) {
         careercell.layoutMargins = UIEdgeInsetsZero;
     }
+    careercell.career_card_view.backgroundColor = [UIColor main_blue];
+    careercell.career_trim_view.backgroundColor = [UIColor main_orange];
     return careercell;
 }
 

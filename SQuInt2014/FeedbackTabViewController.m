@@ -182,7 +182,7 @@
     {
         [logincell.login_action_button setTitle:@"Log In" forState:UIControlStateNormal];
         [logincell.login_action_button setTitle:@"Log In" forState:UIControlStateHighlighted];
-        NSString *name = @"Log in to message other users";
+        NSString *name = @"Not logged in";
         
         if ([PFUser currentUser])
         {
@@ -191,6 +191,11 @@
             
             [logincell.login_action_button setTitle:@"Log Out" forState:UIControlStateNormal];
             [logincell.login_action_button setTitle:@"Log Out" forState:UIControlStateHighlighted];
+        }
+        else
+        {
+            logincell.login_subtitle_label.textColor=[UIColor whiteColor];
+            logincell.login_subtitle_label.text = @"Log in to message users";
         }
         logincell.login_action_button.titleLabel.textColor = [UIColor bright_orange];
         logincell.login_name_label.text = name;
@@ -204,13 +209,15 @@
     }
     else if (indexPath.row==1)
     {
-        pushcell.push_status_label.text = @"Notifications are ON";
+        pushcell.push_status_label.text = @"Notifications are OFF";
         pushcell.push_status_label.textColor = [UIColor whiteColor];
         pushcell.selectionStyle = UITableViewCellSelectionStyleNone;
         pushcell.backgroundColor = [UIColor clearColor];
         if ([pushcell respondsToSelector:@selector(layoutMargins)]) {
             pushcell.layoutMargins = UIEdgeInsetsZero;
         }
+        pushcell.push_subtitle_label.textColor = [UIColor whiteColor];
+        pushcell.push_subtitle_label.text = @"Receive chat, session, and talk notifications";
         return pushcell;
     }
     else if (indexPath.row==2)
@@ -221,6 +228,9 @@
         if ([generalsettingcell respondsToSelector:@selector(layoutMargins)]) {
             generalsettingcell.layoutMargins = UIEdgeInsetsZero;
         }
+        generalsettingcell.general_subtitle_label.textColor=[UIColor whiteColor];
+        generalsettingcell.general_subtitle_label.text=@"Info about the developers of this app";
+        generalsettingcell.selectionStyle = UITableViewCellSelectionStyleNone;
         return generalsettingcell;
     }
     else if (indexPath.row==3)
@@ -231,16 +241,22 @@
         if ([generalsettingcell respondsToSelector:@selector(layoutMargins)]) {
             generalsettingcell.layoutMargins = UIEdgeInsetsZero;
         }
+        generalsettingcell.general_subtitle_label.textColor=[UIColor whiteColor];
+        generalsettingcell.general_subtitle_label.text=@"Email us any suggestions or questions";
+        generalsettingcell.selectionStyle = UITableViewCellSelectionStyleNone;
         return generalsettingcell;
     }
     else
     {
-        generalsettingcell.general_name_label.text = @"Privacy Notice and Terms of Service";
+        generalsettingcell.general_name_label.text = @"Terms of Service";
         generalsettingcell.general_name_label.textColor = [UIColor whiteColor];
         generalsettingcell.backgroundColor = [UIColor clearColor];
         if ([generalsettingcell respondsToSelector:@selector(layoutMargins)]) {
             generalsettingcell.layoutMargins = UIEdgeInsetsZero;
         }
+        generalsettingcell.general_subtitle_label.textColor=[UIColor whiteColor];
+        generalsettingcell.general_subtitle_label.text=@"Info on how we protect and secure your data";
+        generalsettingcell.selectionStyle = UITableViewCellSelectionStyleNone;
         return generalsettingcell;
     }
     

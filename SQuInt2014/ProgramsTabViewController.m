@@ -39,13 +39,14 @@
     self.postertable.tableFooterView = [[UIView alloc] init];
     self.abstracttable.tableFooterView = [[UIView alloc] init];
     
-    self.bottom_view.backgroundColor = [UIColor shade_blue];
-    self.talkview.backgroundColor = [UIColor shade_blue];
-    self.posterview.backgroundColor = [UIColor shade_blue];
-    self.abstractview.backgroundColor = [UIColor shade_blue];
-    self.talktable.backgroundColor = [UIColor shade_blue];
-    self.postertable.backgroundColor = [UIColor shade_blue];
-    self.abstracttable.backgroundColor = [UIColor shade_blue];
+    self.bottom_view.backgroundColor = [UIColor reallylight_blue];
+    //self.talkview.backgroundColor = [UIColor shade_blue];
+    //self.posterview.backgroundColor = [UIColor shade_blue];
+    //self.abstractview.backgroundColor = [UIColor shade_blue];
+    self.talktable.backgroundColor = [UIColor reallylight_blue];
+    self.postertable.backgroundColor = [UIColor reallylight_blue];
+    self.abstracttable.backgroundColor = [UIColor reallylight_blue];
+    
     
     [self get_session_and_talk_data];
     [self get_poster_data];
@@ -226,6 +227,9 @@
         }
         talkcell.selectionStyle = UITableViewCellSelectionStyleNone;
         talkcell.backgroundColor = [UIColor clearColor];
+        talkcell.talk_card_view.backgroundColor = [UIColor main_blue];
+        talkcell.talk_detail_button.titleLabel.textColor = [UIColor bright_orange];
+        talkcell.talk_trim_view.backgroundColor = [UIColor main_orange];
         return talkcell;
     }
     else if (tableView.tag==2)
@@ -238,6 +242,9 @@
         }
         postercell.selectionStyle = UITableViewCellSelectionStyleNone;
         postercell.backgroundColor = [UIColor clearColor];
+        postercell.poster_card_view.backgroundColor = [UIColor main_blue];
+        postercell.poster_detail_button.titleLabel.textColor = [UIColor bright_orange];
+        postercell.poster_trim_view.backgroundColor = [UIColor main_orange];
         return postercell;
     }
     else
@@ -250,6 +257,9 @@
         }
         abstractcell.selectionStyle = UITableViewCellSelectionStyleNone;
         abstractcell.backgroundColor = [UIColor clearColor];
+        abstractcell.abstract_card_view.backgroundColor = [UIColor main_blue];
+        abstractcell.abstract_detail_button.titleLabel.textColor = [UIColor bright_orange];
+        abstractcell.abstract_trim_view.backgroundColor = [UIColor main_orange];
         return abstractcell;
     }
 }

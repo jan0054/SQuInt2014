@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *talk_description_label;
 @property (strong, nonatomic) IBOutlet UIButton *talk_detail_button;
 - (IBAction)talk_detail_button_tap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIView *talk_card_view;
+@property (strong, nonatomic) IBOutlet UIView *talk_trim_view;
 
 
 @end

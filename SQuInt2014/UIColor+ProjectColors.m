@@ -42,4 +42,12 @@
     return [UIColor colorWithRed:255.0/255.0 green:131.0/255.0 blue:71.0/255.0 alpha:1];
 }
 
++ (UIColor*)border_blue {
+    return [UIColor colorWithRed:128.0/255.0 green:174.0/255.0 blue:216.0/255.0 alpha:1];
+}
+
++ (UIColor*)reallylight_blue {
+    return [UIColor colorWithRed:154.0/255.0 green:169.0/255.0 blue:189.0/255.0 alpha:1];
+}
+
 @end

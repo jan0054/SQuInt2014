@@ -14,5 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *career_author_label;
 @property (strong, nonatomic) IBOutlet UIButton *career_detail_button;
 - (IBAction)career_detail_button_tap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIView *career_card_view;
+@property (strong, nonatomic) IBOutlet UIView *career_trim_view;
 
 @end

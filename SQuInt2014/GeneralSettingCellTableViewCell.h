@@ -10,5 +10,6 @@
 
 @interface GeneralSettingCellTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *general_name_label;
+@property (strong, nonatomic) IBOutlet UILabel *general_subtitle_label;
 
 @end

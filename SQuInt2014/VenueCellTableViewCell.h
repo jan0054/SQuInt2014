@@ -21,6 +21,8 @@
 - (IBAction)venue_navigate_action:(UIButton *)sender;
 - (IBAction)venue_website_action:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIView *card_view;
+@property (strong, nonatomic) IBOutlet UIImageView *venue_photo;
+@property (strong, nonatomic) IBOutlet UIView *venue_trim_view;
 
 
 

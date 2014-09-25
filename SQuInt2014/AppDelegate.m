@@ -32,7 +32,7 @@
     
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setBarTintColor:[UIColor dark_blue]];
-    [[UITabBar appearance] setTranslucent:NO];
+    //[[UITabBar appearance] setTranslucent:NO];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateHighlighted];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateSelected];

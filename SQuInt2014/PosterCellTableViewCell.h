@@ -15,5 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *poster_content_label;
 @property (strong, nonatomic) IBOutlet UIButton *poster_detail_button;
 - (IBAction)poster_detail_button_tap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIView *poster_card_view;
+@property (strong, nonatomic) IBOutlet UIView *poster_trim_view;
 
 @end

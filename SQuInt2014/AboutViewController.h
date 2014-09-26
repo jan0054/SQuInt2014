@@ -15,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *company_description_label;
 @property (strong, nonatomic) IBOutlet UIView *company_background_view;
 @property (strong, nonatomic) IBOutlet UILabel *company_description_two_label;
+@property (strong, nonatomic) IBOutlet UIView *company_trim_view;
 
 @end

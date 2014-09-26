@@ -21,7 +21,7 @@
     self.settingstable.backgroundColor = [UIColor main_blue];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.settingstable.tableFooterView = [[UIView alloc] init];
-
+    
 }
 
 - (void) viewDidLayoutSubviews

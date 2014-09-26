@@ -19,7 +19,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor main_blue];
-    [self.signUpView setLogo:[[UIImageView alloc] initWithImage:nil]];
+    [self.signUpView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"inapp_logo"]]];
     
     [self.signUpView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateNormal];
     [self.signUpView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateHighlighted];

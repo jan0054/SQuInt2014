@@ -25,6 +25,7 @@
     self.company_description_label.text = @"We are a team of seasoned developers based in Taipei, Taiwan. We specialize in customized mobile solutions for our clients from all over the world, across a variety of industries.";
     self.company_description_two_label.text = @"If you host an academic conference or workshop and think this app is useful, contact us below to see how we can help you roll out your own solution.";
     self.company_trim_view.backgroundColor = [UIColor main_orange];
+    self.company_background_view.layer.cornerRadius = 5;
 }
 
 

@@ -25,6 +25,8 @@
 
 @property (strong, nonatomic) IBOutlet UIView *person_card_view;
 @property (strong, nonatomic) IBOutlet UIView *person_trim_view;
+@property (strong, nonatomic) IBOutlet UIButton *person_chat_button;
 
+- (IBAction)person_chat_button_tap:(UIButton *)sender;
 
 @end

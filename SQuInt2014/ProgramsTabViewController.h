@@ -27,5 +27,6 @@
 - (IBAction)abstract_detail_tap:(UIButton *)sender;
 - (IBAction)talk_detail_tap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIView *bottom_view;
+@property UIRefreshControl *pullrefreshtalk;
 
 @end

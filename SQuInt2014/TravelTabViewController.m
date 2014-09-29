@@ -73,6 +73,7 @@
     venuecell.card_view.backgroundColor = [UIColor main_blue];
     venuecell.venue_address_label.textColor = [UIColor light_blue];
     venuecell.venue_trim_view.backgroundColor = [UIColor main_orange];
+    venuecell.card_view.layer.cornerRadius = 5;
     return venuecell;
 }
 

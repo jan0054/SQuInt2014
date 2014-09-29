@@ -218,6 +218,10 @@
         }
         pushcell.push_subtitle_label.textColor = [UIColor whiteColor];
         pushcell.push_subtitle_label.text = @"Receive chat, session, and talk notifications";
+        if (![PFUser currentUser])
+        {
+            pushcell.push_status_switch.enabled = NO;
+        }
         return pushcell;
     }
     else if (indexPath.row==2)

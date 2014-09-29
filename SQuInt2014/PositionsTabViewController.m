@@ -60,13 +60,14 @@ NSString *tapped_objid;
     careercell.career_institution_label.text = institution;
     PFObject *author = career[@"posted_by"];
     NSString *name = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
-    careercell.career_author_label.text = name;
+    careercell.career_author_label.text = [NSString stringWithFormat:@"Posted by: %@", name];
     careercell.selectionStyle = UITableViewCellSelectionStyleNone;
     if ([careercell respondsToSelector:@selector(layoutMargins)]) {
         careercell.layoutMargins = UIEdgeInsetsZero;
     }
     careercell.career_card_view.backgroundColor = [UIColor main_blue];
     careercell.career_trim_view.backgroundColor = [UIColor main_orange];
+    careercell.career_card_view.layer.cornerRadius = 5;
     return careercell;
 }
 

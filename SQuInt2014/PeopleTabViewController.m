@@ -62,6 +62,9 @@ NSString *tapped_person_objid;
     }
     personcell.selectionStyle = UITableViewCellSelectionStyleNone;
     personcell.person_trim_view.backgroundColor = [UIColor main_orange];
+    personcell.person_card_view.backgroundColor = [UIColor main_blue];
+    personcell.person_card_view.layer.cornerRadius = 5;
+    
     return personcell;
 }
 

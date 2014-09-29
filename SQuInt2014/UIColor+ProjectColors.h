@@ -19,4 +19,5 @@
 + (UIColor *) bright_orange;
 + (UIColor *) border_blue;
 + (UIColor *) reallylight_blue;
++ (UIColor *) red_orange;
 @end

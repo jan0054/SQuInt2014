@@ -19,6 +19,9 @@ NSMutableArray *person_talks;
 NSMutableArray *person_posters;
 NSMutableArray *person_abstracts;
 int seg_index;
+BOOL mail_enabled;
+BOOL web_enabled;
+BOOL chat_enabled;
 
 @implementation PersonDetailViewController
 @synthesize person_objid;
@@ -36,6 +39,14 @@ int seg_index;
     //styling
     self.person_detail_table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor reallylight_blue];
+    self.person_card_view.backgroundColor = [UIColor main_blue];
+    self.person_trim_view.backgroundColor = [UIColor main_orange];
+    //self.person_detail_table.backgroundColor = [UIColor main_blue];
+    self.person_detail_seg.tintColor = [UIColor dark_blue];
+    self.person_card_view.layer.cornerRadius = 5;
+    
+    [self get_person_data];
+    
 }
 
 - (void) viewDidLayoutSubviews
@@ -45,19 +56,44 @@ int seg_index;
     }
 }
 
-
 - (IBAction)person_detail_seg_action:(UISegmentedControl *)sender {
     seg_index = self.person_detail_seg.selectedSegmentIndex;
     [self.person_detail_table reloadData];
 }
+
 - (IBAction)person_email_button_tap:(UIButton *)sender {
-    NSString *mailstr = the_person[@"email"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailstr]];
+    if (mail_enabled==YES)
+    {
+        NSString *mailstr = the_person[@"email"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailstr]];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                        message:@"This person does not have a public email"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Done"
+                                              otherButtonTitles:nil];
+        [alert show];
+
+    }
 }
 
 - (IBAction)person_link_button_tap:(UIButton *)sender {
-    NSString *linkstr = the_person[@"link"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:linkstr]];
+    if (web_enabled == YES)
+    {
+        NSString *linkstr = the_person[@"link"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:linkstr]];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                        message:@"This person does not have a public webpage"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Done"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (void) get_person_data
@@ -67,9 +103,51 @@ int seg_index;
     [personquery getObjectInBackgroundWithId:self.person_objid block:^(PFObject *object, NSError *error) {
         NSLog(@"detail person query success");
         the_person = object;
+        self.person_name_label.text = [NSString stringWithFormat:@"%@, %@", the_person[@"last_name"], the_person[@"first_name"]];
+        self.person_institution_label.text = the_person[@"institution"];
         [self get_person_talks];
         [self get_person_posters];
         [self get_person_abstracts];
+        NSString *mailstr = the_person[@"email"];
+        NSString *linkstr = the_person[@"link"];
+        if (mailstr == (id)[NSNull null] || mailstr.length == 0 )
+        {
+            [self.person_email_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            [self.person_email_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
+            [self.person_email_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+            mail_enabled = NO;
+            NSLog(@"mail button disabled");
+        }
+        else
+        {
+            mail_enabled = YES;
+        }
+        if ( linkstr == (id)[NSNull null] ||linkstr.length == 0 )
+        {
+            [self.person_link_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            [self.person_link_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
+            [self.person_link_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+            web_enabled = NO;
+            NSLog(@"web button disabled");
+        }
+        else
+        {
+            web_enabled = YES;
+        }
+        NSNumber *chat = the_person[@"is_user"];
+        int chatint = [chat intValue];
+        if ( chatint == 0)
+        {
+            [self.person_chat_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            [self.person_chat_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
+            [self.person_chat_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+            chat_enabled = NO;
+            NSLog(@"chat button disabled");
+        }
+        else
+        {
+            chat_enabled = YES;
+        }
     }];
 }
 
@@ -83,6 +161,7 @@ int seg_index;
         {
             NSLog(@"Successfully retrieved %lu talks for the person.", (unsigned long)objects.count);
             person_talks = [objects mutableCopy];
+            [self.person_detail_table reloadData];
         }
         else
         {
@@ -101,6 +180,7 @@ int seg_index;
         {
             NSLog(@"Successfully retrieved %lu posters for the person.", (unsigned long)objects.count);
             person_posters = [objects mutableCopy];
+            [self.person_detail_table reloadData];
         }
         else
         {
@@ -119,6 +199,7 @@ int seg_index;
         {
             NSLog(@"Successfully retrieved %lu abstracts for the person.", (unsigned long)objects.count);
             person_abstracts = [objects mutableCopy];
+            [self.person_detail_table reloadData];
         }
         else
         {
@@ -175,8 +256,8 @@ int seg_index;
     if ([persondetailcell respondsToSelector:@selector(layoutMargins)]) {
         persondetailcell.layoutMargins = UIEdgeInsetsZero;
     }
-    persondetailcell.person_event_title_label.textColor = [UIColor whiteColor];
-    
+    persondetailcell.person_event_title_label.textColor = [UIColor dark_blue    ];
+    persondetailcell.backgroundColor = [UIColor clearColor];
     return persondetailcell;
 }
 
@@ -189,6 +270,24 @@ int seg_index;
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+}
+
+
+- (IBAction)person_chat_button_tap:(UIButton *)sender {
+    if (chat_enabled == YES)
+    {
+        NSLog(@"going to chat interface");
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                        message:@"This person is not signed in or has turned off chat"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Done"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+
 }
 
 

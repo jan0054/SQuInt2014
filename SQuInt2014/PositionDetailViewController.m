@@ -7,6 +7,7 @@
 //
 
 #import "PositionDetailViewController.h"
+#import "UIColor+ProjectColors.h"
 
 @interface PositionDetailViewController ()
 
@@ -21,6 +22,16 @@ PFObject *thecareer;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //styling
+    self.view.backgroundColor = [UIColor reallylight_blue];
+    self.career_card_view.backgroundColor = [UIColor main_blue];
+    self.career_trim_view.backgroundColor =[UIColor main_orange];
+    self.career_notes.backgroundColor = [UIColor shade_blue];
+    self.career_card_view.layer.cornerRadius = 5;
+    self.career_notes.layer.cornerRadius = 3;
+    //self.career_trim_view.layer.cornerRadius = 5;
+    
     [self get_career_data];
 
 }
@@ -42,7 +53,7 @@ PFObject *thecareer;
     self.career_institution_label.text = thecareer[@"institution"];
     self.career_notes.text = thecareer[@"note"];
     PFObject *person = thecareer[@"posted_by"];
-    self.career_posted_by.text = [NSString stringWithFormat:@"%@ %@", person[@"first_name"], person[@"last_name"]];
+    self.career_posted_by.text = [NSString stringWithFormat:@"Posted by: %@ %@", person[@"first_name"], person[@"last_name"]];
 }
 
 @end

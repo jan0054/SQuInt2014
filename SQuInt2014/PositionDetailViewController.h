@@ -15,6 +15,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *career_posted_by;
 @property (strong, nonatomic) IBOutlet UILabel *career_notes;
 @property NSString *career_objid;
+@property (strong, nonatomic) IBOutlet UIView *career_card_view;
+@property (strong, nonatomic) IBOutlet UIView *career_trim_view;
 
 
 @end

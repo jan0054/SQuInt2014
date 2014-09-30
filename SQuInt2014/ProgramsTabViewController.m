@@ -239,12 +239,24 @@
 {
     if (tableView.tag==1)
     {
+        //init cell and object
         TalkCellTableViewCell *talkcell = [tableView dequeueReusableCellWithIdentifier:@"talkcell"];
         PFObject *session = [self.session_array objectAtIndex:indexPath.section];
         NSMutableArray *talks = [self.session_and_talk objectForKey:session.objectId];
         PFObject *talk = [talks objectAtIndex:indexPath.row];
+        PFObject *author = talk[@"author"];
+        PFObject *location = talk[@"location"];
+        
+        //fill data
         talkcell.talk_name_label.text = talk[@"name"];
-        if ([talkcell respondsToSelector:@selector(layoutMargins)]) {
+        talkcell.talk_author_label.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
+        talkcell.talk_description_label.text = talk[@"description"];
+        talkcell.talk_location_label.text = location[@"name"];
+        talkcell.talk_time_label.text = talk[@"start_time"];
+        
+        //styling
+        if ([talkcell respondsToSelector:@selector(layoutMargins)])
+        {
             talkcell.layoutMargins = UIEdgeInsetsZero;
         }
         talkcell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -252,14 +264,26 @@
         talkcell.talk_card_view.backgroundColor = [UIColor main_blue];
         talkcell.talk_detail_button.titleLabel.textColor = [UIColor bright_orange];
         talkcell.talk_trim_view.backgroundColor = [UIColor main_orange];
+        
         return talkcell;
     }
     else if (tableView.tag==2)
     {
+        //init cell and object
         PosterCellTableViewCell *postercell = [tableView dequeueReusableCellWithIdentifier:@"postercell"];
         PFObject *poster = [self.poster_array objectAtIndex:indexPath.row];
+        PFObject *author = poster[@"author"];
+        PFObject *location = poster[@"location"];
+        
+        //fill data
         postercell.poster_topic_label.text = poster[@"name"];
-        if ([postercell respondsToSelector:@selector(layoutMargins)]) {
+        postercell.poster_author_label.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
+        postercell.poster_content_label.text = poster[@"description"];
+        postercell.poster_location_label.text = location[@"name"];
+        
+        //styling
+        if ([postercell respondsToSelector:@selector(layoutMargins)])
+        {
             postercell.layoutMargins = UIEdgeInsetsZero;
         }
         postercell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -267,14 +291,23 @@
         postercell.poster_card_view.backgroundColor = [UIColor main_blue];
         postercell.poster_detail_button.titleLabel.textColor = [UIColor bright_orange];
         postercell.poster_trim_view.backgroundColor = [UIColor main_orange];
+        
         return postercell;
     }
     else
     {
+        //init cell and object
         AbstractCellTableViewCell *abstractcell = [tableView dequeueReusableCellWithIdentifier:@"abstractcell"];
         PFObject *abstract = [self.abstract_array objectAtIndex:indexPath.row];
+        PFObject *author = abstract[@"author"];
+        
+        //fill data
         abstractcell.abstract_title_label.text = abstract[@"name"];
-        if ([abstractcell respondsToSelector:@selector(layoutMargins)]) {
+        abstractcell.abstract_author_label.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
+        
+        //styling
+        if ([abstractcell respondsToSelector:@selector(layoutMargins)])
+        {
             abstractcell.layoutMargins = UIEdgeInsetsZero;
         }
         abstractcell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -282,6 +315,7 @@
         abstractcell.abstract_card_view.backgroundColor = [UIColor main_blue];
         abstractcell.abstract_detail_button.titleLabel.textColor = [UIColor bright_orange];
         abstractcell.abstract_trim_view.backgroundColor = [UIColor main_orange];
+        
         return abstractcell;
     }
 }

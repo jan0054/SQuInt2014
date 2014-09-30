@@ -252,7 +252,11 @@
         talkcell.talk_author_label.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
         talkcell.talk_description_label.text = talk[@"description"];
         talkcell.talk_location_label.text = location[@"name"];
-        talkcell.talk_time_label.text = talk[@"start_time"];
+        NSDate *date = talk[@"start_time"];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat: @"MM/dd HH:mm"];
+        NSString *dateString = [dateFormat stringFromDate:date];
+        talkcell.talk_time_label.text = dateString;
         
         //styling
         if ([talkcell respondsToSelector:@selector(layoutMargins)])
@@ -264,6 +268,9 @@
         talkcell.talk_card_view.backgroundColor = [UIColor main_blue];
         talkcell.talk_detail_button.titleLabel.textColor = [UIColor bright_orange];
         talkcell.talk_trim_view.backgroundColor = [UIColor main_orange];
+        talkcell.talk_location_label.textColor = [UIColor light_blue];
+        talkcell.talk_time_label.textColor = [UIColor light_blue];
+        talkcell.talk_card_view.layer.cornerRadius = 5;
         
         return talkcell;
     }
@@ -291,6 +298,8 @@
         postercell.poster_card_view.backgroundColor = [UIColor main_blue];
         postercell.poster_detail_button.titleLabel.textColor = [UIColor bright_orange];
         postercell.poster_trim_view.backgroundColor = [UIColor main_orange];
+        postercell.poster_location_label.textColor = [UIColor light_blue];
+        postercell.poster_card_view.layer.cornerRadius = 5;
         
         return postercell;
     }
@@ -315,6 +324,7 @@
         abstractcell.abstract_card_view.backgroundColor = [UIColor main_blue];
         abstractcell.abstract_detail_button.titleLabel.textColor = [UIColor bright_orange];
         abstractcell.abstract_trim_view.backgroundColor = [UIColor main_orange];
+        abstractcell.abstract_card_view.layer.cornerRadius = 5;
         
         return abstractcell;
     }

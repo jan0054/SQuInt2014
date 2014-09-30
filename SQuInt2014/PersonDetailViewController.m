@@ -42,7 +42,7 @@ BOOL chat_enabled;
     self.person_card_view.backgroundColor = [UIColor main_blue];
     self.person_trim_view.backgroundColor = [UIColor main_orange];
     //self.person_detail_table.backgroundColor = [UIColor main_blue];
-    self.person_detail_seg.tintColor = [UIColor dark_blue];
+    self.person_detail_seg.tintColor = [UIColor whiteColor];
     self.person_card_view.layer.cornerRadius = 5;
     
     [self get_person_data];
@@ -256,7 +256,7 @@ BOOL chat_enabled;
     if ([persondetailcell respondsToSelector:@selector(layoutMargins)]) {
         persondetailcell.layoutMargins = UIEdgeInsetsZero;
     }
-    persondetailcell.person_event_title_label.textColor = [UIColor dark_blue    ];
+    persondetailcell.person_event_title_label.textColor = [UIColor whiteColor];
     persondetailcell.backgroundColor = [UIColor clearColor];
     return persondetailcell;
 }

@@ -7,43 +7,45 @@
 //
 
 #import "EventDetailViewController.h"
+#import "UIColor+ProjectColors.h"
 
 @interface EventDetailViewController ()
 
 @end
 
 @implementation EventDetailViewController
+@synthesize event_objid;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
-- (void)didReceiveMemoryWarning
+-(void) get_talk_data
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    PFQuery *query = [PFQuery queryWithClassName:@"talk"];
+    [query includeKey:@"author"];
+    [query includeKey:@"location"];
+    [query getObjectInBackgroundWithId:self.event_objid block:^(PFObject *object, NSError *error) {
+        NSLog(@"talk query success");
+        self.eventdetail_name_label = object[@"name"];
+        PFObject *author = object[@"author"];
+        self.eventdetail_author_label.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
+        self.eventdetail_description_label.text = object[@"description"];
+        PFObject *location = object[@"location"];
+        self.eventdetail_location_label.text = location[@"name"];
+        
+    }];
+
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)eventdetail_authordetail_button_tap:(UIButton *)sender {
 }
-*/
 
+- (IBAction)eventdetail_abstract_button_tap:(UIButton *)sender {
+}
 @end

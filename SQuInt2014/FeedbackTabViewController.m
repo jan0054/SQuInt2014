@@ -100,12 +100,14 @@
 // Sent to the delegate when the log in screen is dismissed.
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
     [self.navigationController popViewControllerAnimated:YES];
+    /*
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                     message:@"You can log in later from the settings tab"
                                                    delegate:self
                                           cancelButtonTitle:@"Done"
                                           otherButtonTitles:nil];
     [alert show];
+     */
     
 }
 

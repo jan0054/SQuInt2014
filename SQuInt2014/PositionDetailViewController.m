@@ -27,9 +27,9 @@ PFObject *thecareer;
     self.view.backgroundColor = [UIColor reallylight_blue];
     self.career_card_view.backgroundColor = [UIColor main_blue];
     self.career_trim_view.backgroundColor =[UIColor main_orange];
-    self.career_notes.backgroundColor = [UIColor shade_blue];
+    self.note_card_view.backgroundColor = [UIColor shade_blue];
     self.career_card_view.layer.cornerRadius = 5;
-    self.career_notes.layer.cornerRadius = 3;
+    self.note_card_view.layer.cornerRadius = 3;
     //self.career_trim_view.layer.cornerRadius = 5;
     
     [self get_career_data];

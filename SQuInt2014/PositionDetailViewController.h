@@ -17,6 +17,7 @@
 @property NSString *career_objid;
 @property (strong, nonatomic) IBOutlet UIView *career_card_view;
 @property (strong, nonatomic) IBOutlet UIView *career_trim_view;
+@property (strong, nonatomic) IBOutlet UIView *note_card_view;
 
 
 @end

@@ -9,6 +9,8 @@
 #import "PersonDetailViewController.h"
 #import "PersonDetailEventCellTableViewCell.h"
 #import "UIColor+ProjectColors.h"
+#import "EventDetailViewController.h"
+#import "AbstractPdfViewController.h"
 
 @interface PersonDetailViewController ()
 
@@ -22,6 +24,7 @@ int seg_index;
 BOOL mail_enabled;
 BOOL web_enabled;
 BOOL chat_enabled;
+NSString *chosen_event_id;
 
 @implementation PersonDetailViewController
 @synthesize person_objid;
@@ -248,7 +251,7 @@ BOOL chat_enabled;
     }
     else
     {
-        PFObject *abstract = [person_posters objectAtIndex:indexPath.row];
+        PFObject *abstract = [person_abstracts objectAtIndex:indexPath.row];
         persondetailcell.person_event_title_label.text = abstract[@"name"];
     }
     
@@ -263,13 +266,49 @@ BOOL chat_enabled;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"personeventsegue" sender:self];
+    if (seg_index==0)
+    {
+        PFObject *talk = [person_talks objectAtIndex:indexPath.row];
+        chosen_event_id = talk.objectId;
+        [self performSegueWithIdentifier:@"authoreventsegue" sender:self];
+    }
+    else if (seg_index==1)
+    {
+        PFObject *poster = [person_posters objectAtIndex:indexPath.row];
+        chosen_event_id = poster.objectId;
+        [self performSegueWithIdentifier:@"authoreventsegue" sender:self];
+    }
+    else if (seg_index==2)
+    {
+        PFObject *abstract = [person_abstracts objectAtIndex:indexPath.row];
+        chosen_event_id = abstract.objectId;
+        [self performSegueWithIdentifier:@"authorabstractsegue" sender:self];
+    }
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if (seg_index == 0)
+    {
+        EventDetailViewController *controller = (EventDetailViewController *)[segue destinationViewController];
+        controller.from_author = 1;
+        controller.event_objid = chosen_event_id;
+        controller.event_type = 0;
+    }
+    else if (seg_index==1)
+    {
+        EventDetailViewController *controller = (EventDetailViewController *)[segue destinationViewController];
+        controller.from_author = 1;
+        controller.event_objid = chosen_event_id;
+        controller.event_type = 1;
+    }
+    else if (seg_index==2)
+    {
+        AbstractPdfViewController *controller = (AbstractPdfViewController *)[segue destinationViewController];
+        controller.from_author = 1;
+        controller.abstract_objid = chosen_event_id;
+    }
 }
 
 

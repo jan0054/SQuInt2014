@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+@class EventDetailViewController;
 
 @interface EventDetailViewController : UIViewController
 
 @property NSString *event_objid;
-
+@property int from_author;
 @property int event_type;  //talk=0, poster=1
 
 @property (strong, nonatomic) IBOutlet UIView *eventdetail_card_view;
@@ -29,5 +30,7 @@
 @property (strong, nonatomic) IBOutlet UIView *eventdetail_description_card_view;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *nav_done_button;
 - (IBAction)nav_done_button_tap:(UIBarButtonItem *)sender;
+
+
 
 @end

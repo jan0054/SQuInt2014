@@ -14,6 +14,7 @@
 #import "AbstractCellTableViewCell.h"
 #import "UIColor+ProjectColors.h"
 #import "EventDetailViewController.h"
+#import "AbstractPdfViewController.h"
 
 @interface ProgramsTabViewController ()
 
@@ -258,7 +259,7 @@ NSString *detail_objid;
         talkcell.talk_location_label.text = location[@"name"];
         NSDate *date = talk[@"start_time"];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat: @"MM/dd HH:mm"];
+        [dateFormat setDateFormat: @"MMM-d HH:mm"];
         NSString *dateString = [dateFormat stringFromDate:date];
         talkcell.talk_time_label.text = dateString;
         
@@ -446,7 +447,9 @@ NSString *detail_objid;
     }
     else if (detail_type==2)
     {
-        
+        AbstractPdfViewController *controller = (AbstractPdfViewController *)[segue destinationViewController];
+        controller.from_author = 0;
+        controller.abstract_objid = detail_objid;
     }
 }
 
@@ -465,8 +468,11 @@ NSString *detail_objid;
     AbstractCellTableViewCell *cell = (AbstractCellTableViewCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.abstracttable indexPathForCell:cell];
     NSLog(@"abstract_detail_tap: %ld", (long)tapped_path.row);
+    PFObject *abstract = [self.abstract_array objectAtIndex:tapped_path.row];
+    detail_objid = abstract.objectId;
     detail_type = 2;
     
+    [self performSegueWithIdentifier:@"programabstractsegue" sender:self];
 }
 
 - (IBAction)talk_detail_tap:(UIButton *)sender {

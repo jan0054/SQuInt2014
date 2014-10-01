@@ -9,6 +9,7 @@
 #import "PeopleTabViewController.h"
 #import "PersonDetailViewController.h"
 #import "UIColor+ProjectColors.h"
+
 @interface PeopleTabViewController ()
 
 @end
@@ -17,6 +18,8 @@ NSString *tapped_person_objid;
 
 @implementation PeopleTabViewController
 @synthesize person_array;
+@synthesize from_event;
+@synthesize event_author_id;
 
 - (void)viewDidLoad
 {
@@ -24,10 +27,22 @@ NSString *tapped_person_objid;
     self.person_array = [[NSMutableArray alloc] init];
     self.peopletable.backgroundColor = [UIColor reallylight_blue];
     
-    [self get_person_info];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.peopletable.tableFooterView = [[UIView alloc] init];
+    
+    [self get_person_info];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    if (from_event==1)
+    {
+        [self chose_person_with_id:event_author_id];
+    }
+    
+    
+
 }
 
 - (void) viewDidLayoutSubviews
@@ -93,11 +108,16 @@ NSString *tapped_person_objid;
     NSIndexPath *tapped_path = [self.peopletable indexPathForCell:cell];
     NSLog(@"people_detail_tap: %ld", (long)tapped_path.row);
     PFObject *tapped_person = [self.person_array objectAtIndex:tapped_path.row];
-    tapped_person_objid = tapped_person.objectId;
-    [self performSegueWithIdentifier:@"persondetailsegue" sender:self];
+    [self chose_person_with_id:tapped_person.objectId];
+    
 }
 
-
+- (void) chose_person_with_id: (NSString *)objid
+{
+    self.from_event=0;
+    tapped_person_objid = objid;
+    [self performSegueWithIdentifier:@"persondetailsegue" sender:self];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -106,7 +126,5 @@ NSString *tapped_person_objid;
     PersonDetailViewController *destination = [segue destinationViewController];
     destination.person_objid = tapped_person_objid;
 }
-
-
 
 @end

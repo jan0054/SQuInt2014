@@ -14,6 +14,7 @@
 @end
 
 PFObject *thecareer;
+NSString *postermail;
 
 @implementation PositionDetailViewController
 @synthesize career_objid;
@@ -30,6 +31,7 @@ PFObject *thecareer;
     self.note_card_view.backgroundColor = [UIColor shade_blue];
     self.career_card_view.layer.cornerRadius = 5;
     self.note_card_view.layer.cornerRadius = 3;
+    self.contact_poster_button.titleLabel.textColor = [UIColor bright_orange];
     //self.career_trim_view.layer.cornerRadius = 5;
     
     [self get_career_data];
@@ -53,7 +55,12 @@ PFObject *thecareer;
     self.career_institution_label.text = thecareer[@"institution"];
     self.career_notes.text = thecareer[@"note"];
     PFObject *person = thecareer[@"posted_by"];
+    postermail = person[@"email"];
     self.career_posted_by.text = [NSString stringWithFormat:@"Posted by: %@ %@", person[@"first_name"], person[@"last_name"]];
 }
 
+- (IBAction)contact_poster_button_tap:(UIButton *)sender {
+    NSString *mailstr = [NSString stringWithFormat:@"mailto://%@", postermail];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailstr]];
+}
 @end

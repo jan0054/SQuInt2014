@@ -18,6 +18,8 @@
 @property (strong, nonatomic) IBOutlet UIView *career_card_view;
 @property (strong, nonatomic) IBOutlet UIView *career_trim_view;
 @property (strong, nonatomic) IBOutlet UIView *note_card_view;
+@property (strong, nonatomic) IBOutlet UIButton *contact_poster_button;
+- (IBAction)contact_poster_button_tap:(UIButton *)sender;
 
 
 @end

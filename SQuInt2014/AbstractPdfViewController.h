@@ -16,5 +16,11 @@
 @property (strong, nonatomic) IBOutlet UIWebView *abstract_pdf_webview;
 @property NSString *abstract_name;
 @property NSString *abstract_objid;
+@property int from_author;
+@property (strong, nonatomic) IBOutlet UIView *abstract_trim_view;
+@property (strong, nonatomic) IBOutlet UIView *abstract_card_view;
+@property (strong, nonatomic) IBOutlet UIView *pdf_trim_view;
+- (IBAction)author_detail_button_tap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIButton *author_detail_button;
 
 @end

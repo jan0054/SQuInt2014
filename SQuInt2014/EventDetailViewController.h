@@ -10,7 +10,11 @@
 #import <Parse/Parse.h>
 
 @interface EventDetailViewController : UIViewController
+
 @property NSString *event_objid;
+
+@property int event_type;  //talk=0, poster=1
+
 @property (strong, nonatomic) IBOutlet UIView *eventdetail_card_view;
 @property (strong, nonatomic) IBOutlet UIView *eventdetail_trim_view;
 @property (strong, nonatomic) IBOutlet UILabel *eventdetail_name_label;
@@ -18,12 +22,12 @@
 @property (strong, nonatomic) IBOutlet UILabel *eventdetail_location_label;
 @property (strong, nonatomic) IBOutlet UILabel *eventdetail_time_label;
 @property (strong, nonatomic) IBOutlet UILabel *eventdetail_description_label;
-
 @property (strong, nonatomic) IBOutlet UIButton *eventdetail_authordetail_button;
 - (IBAction)eventdetail_authordetail_button_tap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIButton *eventdetail_abstract_button;
 - (IBAction)eventdetail_abstract_button_tap:(UIButton *)sender;
-
-
+@property (strong, nonatomic) IBOutlet UIView *eventdetail_description_card_view;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *nav_done_button;
+- (IBAction)nav_done_button_tap:(UIBarButtonItem *)sender;
 
 @end

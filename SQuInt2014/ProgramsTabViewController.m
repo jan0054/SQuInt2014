@@ -13,10 +13,14 @@
 #import "TalkCellTableViewCell.h"
 #import "AbstractCellTableViewCell.h"
 #import "UIColor+ProjectColors.h"
+#import "EventDetailViewController.h"
 
 @interface ProgramsTabViewController ()
 
 @end
+
+int detail_type; //talk=0, poster=1, abstract=2
+NSString *detail_objid;
 
 @implementation ProgramsTabViewController
 @synthesize session_array;
@@ -428,24 +432,56 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if (detail_type==0)
+    {
+        EventDetailViewController *controller = [segue destinationViewController];
+        controller.event_type = 0;
+        controller.event_objid = detail_objid;
+    }
+    else if (detail_type==1)
+    {
+        EventDetailViewController *controller = [segue destinationViewController];
+        controller.event_type = 1;
+        controller.event_objid = detail_objid;
+    }
+    else if (detail_type==2)
+    {
+        
+    }
 }
-
-
 
 - (IBAction)poster_detail_tap:(UIButton *)sender {
     PosterCellTableViewCell *cell = (PosterCellTableViewCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.postertable indexPathForCell:cell];
     NSLog(@"poster_detail_tap: %ld", (long)tapped_path.row);
+    
+    PFObject *poster = [self.poster_array objectAtIndex:tapped_path.row];
+    detail_objid = poster.objectId;
+    detail_type = 1;
+    
+    [self performSegueWithIdentifier:@"programeventsegue" sender:self];
 }
 - (IBAction)abstract_detail_tap:(UIButton *)sender {
     AbstractCellTableViewCell *cell = (AbstractCellTableViewCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.abstracttable indexPathForCell:cell];
     NSLog(@"abstract_detail_tap: %ld", (long)tapped_path.row);
+    detail_type = 2;
+    
 }
 
 - (IBAction)talk_detail_tap:(UIButton *)sender {
     TalkCellTableViewCell *cell = (TalkCellTableViewCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.talktable indexPathForCell:cell];
     NSLog(@"poster_detail_tap: %ld, %ld", (long)tapped_path.section, (long)tapped_path.row);
+    
+    PFObject *session = [self.session_array objectAtIndex:tapped_path.section];
+    NSMutableArray *talks = [self.session_and_talk objectForKey:session.objectId];
+    PFObject *talk = [talks objectAtIndex:tapped_path.row];
+    detail_objid = talk.objectId;
+    detail_type = 0;
+    
+    [self performSegueWithIdentifier:@"programeventsegue" sender:self];
 }
+
+
 @end

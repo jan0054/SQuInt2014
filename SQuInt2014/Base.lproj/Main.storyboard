@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -307,6 +308,7 @@
                         <outlet property="talktable" destination="61c-v4-CeS" id="A7J-0C-uIO"/>
                         <outlet property="talkview" destination="eyo-lG-P20" id="0rR-31-ZYP"/>
                         <segue destination="xp3-zG-6gm" kind="push" identifier="programabstractsegue" id="wxk-LP-p93"/>
+                        <segue destination="xAo-6E-c4b" kind="modal" identifier="programeventsegue" id="FJd-YI-V2P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lMj-EU-ZuL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1091,12 +1093,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="event description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="D6e-hX-JYo">
-                                        <rect key="frame" x="10" y="172" width="260" height="144"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="event location" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQ4-Do-p2Q">
                                         <rect key="frame" x="10" y="110" width="260" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="11"/>
@@ -1124,6 +1120,19 @@
                                             <action selector="eventdetail_authordetail_button_tap:" destination="xAo-6E-c4b" eventType="touchUpInside" id="gfy-wh-MDy"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ccG-9v-bg8">
+                                        <rect key="frame" x="10" y="163" width="260" height="153"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="event description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="D6e-hX-JYo">
+                                                <rect key="frame" x="5" y="5" width="250" height="144"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.50196078430000002" green="0.68235294120000001" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NrT-6L-o88">
                                         <rect key="frame" x="8" y="330" width="62" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
@@ -1145,7 +1154,13 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Talk" id="xnG-FV-qEU"/>
+                                    <navigationItem title="Talk" id="xnG-FV-qEU">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="hEF-ah-APr">
+                                            <connections>
+                                                <action selector="nav_done_button_tap:" destination="xAo-6E-c4b" id="8NP-hH-tDI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -1154,20 +1169,21 @@
                     <navigationItem key="navigationItem" id="edO-mS-Ini"/>
                     <connections>
                         <outlet property="eventdetail_abstract_button" destination="NrT-6L-o88" id="qid-Ac-7iZ"/>
-                        <outlet property="eventdetail_abstract_button_tap" destination="NrT-6L-o88" id="AwD-i3-nI8"/>
                         <outlet property="eventdetail_author_label" destination="Aij-nE-GMN" id="p6X-NR-m5Q"/>
                         <outlet property="eventdetail_authordetail_button" destination="Zpn-Kd-Ceh" id="55J-qw-d2g"/>
                         <outlet property="eventdetail_card_view" destination="AMo-dm-6kg" id="m0z-lN-fey"/>
+                        <outlet property="eventdetail_description_card_view" destination="ccG-9v-bg8" id="5pm-Eu-2IW"/>
                         <outlet property="eventdetail_description_label" destination="D6e-hX-JYo" id="SwZ-F2-Ohg"/>
                         <outlet property="eventdetail_location_label" destination="OQ4-Do-p2Q" id="F8N-PU-jlz"/>
                         <outlet property="eventdetail_name_label" destination="cfK-9M-k8X" id="jgN-sx-aAd"/>
                         <outlet property="eventdetail_time_label" destination="wnL-Vk-jWW" id="cnW-Ht-MvG"/>
                         <outlet property="eventdetail_trim_view" destination="XQV-rQ-fzb" id="cGJ-4U-SVO"/>
+                        <outlet property="nav_done_button" destination="hEF-ah-APr" id="8zh-EI-tyq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XiJ-in-k1H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1954" y="-719"/>
+            <point key="canvasLocation" x="1954" y="-717"/>
         </scene>
         <!--Chat-->
         <scene sceneID="diZ-sa-pE5">

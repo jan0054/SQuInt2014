@@ -27,17 +27,21 @@ NSString *abstract_id;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 
-    
-    [self.view setBackgroundColor:[UIColor reallylight_blue]];
-    [self.eventdetail_card_view setBackgroundColor:[UIColor main_blue]];
-    [self.eventdetail_trim_view setBackgroundColor:[UIColor main_orange]];
-    [self.eventdetail_description_card_view setBackgroundColor:[UIColor shade_blue]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    [self.eventdetail_card_view setBackgroundColor:[UIColor nu_deep_blue]];
+    self.eventdetail_card_view.alpha = 0.8;
+    [self.eventdetail_trim_view setBackgroundColor:[UIColor light_blue]];
+    [self.eventdetail_description_card_view setBackgroundColor:[UIColor main_blue]];
     self.eventdetail_location_label.textColor = [UIColor reallylight_blue];
     self.eventdetail_time_label.textColor = [UIColor reallylight_blue];
     self.eventdetail_card_view.layer.cornerRadius = 5;
     self.eventdetail_description_card_view.layer.cornerRadius = 3;
+    [self.eventdetail_authordetail_button setTitleColor: [UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [self.eventdetail_authordetail_button setTitleColor: [UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    [self.eventdetail_abstract_button setTitleColor: [UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [self.eventdetail_abstract_button setTitleColor: [UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    
     if (self.event_type ==0)
     {
         [self get_talk_data];

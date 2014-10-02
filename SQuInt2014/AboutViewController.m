@@ -19,13 +19,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor reallylight_blue];
-    self.email_us_button.titleLabel.textColor = [UIColor bright_orange];
-    self.company_background_view.backgroundColor = [UIColor main_blue];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    //self.email_us_button.titleLabel.textColor = [UIColor nu_bright_orange];
+    [self.email_us_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [self.email_us_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    self.company_background_view.backgroundColor = [UIColor nu_deep_blue];
+    self.company_background_view.alpha = 0.8;
     self.company_description_label.text = @"We are a team of seasoned developers based in Taipei, Taiwan. We specialize in customized mobile solutions for our clients from all over the world, across a variety of industries.";
     self.company_description_two_label.text = @"If you host an academic conference or workshop and think this app is useful, contact us below to see how we can help you roll out your own solution.";
-    self.company_trim_view.backgroundColor = [UIColor main_orange];
+    self.company_trim_view.backgroundColor = [UIColor light_blue];
     self.company_background_view.layer.cornerRadius = 5;
+    
 }
 
 

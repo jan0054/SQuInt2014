@@ -25,13 +25,16 @@ NSString *postermail;
     [super viewDidLoad];
     
     //styling
-    self.view.backgroundColor = [UIColor reallylight_blue];
-    self.career_card_view.backgroundColor = [UIColor main_blue];
-    self.career_trim_view.backgroundColor =[UIColor main_orange];
-    self.note_card_view.backgroundColor = [UIColor shade_blue];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.career_card_view.backgroundColor = [UIColor nu_deep_blue];
+    self.career_card_view.alpha = 0.8;
+    self.career_trim_view.backgroundColor =[UIColor light_blue];
+    self.note_card_view.backgroundColor = [UIColor main_blue];
     self.career_card_view.layer.cornerRadius = 5;
     self.note_card_view.layer.cornerRadius = 3;
-    self.contact_poster_button.titleLabel.textColor = [UIColor bright_orange];
+    //self.contact_poster_button.titleLabel.textColor = [UIColor bright_orange];
+    [self.contact_poster_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [self.contact_poster_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
     //self.career_trim_view.layer.cornerRadius = 5;
     
     [self get_career_data];

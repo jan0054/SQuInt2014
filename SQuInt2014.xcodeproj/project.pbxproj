@@ -39,6 +39,7 @@
 		B4632EEC19D5395F00A9B743 /* tab_travel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4632EE819D5395F00A9B743 /* tab_travel@2x.png */; };
 		B4632EEE19D5399D00A9B743 /* tab_program@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4632EED19D5399D00A9B743 /* tab_program@2x.png */; };
 		B4632EF419D53FB500A9B743 /* inapp_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4632EF319D53FB500A9B743 /* inapp_logo@2x.png */; };
+		B4632EF619DD341400A9B743 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = B4632EF519DD341400A9B743 /* background.png */; };
 		B495C44619C9876A008D5D5F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B495C44519C9876A008D5D5F /* AboutViewController.m */; };
 		B499BD061904EAB700C99CFE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B499BD051904EAB700C99CFE /* QuartzCore.framework */; };
 		B499BD091904ED0C00C99CFE /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B499BD081904ED0C00C99CFE /* ChatViewController.m */; };
@@ -120,6 +121,7 @@
 		B4632EE819D5395F00A9B743 /* tab_travel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_travel@2x.png"; sourceTree = "<group>"; };
 		B4632EED19D5399D00A9B743 /* tab_program@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_program@2x.png"; sourceTree = "<group>"; };
 		B4632EF319D53FB500A9B743 /* inapp_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inapp_logo@2x.png"; sourceTree = "<group>"; };
+		B4632EF519DD341400A9B743 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		B495C44419C9876A008D5D5F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		B495C44519C9876A008D5D5F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		B499BD051904EAB700C99CFE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -311,6 +313,7 @@
 		B43D269618FFD03A0072B753 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B4632EF519DD341400A9B743 /* background.png */,
 				B4632EF319D53FB500A9B743 /* inapp_logo@2x.png */,
 				B4632EED19D5399D00A9B743 /* tab_program@2x.png */,
 				B4632EE519D5395F00A9B743 /* tab_career@2x.png */,
@@ -466,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B43D267918FFC9980072B753 /* Images.xcassets in Resources */,
+				B4632EF619DD341400A9B743 /* background.png in Resources */,
 				B4632EF419D53FB500A9B743 /* inapp_logo@2x.png in Resources */,
 				B4632EE419D4047200A9B743 /* poi_placeholder@2x.png in Resources */,
 				B4F74E6219B5A1FD00F3A565 /* settings@2x.png in Resources */,

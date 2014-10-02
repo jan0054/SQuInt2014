@@ -54,4 +54,25 @@
     return [UIColor colorWithRed:234.0/255.0 green:48.0/255.0 blue:36.0/255.0 alpha:1];
 }
 
++ (UIColor*)nu_main_orange {
+    return [UIColor colorWithRed:172.0/255.0 green:138.0/255.0 blue:100.0/255.0 alpha:1];
+}
+
++ (UIColor*)nu_bright_orange {
+    return [UIColor colorWithRed:246.0/255.0 green:190.0/255.0 blue:19.0/255.0 alpha:1];
+}
+
++ (UIColor*)nu_shade_blue {
+    return [UIColor colorWithRed:29.0/255.0 green:60.0/255.0 blue:81.0/255.0 alpha:1];
+}
+
++ (UIColor*)nu_deep_blue {
+    return [UIColor colorWithRed:9.0/255.0 green:20.0/255.0 blue:26.0/255.0 alpha:1];
+}
+
++ (UIColor*)nu_bright_blue {
+    return [UIColor colorWithRed:0.0/255.0 green:97.0/255.0 blue:132.0/255.0 alpha:1];
+}
+
+
 @end

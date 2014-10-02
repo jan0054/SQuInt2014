@@ -22,8 +22,8 @@
     [super viewDidLoad];
     
     self.venue_array = [[NSMutableArray alloc] init];
-    
-    self.venuetable.backgroundColor = [UIColor reallylight_blue];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.venuetable.backgroundColor = [UIColor clearColor];
     
     [self get_venue_data];
     
@@ -70,10 +70,18 @@
         venuecell.layoutMargins = UIEdgeInsetsZero;
     }
     
-    venuecell.card_view.backgroundColor = [UIColor main_blue];
+    venuecell.card_view.backgroundColor = [UIColor nu_deep_blue];
+    venuecell.card_view.alpha = 0.8;
     venuecell.venue_address_label.textColor = [UIColor light_blue];
-    venuecell.venue_trim_view.backgroundColor = [UIColor main_orange];
+    venuecell.venue_trim_view.backgroundColor = [UIColor light_blue];
     venuecell.card_view.layer.cornerRadius = 5;
+    [venuecell.venue_call_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [venuecell.venue_call_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    [venuecell.venue_navigate_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [venuecell.venue_navigate_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    [venuecell.venue_website_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [venuecell.venue_website_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    
     return venuecell;
 }
 

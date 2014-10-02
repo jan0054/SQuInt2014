@@ -24,8 +24,8 @@ NSString *tapped_objid;
     [super viewDidLoad];
     
     self.career_array = [[NSMutableArray alloc] init];
-    
-    self.careertable.backgroundColor = [UIColor reallylight_blue];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.careertable.backgroundColor = [UIColor clearColor];
     
     [self get_career_data];
     
@@ -65,9 +65,12 @@ NSString *tapped_objid;
     if ([careercell respondsToSelector:@selector(layoutMargins)]) {
         careercell.layoutMargins = UIEdgeInsetsZero;
     }
-    careercell.career_card_view.backgroundColor = [UIColor main_blue];
-    careercell.career_trim_view.backgroundColor = [UIColor main_orange];
+    careercell.career_card_view.backgroundColor = [UIColor nu_deep_blue];
+    careercell.career_card_view.alpha = 0.8;
+    careercell.career_trim_view.backgroundColor = [UIColor light_blue];
     careercell.career_card_view.layer.cornerRadius = 5;
+    [careercell.career_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [careercell.career_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
     return careercell;
 }
 

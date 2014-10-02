@@ -50,14 +50,14 @@ NSString *detail_objid;
     [pullrefreshtalk addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
     [self.talktable addSubview:pullrefreshtalk];
 
-    
-    self.bottom_view.backgroundColor = [UIColor reallylight_blue];
-    //self.talkview.backgroundColor = [UIColor shade_blue];
-    //self.posterview.backgroundColor = [UIColor shade_blue];
-    //self.abstractview.backgroundColor = [UIColor shade_blue];
-    self.talktable.backgroundColor = [UIColor reallylight_blue];
-    self.postertable.backgroundColor = [UIColor reallylight_blue];
-    self.abstracttable.backgroundColor = [UIColor reallylight_blue];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.bottom_view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.talkview.backgroundColor = [UIColor clearColor];
+    self.posterview.backgroundColor = [UIColor clearColor];
+    self.abstractview.backgroundColor = [UIColor clearColor];
+    self.talktable.backgroundColor = [UIColor clearColor];
+    self.postertable.backgroundColor = [UIColor clearColor];
+    self.abstracttable.backgroundColor = [UIColor clearColor];
     
     
     [self get_session_and_talk_data];
@@ -270,9 +270,12 @@ NSString *detail_objid;
         }
         talkcell.selectionStyle = UITableViewCellSelectionStyleNone;
         talkcell.backgroundColor = [UIColor clearColor];
-        talkcell.talk_card_view.backgroundColor = [UIColor main_blue];
-        talkcell.talk_detail_button.titleLabel.textColor = [UIColor bright_orange];
-        talkcell.talk_trim_view.backgroundColor = [UIColor main_orange];
+        talkcell.talk_card_view.backgroundColor = [UIColor nu_deep_blue];
+        talkcell.talk_card_view.alpha = 0.8;
+        //talkcell.talk_detail_button.titleLabel.textColor = [UIColor bright_orange];
+        [talkcell.talk_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+        [talkcell.talk_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+        talkcell.talk_trim_view.backgroundColor = [UIColor light_blue];
         talkcell.talk_location_label.textColor = [UIColor light_blue];
         talkcell.talk_time_label.textColor = [UIColor light_blue];
         talkcell.talk_card_view.layer.cornerRadius = 5;
@@ -300,9 +303,12 @@ NSString *detail_objid;
         }
         postercell.selectionStyle = UITableViewCellSelectionStyleNone;
         postercell.backgroundColor = [UIColor clearColor];
-        postercell.poster_card_view.backgroundColor = [UIColor main_blue];
-        postercell.poster_detail_button.titleLabel.textColor = [UIColor bright_orange];
-        postercell.poster_trim_view.backgroundColor = [UIColor main_orange];
+        postercell.poster_card_view.backgroundColor = [UIColor nu_deep_blue];
+        postercell.poster_card_view.alpha = 0.8;
+        //postercell.poster_detail_button.titleLabel.textColor = [UIColor bright_orange];
+        [postercell.poster_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+        [postercell.poster_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+        postercell.poster_trim_view.backgroundColor = [UIColor light_blue];
         postercell.poster_location_label.textColor = [UIColor light_blue];
         postercell.poster_card_view.layer.cornerRadius = 5;
         
@@ -326,9 +332,12 @@ NSString *detail_objid;
         }
         abstractcell.selectionStyle = UITableViewCellSelectionStyleNone;
         abstractcell.backgroundColor = [UIColor clearColor];
-        abstractcell.abstract_card_view.backgroundColor = [UIColor main_blue];
-        abstractcell.abstract_detail_button.titleLabel.textColor = [UIColor bright_orange];
-        abstractcell.abstract_trim_view.backgroundColor = [UIColor main_orange];
+        abstractcell.abstract_card_view.backgroundColor = [UIColor nu_deep_blue];
+        abstractcell.abstract_card_view.alpha = 0.8;
+        //abstractcell.abstract_detail_button.titleLabel.textColor = [UIColor bright_orange];
+        [abstractcell.abstract_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+        [abstractcell.abstract_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+        abstractcell.abstract_trim_view.backgroundColor = [UIColor light_blue];
         abstractcell.abstract_card_view.layer.cornerRadius = 5;
         
         return abstractcell;

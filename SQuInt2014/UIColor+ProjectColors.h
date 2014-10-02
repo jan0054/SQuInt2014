@@ -20,4 +20,9 @@
 + (UIColor *) border_blue;
 + (UIColor *) reallylight_blue;
 + (UIColor *) red_orange;
++ (UIColor*) nu_main_orange;
++ (UIColor*) nu_bright_orange;
++ (UIColor*) nu_shade_blue;
++ (UIColor*) nu_deep_blue;
++ (UIColor*) nu_bright_blue;
 @end

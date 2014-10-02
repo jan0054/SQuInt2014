@@ -22,7 +22,7 @@
      UIRemoteNotificationTypeSound];
     
     // This sets the background color of the navigation
-    [[UINavigationBar appearance] setBarTintColor:[UIColor shade_blue]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor main_blue]];
     
     // This sets the text color of the navigation links
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];

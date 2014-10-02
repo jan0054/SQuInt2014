@@ -24,13 +24,17 @@ NSString *author_id;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor reallylight_blue];
-    self.abstract_name_label.text = self.abstract_name;
-    self.pdf_trim_view.backgroundColor = [UIColor main_orange];
-    self.abstract_trim_view.backgroundColor = [UIColor main_orange];
-    self.abstract_card_view.backgroundColor = [UIColor main_blue];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.pdf_trim_view.backgroundColor = [UIColor light_blue];
+    self.abstract_trim_view.backgroundColor = [UIColor light_blue];
+    self.abstract_card_view.backgroundColor = [UIColor nu_deep_blue];
+    self.abstract_card_view.alpha = 0.8;
     self.abstract_author_label.textColor = [UIColor reallylight_blue];
     self.abstract_card_view.layer.cornerRadius = 5;
+    [self.author_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [self.author_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    
+    
     [self get_abstract_data];
 }
 

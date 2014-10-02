@@ -25,8 +25,8 @@ NSString *tapped_person_objid;
 {
     [super viewDidLoad];
     self.person_array = [[NSMutableArray alloc] init];
-    self.peopletable.backgroundColor = [UIColor reallylight_blue];
-    
+    self.peopletable.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.peopletable.tableFooterView = [[UIView alloc] init];
@@ -76,9 +76,12 @@ NSString *tapped_person_objid;
         personcell.layoutMargins = UIEdgeInsetsZero;
     }
     personcell.selectionStyle = UITableViewCellSelectionStyleNone;
-    personcell.person_trim_view.backgroundColor = [UIColor main_orange];
-    personcell.person_card_view.backgroundColor = [UIColor main_blue];
+    personcell.person_trim_view.backgroundColor = [UIColor light_blue];
+    personcell.person_card_view.backgroundColor = [UIColor nu_deep_blue];
+    personcell.person_card_view.alpha = 0.8;
     personcell.person_card_view.layer.cornerRadius = 5;
+    [personcell.person_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [personcell.person_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
     
     return personcell;
 }

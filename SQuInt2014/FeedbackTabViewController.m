@@ -18,9 +18,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.settingstable.backgroundColor = [UIColor main_blue];
+    self.settingstable.backgroundColor = [UIColor clearColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.settingstable.tableFooterView = [[UIView alloc] init];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    [self.settingstable setSeparatorColor:[UIColor nu_bright_orange]];
     
 }
 
@@ -199,7 +201,9 @@
             logincell.login_subtitle_label.textColor=[UIColor whiteColor];
             logincell.login_subtitle_label.text = @"Log in to message users";
         }
-        logincell.login_action_button.titleLabel.textColor = [UIColor bright_orange];
+        
+        [logincell.login_action_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+        [logincell.login_action_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
         logincell.login_name_label.text = name;
         logincell.selectionStyle = UITableViewCellSelectionStyleNone;
         logincell.backgroundColor = [UIColor clearColor];

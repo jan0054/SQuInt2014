@@ -41,12 +41,19 @@ NSString *chosen_event_id;
     
     //styling
     self.person_detail_table.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor reallylight_blue];
-    self.person_card_view.backgroundColor = [UIColor main_blue];
-    self.person_trim_view.backgroundColor = [UIColor main_orange];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.person_card_view.backgroundColor = [UIColor nu_deep_blue];
+    self.person_card_view.alpha = 0.8;
+    self.person_trim_view.backgroundColor = [UIColor light_blue];
     //self.person_detail_table.backgroundColor = [UIColor main_blue];
     self.person_detail_seg.tintColor = [UIColor whiteColor];
     self.person_card_view.layer.cornerRadius = 5;
+    [self.person_chat_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [self.person_chat_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    [self.person_email_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [self.person_email_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    [self.person_link_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+    [self.person_link_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
     
     [self get_person_data];
     

@@ -8,6 +8,7 @@
 
 #import "TravelTabViewController.h"
 #import "UIColor+ProjectColors.h"
+#import "VenueCellTableViewCell.h"
 
 @interface TravelTabViewController ()
 
@@ -57,30 +58,39 @@
     venuecell.venue_name_label.text = venue[@"name"];
     venuecell.venue_address_label.text = venue[@"address"];
     venuecell.venue_description_label.text = venue[@"description"];
-    
+    PFFile *venueimage = venue[@"photo"];
+    [venueimage getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            venuecell.venue_photo.image = [UIImage imageWithData:imageData];
+        }
+    }];
+
+    /*
     PFGeoPoint *coord = venue[@"coord"];
     CLLocationCoordinate2D zoomLocation;
     zoomLocation.latitude = coord.latitude;
     zoomLocation.longitude= coord.longitude;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 500, 500);
     [venuecell.venuemap setRegion:viewRegion animated:NO];
+    */
     
     venuecell.selectionStyle = UITableViewCellSelectionStyleNone;
     if ([venuecell respondsToSelector:@selector(layoutMargins)]) {
         venuecell.layoutMargins = UIEdgeInsetsZero;
     }
     
-    venuecell.card_view.backgroundColor = [UIColor nu_deep_blue];
-    venuecell.card_view.alpha = 0.8;
-    venuecell.venue_address_label.textColor = [UIColor light_blue];
-    venuecell.venue_trim_view.backgroundColor = [UIColor light_blue];
-    venuecell.card_view.layer.cornerRadius = 5;
+    venuecell.card_view.backgroundColor = [UIColor whiteColor];
+    venuecell.card_view.alpha = 1.0;
+    venuecell.venue_address_label.textColor = [UIColor whiteColor];
+    venuecell.venue_trim_view.backgroundColor = [UIColor clearColor];
+    //venuecell.card_view.layer.cornerRadius = 5;
     [venuecell.venue_call_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
     [venuecell.venue_call_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
     [venuecell.venue_navigate_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
     [venuecell.venue_navigate_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
-    [venuecell.venue_website_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [venuecell.venue_website_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    
+    //[venuecell.venue_website_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
+    //[venuecell.venue_website_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
     
     return venuecell;
 }
@@ -106,7 +116,7 @@
 }
 
 - (IBAction)venue_call_tap:(UIButton *)sender {
-    VenueCellTableViewCell *cell = (VenueCellTableViewCell *)[[[sender superview] superview] superview];
+    VenueCellTableViewCell *cell = (VenueCellTableViewCell *)[[[[sender superview] superview] superview] superview];
     NSIndexPath *tapped_path = [self.venuetable indexPathForCell:cell];
     NSLog(@"venue_call_tap: %ld", (long)tapped_path.row);
     PFObject *venue = [self.venue_array objectAtIndex:tapped_path.row];
@@ -115,8 +125,11 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phonenumber]];
 }
 
+
+
+
 - (IBAction)venue_navigate_tap:(UIButton *)sender {
-    VenueCellTableViewCell *cell = (VenueCellTableViewCell *)[[[sender superview] superview] superview];
+    VenueCellTableViewCell *cell = (VenueCellTableViewCell *)[[[[sender superview] superview] superview] superview];
     NSIndexPath *tapped_path = [self.venuetable indexPathForCell:cell];
     NSLog(@"venue_navigate_tap: %ld", (long)tapped_path.row);
     PFObject *venue = [self.venue_array objectAtIndex:tapped_path.row];
@@ -130,7 +143,7 @@
 }
 
 - (IBAction)venue_website_tap:(UIButton *)sender {
-    VenueCellTableViewCell *cell = (VenueCellTableViewCell *)[[[sender superview] superview] superview];
+    VenueCellTableViewCell *cell = (VenueCellTableViewCell *)[[[[sender superview] superview] superview] superview];
     NSIndexPath *tapped_path = [self.venuetable indexPathForCell:cell];
     NSLog(@"venue_website_tap: %ld", (long)tapped_path.row);
     PFObject *venue = [self.venue_array objectAtIndex:tapped_path.row];
@@ -138,6 +151,7 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlstr]];
 
 }
+
 
 - (void)displayRegionCenteredOnMapItem:(MKMapItem*)from {
     CLLocation* fromLocation = from.placemark.location;

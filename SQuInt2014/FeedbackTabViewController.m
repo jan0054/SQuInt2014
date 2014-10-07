@@ -258,7 +258,7 @@
     }
     else
     {
-        generalsettingcell.general_name_label.text = @"Terms of Service";
+        generalsettingcell.general_name_label.text = @"Privacy & Terms";
         generalsettingcell.general_name_label.textColor = [UIColor whiteColor];
         generalsettingcell.backgroundColor = [UIColor clearColor];
         if ([generalsettingcell respondsToSelector:@selector(layoutMargins)]) {

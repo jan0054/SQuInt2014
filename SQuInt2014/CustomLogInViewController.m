@@ -21,7 +21,7 @@
     //self.view.backgroundColor = [UIColor main_blue];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     
-    [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"inapp_logo"]]];
+    [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"squint_logo_blue"]]];
     
     [self.logInView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateNormal];
     [self.logInView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateHighlighted];

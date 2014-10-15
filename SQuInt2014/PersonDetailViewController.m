@@ -11,6 +11,7 @@
 #import "UIColor+ProjectColors.h"
 #import "EventDetailViewController.h"
 #import "AbstractPdfViewController.h"
+#import "ChatViewController.h"
 
 @interface PersonDetailViewController ()
 
@@ -25,6 +26,8 @@ BOOL mail_enabled;
 BOOL web_enabled;
 BOOL chat_enabled;
 NSString *chosen_event_id;
+int is_new_conv;
+NSString *conv_objid;
 
 @implementation PersonDetailViewController
 @synthesize person_objid;
@@ -291,6 +294,7 @@ NSString *chosen_event_id;
         chosen_event_id = abstract.objectId;
         [self performSegueWithIdentifier:@"authorabstractsegue" sender:self];
     }
+    
 
 }
 
@@ -316,6 +320,19 @@ NSString *chosen_event_id;
         controller.from_author = 1;
         controller.abstract_objid = chosen_event_id;
     }
+    else
+    {
+        ChatViewController *controller = (ChatViewController *)[segue destinationViewController];
+        if (is_new_conv==0)
+        {
+            controller.is_new_conv = 0;
+            controller.conversation_objid = conv_objid;
+        }
+        else if (is_new_conv==1)
+        {
+            controller.is_new_conv = 1;
+        }
+    }
 }
 
 
@@ -323,6 +340,8 @@ NSString *chosen_event_id;
     if (chat_enabled == YES)
     {
         NSLog(@"going to chat interface");
+        [self check_conv_exist];
+        
     }
     else
     {
@@ -336,5 +355,54 @@ NSString *chosen_event_id;
 
 }
 
+- (void) check_conv_exist
+{
+    PFUser *cur_user = [PFUser currentUser];
+    PFQuery *query_a = [PFQuery queryWithClassName:@"conversation"];
+    [query_a whereKey:@"user_a" equalTo:cur_user];
+    [query_a whereKey:@"user_b" equalTo:the_person];
+    [query_a findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] >=1)
+        {
+            NSLog(@"conversation found (query a)");
+            is_new_conv=0;
+            PFObject *the_conv = [objects objectAtIndex:0];
+            conv_objid = the_conv.objectId;
+            [self performSegueWithIdentifier:@"personchatsegue" sender:self];
+        }
+        else if ([objects count]==0)
+        {
+            PFQuery *query_b = [PFQuery queryWithClassName:@"conversation"];
+            [query_b whereKey:@"user_a" equalTo:the_person];
+            [query_b whereKey:@"user_b" equalTo:cur_user];
+            [query_b findObjectsInBackgroundWithBlock:^(NSArray *objects_b, NSError *error) {
+                if ([objects_b count] >=1)
+                {
+                    NSLog(@"conversation found (query b)");
+                    is_new_conv=0;
+                    PFObject *the_conv = [objects_b objectAtIndex:0];
+                    conv_objid = the_conv.objectId;
+                    [self performSegueWithIdentifier:@"personchatsegue" sender:self];
+
+                }
+                else if ([objects_b count]==0)
+                {
+                    NSLog(@"no existing conversation");
+                    is_new_conv=1;
+                    PFObject *new_conv = [PFObject objectWithClassName:@"conversation"];
+                    new_conv[@"user_a"] = cur_user;
+                    new_conv[@"user_b"] = the_person;
+                    new_conv[@"last_msg"] = @"no messages yet";
+                    new_conv[@"last_time"] = [NSDate date];
+                    [new_conv saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        NSLog(@"new conversation successfully created");
+                        [self performSegueWithIdentifier:@"personchatsegue" sender:self];
+                    }];
+                }
+            }];
+
+        }
+    }];
+}
 
 @end

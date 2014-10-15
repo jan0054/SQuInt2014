@@ -66,6 +66,11 @@
 		B4CD802019E3D90A009B416F /* action_call_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = B4CD801F19E3D90A009B416F /* action_call_yellow.png */; };
 		B4CD802219E3DAC9009B416F /* action_web_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = B4CD802119E3DAC9009B416F /* action_web_yellow.png */; };
 		B4CD802619E3F9F1009B416F /* squint_logo_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4CD802519E3F9F1009B416F /* squint_logo_blue@2x.png */; };
+		B4D230EA19EBB852006FC2A6 /* ConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D230E919EBB852006FC2A6 /* ConversationListViewController.m */; };
+		B4D230ED19EBB9BE006FC2A6 /* ConversationCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D230EC19EBB9BE006FC2A6 /* ConversationCellTableViewCell.m */; };
+		B4D230EF19EBBB25006FC2A6 /* new_msg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D230EE19EBBB25006FC2A6 /* new_msg@2x.png */; };
+		B4D230F219EE5F84006FC2A6 /* ChatYouCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D230F119EE5F84006FC2A6 /* ChatYouCellTableViewCell.m */; };
+		B4D230F519EE5F93006FC2A6 /* ChatMeCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D230F419EE5F93006FC2A6 /* ChatMeCellTableViewCell.m */; };
 		B4EAF4E319BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E219BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m */; };
 		B4EAF4E619BEE5D00075E259 /* SettingPushCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E519BEE5D00075E259 /* SettingPushCellTableViewCell.m */; };
 		B4EAF4E919BEE5E00075E259 /* SettingLoginCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E819BEE5E00075E259 /* SettingLoginCellTableViewCell.m */; };
@@ -170,6 +175,15 @@
 		B4CD801F19E3D90A009B416F /* action_call_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action_call_yellow.png; sourceTree = "<group>"; };
 		B4CD802119E3DAC9009B416F /* action_web_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action_web_yellow.png; sourceTree = "<group>"; };
 		B4CD802519E3F9F1009B416F /* squint_logo_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "squint_logo_blue@2x.png"; sourceTree = "<group>"; };
+		B4D230E819EBB852006FC2A6 /* ConversationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConversationListViewController.h; path = ../ConversationListViewController.h; sourceTree = "<group>"; };
+		B4D230E919EBB852006FC2A6 /* ConversationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConversationListViewController.m; path = ../ConversationListViewController.m; sourceTree = "<group>"; };
+		B4D230EB19EBB9BE006FC2A6 /* ConversationCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationCellTableViewCell.h; sourceTree = "<group>"; };
+		B4D230EC19EBB9BE006FC2A6 /* ConversationCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationCellTableViewCell.m; sourceTree = "<group>"; };
+		B4D230EE19EBBB25006FC2A6 /* new_msg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_msg@2x.png"; sourceTree = "<group>"; };
+		B4D230F019EE5F84006FC2A6 /* ChatYouCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatYouCellTableViewCell.h; sourceTree = "<group>"; };
+		B4D230F119EE5F84006FC2A6 /* ChatYouCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatYouCellTableViewCell.m; sourceTree = "<group>"; };
+		B4D230F319EE5F93006FC2A6 /* ChatMeCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMeCellTableViewCell.h; sourceTree = "<group>"; };
+		B4D230F419EE5F93006FC2A6 /* ChatMeCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMeCellTableViewCell.m; sourceTree = "<group>"; };
 		B4EAF4E119BEE5BC0075E259 /* GeneralSettingCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSettingCellTableViewCell.h; sourceTree = "<group>"; };
 		B4EAF4E219BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralSettingCellTableViewCell.m; sourceTree = "<group>"; };
 		B4EAF4E419BEE5D00075E259 /* SettingPushCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingPushCellTableViewCell.h; sourceTree = "<group>"; };
@@ -268,6 +282,8 @@
 				B499BD0B1904EDE600C99CFE /* PositionDetailViewController.m */,
 				B43D26A618FFD1050072B753 /* FeedbackTabViewController.h */,
 				B43D26A718FFD1050072B753 /* FeedbackTabViewController.m */,
+				B4D230E819EBB852006FC2A6 /* ConversationListViewController.h */,
+				B4D230E919EBB852006FC2A6 /* ConversationListViewController.m */,
 				B499BD071904ED0C00C99CFE /* ChatViewController.h */,
 				B499BD081904ED0C00C99CFE /* ChatViewController.m */,
 				B4B71A0C19C0539B0036811A /* EventDetailViewController.h */,
@@ -327,6 +343,7 @@
 		B43D269618FFD03A0072B753 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B4D230EE19EBBB25006FC2A6 /* new_msg@2x.png */,
 				B4CD802519E3F9F1009B416F /* squint_logo_blue@2x.png */,
 				B4CD802119E3DAC9009B416F /* action_web_yellow.png */,
 				B4CD801F19E3D90A009B416F /* action_call_yellow.png */,
@@ -407,6 +424,12 @@
 				B4B71A0719C046200036811A /* SelfCellTableViewCell.m */,
 				B4B71A0919C0528D0036811A /* PersonDetailEventCellTableViewCell.h */,
 				B4B71A0A19C0528D0036811A /* PersonDetailEventCellTableViewCell.m */,
+				B4D230EB19EBB9BE006FC2A6 /* ConversationCellTableViewCell.h */,
+				B4D230EC19EBB9BE006FC2A6 /* ConversationCellTableViewCell.m */,
+				B4D230F019EE5F84006FC2A6 /* ChatYouCellTableViewCell.h */,
+				B4D230F119EE5F84006FC2A6 /* ChatYouCellTableViewCell.m */,
+				B4D230F319EE5F93006FC2A6 /* ChatMeCellTableViewCell.h */,
+				B4D230F419EE5F93006FC2A6 /* ChatMeCellTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -500,6 +523,7 @@
 				B4CD802219E3DAC9009B416F /* action_web_yellow.png in Resources */,
 				B43D26D2190130020072B753 /* positions@2x.png in Resources */,
 				B4632EEC19D5395F00A9B743 /* tab_travel@2x.png in Resources */,
+				B4D230EF19EBBB25006FC2A6 /* new_msg@2x.png in Resources */,
 				B43D266818FFC9980072B753 /* InfoPlist.strings in Resources */,
 				B4632EEB19D5395F00A9B743 /* tab_settings@2x.png in Resources */,
 				B43D26D4190130020072B753 /* travel@2x.png in Resources */,
@@ -576,16 +600,19 @@
 				B4B71A0B19C0528D0036811A /* PersonDetailEventCellTableViewCell.m in Sources */,
 				B4B719FC19C02DEE0036811A /* PosterCellTableViewCell.m in Sources */,
 				B499BD0C1904EDE600C99CFE /* PositionDetailViewController.m in Sources */,
+				B4D230F519EE5F93006FC2A6 /* ChatMeCellTableViewCell.m in Sources */,
 				B4B71A0219C039120036811A /* CareerCellTableViewCell.m in Sources */,
 				B43D266E18FFC9980072B753 /* AppDelegate.m in Sources */,
 				B4BC89AC19D005F200F1A9AD /* UIColor+ProjectColors.m in Sources */,
 				B43D269C18FFD0C50072B753 /* ProgramsTabViewController.m in Sources */,
 				B499BD1C1906475800C99CFE /* PersonDetailViewController.m in Sources */,
 				B43D266A18FFC9980072B753 /* main.m in Sources */,
+				B4D230EA19EBB852006FC2A6 /* ConversationListViewController.m in Sources */,
 				B4EAF4E619BEE5D00075E259 /* SettingPushCellTableViewCell.m in Sources */,
 				B4B719F919C02DD70036811A /* TalkCellTableViewCell.m in Sources */,
 				B4B71A0E19C0539B0036811A /* EventDetailViewController.m in Sources */,
 				B4B71A1119C053BA0036811A /* AbstractPdfViewController.m in Sources */,
+				B4D230ED19EBB9BE006FC2A6 /* ConversationCellTableViewCell.m in Sources */,
 				B495C44619C9876A008D5D5F /* AboutViewController.m in Sources */,
 				B4B71A0519C0460C0036811A /* PersonCellTableViewCell.m in Sources */,
 				B4B719FF19C02DFB0036811A /* AbstractCellTableViewCell.m in Sources */,
@@ -594,6 +621,7 @@
 				B4EAF4E919BEE5E00075E259 /* SettingLoginCellTableViewCell.m in Sources */,
 				B499BD091904ED0C00C99CFE /* ChatViewController.m in Sources */,
 				B43D26A518FFD0F10072B753 /* PositionsTabViewController.m in Sources */,
+				B4D230F219EE5F84006FC2A6 /* ChatYouCellTableViewCell.m in Sources */,
 				B499BD131905186300C99CFE /* VenueCellTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

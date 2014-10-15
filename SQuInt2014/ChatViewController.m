@@ -13,6 +13,8 @@
 @end
 
 @implementation ChatViewController
+@synthesize is_new_conv;
+@synthesize conversation_objid;
 
 - (void)viewDidLoad
 {
@@ -57,4 +59,6 @@
     
 }
 
+- (IBAction)send_chat_button_tap:(UIButton *)sender {
+}
 @end

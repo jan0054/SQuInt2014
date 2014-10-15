@@ -68,8 +68,12 @@
     // Set field text color
     [self.logInView.usernameField setBackgroundColor:[UIColor whiteColor]];
     [self.logInView.passwordField setBackgroundColor:[UIColor whiteColor]];
+    [self.logInView.usernameField setTextColor:[UIColor darkGrayColor]];
+    [self.logInView.passwordField setTextColor:[UIColor darkGrayColor]];
+    
     //self.logInView.usernameField.placeholder=@"帳號";
     //self.logInView.passwordField.placeholder=@"密碼";
+    
     [self.logInView.usernameField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
     [self.logInView.passwordField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
 }

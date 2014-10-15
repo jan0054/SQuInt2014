@@ -7,15 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface ChatViewController : UIViewController
+
+@interface ChatViewController : UIViewController<UITextFieldDelegate>
 @property NSString *conversation_objid;
 @property int is_new_conv;
+@property NSString *other_guy_objid;
+@property NSString *other_guy_name;
 
 @property (strong, nonatomic) IBOutlet UITextField *chat_input_box;
 @property (strong, nonatomic) IBOutlet UIButton *send_chat_button;
 - (IBAction)send_chat_button_tap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UITableView *chat_table;
-
+@property NSMutableArray *chat_array;
+@property NSMutableArray *chat_table_array;
 
 @end

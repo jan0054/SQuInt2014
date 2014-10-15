@@ -126,8 +126,11 @@ NSString *tapped_person_objid;
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    PersonDetailViewController *destination = [segue destinationViewController];
-    destination.person_objid = tapped_person_objid;
+    if ([segue.identifier isEqualToString:@"persondetailsegue"])
+    {
+        PersonDetailViewController *destination = [segue destinationViewController];
+        destination.person_objid = tapped_person_objid;
+    }
 }
 
 @end

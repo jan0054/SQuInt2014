@@ -17,6 +17,8 @@
 @end
 
 NSString *chosen_conv_id;
+NSString *chosen_conv_other_guy_id;
+NSString *chosen_conv_other_guy_name;
 
 @implementation ConversationListViewController
 @synthesize conversation_array;
@@ -93,6 +95,21 @@ NSString *chosen_conv_id;
 {
     PFObject *chosen_conv = [self.conversation_array objectAtIndex:indexPath.row];
     chosen_conv_id = chosen_conv.objectId;
+    
+    PFUser *cur_user = [PFUser currentUser];
+    PFUser *user_a = chosen_conv[@"user_a"];
+    PFUser *user_b = chosen_conv[@"user_b"];
+    if ([user_a.objectId isEqualToString:cur_user.objectId])
+    {
+        chosen_conv_other_guy_id = user_b.objectId;
+        chosen_conv_other_guy_name = user_b[@"username"];
+    }
+    else if ([user_b.objectId isEqualToString:cur_user.objectId])
+    {
+        chosen_conv_other_guy_id = user_a.objectId;
+        chosen_conv_other_guy_name = user_a[@"username"];
+    }
+    
     [self performSegueWithIdentifier:@"chatsegue" sender:self];
 }
 
@@ -101,6 +118,8 @@ NSString *chosen_conv_id;
     ChatViewController *destination = [segue destinationViewController];
     destination.conversation_objid = chosen_conv_id;
     destination.is_new_conv = 0;
+    destination.other_guy_objid = chosen_conv_other_guy_id;
+    destination.other_guy_name = chosen_conv_other_guy_name;
 }
 
 - (void) get_conversations

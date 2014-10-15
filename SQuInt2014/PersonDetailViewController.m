@@ -327,10 +327,16 @@ NSString *conv_objid;
         {
             controller.is_new_conv = 0;
             controller.conversation_objid = conv_objid;
+            controller.other_guy_objid = person_objid;
+            controller.other_guy_name = the_person[@"username"];
+
         }
         else if (is_new_conv==1)
         {
             controller.is_new_conv = 1;
+            controller.conversation_objid = conv_objid;
+            controller.other_guy_objid = person_objid;
+            controller.other_guy_name = the_person[@"username"];
         }
     }
 }
@@ -396,6 +402,16 @@ NSString *conv_objid;
                     new_conv[@"last_time"] = [NSDate date];
                     [new_conv saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         NSLog(@"new conversation successfully created");
+                        /*
+                        PFQuery *findnewconv = [PFQuery queryWithClassName:@"conversation"];
+                        [findnewconv whereKey:@"user_a" equalTo:cur_user];
+                        [findnewconv whereKey:@"user_b" equalTo:the_person];
+                        [findnewconv findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                            PFObject *conv = [objects objectAtIndex:0];
+                            conv_objid = conv.objectId;
+                        }];
+                        */
+                        conv_objid = new_conv.objectId;
                         [self performSegueWithIdentifier:@"personchatsegue" sender:self];
                     }];
                 }

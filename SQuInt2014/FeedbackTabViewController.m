@@ -195,6 +195,9 @@
             
             [logincell.login_action_button setTitle:@"Log Out" forState:UIControlStateNormal];
             [logincell.login_action_button setTitle:@"Log Out" forState:UIControlStateHighlighted];
+            logincell.login_subtitle_label.textColor=[UIColor whiteColor];
+            logincell.login_subtitle_label.text = @"Log out to switch users";
+
         }
         else
         {

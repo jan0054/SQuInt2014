@@ -44,6 +44,11 @@
     [self.signUpView.usernameField setBackgroundColor:[UIColor whiteColor]];
     [self.signUpView.passwordField setBackgroundColor:[UIColor whiteColor]];
     [self.signUpView.emailField setBackgroundColor:[UIColor whiteColor]];
+    
+    [self.signUpView.usernameField setTextColor:[UIColor darkGrayColor]];
+    [self.signUpView.passwordField setTextColor:[UIColor darkGrayColor]];
+    [self.signUpView.emailField setTextColor:[UIColor darkGrayColor]];
+    
     //self.signUpView.usernameField.placeholder= @"帳號";
     //self.signUpView.passwordField.placeholder=@"密碼";
     [self.signUpView.usernameField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];

@@ -17,6 +17,7 @@
 
 @end
 
+PFUser *the_user;
 PFObject *the_person;
 NSMutableArray *person_talks;
 NSMutableArray *person_posters;
@@ -160,6 +161,7 @@ NSString *conv_objid;
         else
         {
             chat_enabled = YES;
+            the_user = the_person[@"user"];
         }
     }];
 }
@@ -327,22 +329,23 @@ NSString *conv_objid;
         {
             controller.is_new_conv = 0;
             controller.conversation_objid = conv_objid;
-            controller.other_guy_objid = person_objid;
-            controller.other_guy_name = the_person[@"username"];
+            controller.other_guy_objid = the_user.objectId;
+            controller.other_guy_name = the_user[@"username"];
 
         }
         else if (is_new_conv==1)
         {
             controller.is_new_conv = 1;
             controller.conversation_objid = conv_objid;
-            controller.other_guy_objid = person_objid;
-            controller.other_guy_name = the_person[@"username"];
+            controller.other_guy_objid = the_user.objectId;
+            controller.other_guy_name = the_user[@"username"];
         }
     }
 }
 
 
 - (IBAction)person_chat_button_tap:(UIButton *)sender {
+    seg_index = 99;
     if (chat_enabled == YES)
     {
         NSLog(@"going to chat interface");
@@ -366,7 +369,7 @@ NSString *conv_objid;
     PFUser *cur_user = [PFUser currentUser];
     PFQuery *query_a = [PFQuery queryWithClassName:@"conversation"];
     [query_a whereKey:@"user_a" equalTo:cur_user];
-    [query_a whereKey:@"user_b" equalTo:the_person];
+    [query_a whereKey:@"user_b" equalTo:the_user];
     [query_a findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if ([objects count] >=1)
         {
@@ -379,7 +382,7 @@ NSString *conv_objid;
         else if ([objects count]==0)
         {
             PFQuery *query_b = [PFQuery queryWithClassName:@"conversation"];
-            [query_b whereKey:@"user_a" equalTo:the_person];
+            [query_b whereKey:@"user_a" equalTo:the_user];
             [query_b whereKey:@"user_b" equalTo:cur_user];
             [query_b findObjectsInBackgroundWithBlock:^(NSArray *objects_b, NSError *error) {
                 if ([objects_b count] >=1)
@@ -397,7 +400,7 @@ NSString *conv_objid;
                     is_new_conv=1;
                     PFObject *new_conv = [PFObject objectWithClassName:@"conversation"];
                     new_conv[@"user_a"] = cur_user;
-                    new_conv[@"user_b"] = the_person;
+                    new_conv[@"user_b"] = the_user;
                     new_conv[@"last_msg"] = @"no messages yet";
                     new_conv[@"last_time"] = [NSDate date];
                     [new_conv saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

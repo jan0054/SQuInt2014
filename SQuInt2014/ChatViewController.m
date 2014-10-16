@@ -31,6 +31,10 @@ PFUser *otherguy;
     self.chat_array = [[NSMutableArray alloc] init];
     self.chat_table_array = [[NSMutableArray alloc] init];
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.chat_table.backgroundColor = [UIColor clearColor];
+    
+    
 }
 
 //dismiss keyboard when touched outside
@@ -44,15 +48,15 @@ PFUser *otherguy;
 }
 
 //controls view sliding up when editing text field
-- (void) textViewDidBeginEditing:(UITextView *)textView
+- (void) textViewDidBeginEditing:(UITextField *)textView
 {
     [self animateTextField: textView up: YES];
 }
-- (void) textViewDidEndEditing:(UITextView *)textView
+- (void) textViewDidEndEditing:(UITextField *)textView
 {
     [self animateTextField: textView up: NO];
 }
-- (void) animateTextField: (UITextView *) textView up: (BOOL) up
+- (void) animateTextField: (UITextField *) textView up: (BOOL) up
 {
     const int movementDistance = 216; // sliding distance
     const float movementDuration = 0.3f;

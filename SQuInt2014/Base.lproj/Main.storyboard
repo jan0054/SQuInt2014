@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -1097,7 +1096,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8m-Co-YdB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1648" y="-732"/>
+            <point key="canvasLocation" x="1593" y="-808"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="A7e-lU-VQG">
@@ -1413,6 +1412,9 @@
                                     <outlet property="delegate" destination="gUv-4a-dGt" id="bfP-Am-s4i"/>
                                 </connections>
                             </tableView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4C6-1e-c0m">
+                                <rect key="frame" x="40" y="365" width="240" height="128"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1686,8 +1688,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="iet-c8-CeW"/>
         <segue reference="xwK-Zd-eUi"/>
+        <segue reference="HQY-eb-HiB"/>
         <segue reference="zXA-QI-uEn"/>
     </inferredMetricsTieBreakers>
 </document>

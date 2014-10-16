@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 
 
-@interface ChatViewController : UIViewController<UITextFieldDelegate>
+@interface ChatViewController : UIViewController<UITextFieldDelegate, UIScrollViewDelegate>
 @property NSString *conversation_objid;
 @property int is_new_conv;
 @property NSString *other_guy_objid;

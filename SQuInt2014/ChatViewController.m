@@ -33,6 +33,7 @@ PFUser *otherguy;
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.chat_table.backgroundColor = [UIColor clearColor];
+    self.send_chat_button.titleLabel.textColor = [UIColor nu_bright_orange];
     
     
 }
@@ -48,17 +49,17 @@ PFUser *otherguy;
 }
 
 //controls view sliding up when editing text field
-- (void) textViewDidBeginEditing:(UITextField *)textView
+- (void) textFieldDidBeginEditing:(UITextField *)textView
 {
     [self animateTextField: textView up: YES];
 }
-- (void) textViewDidEndEditing:(UITextField *)textView
+- (void) textFieldDidEndEditing:(UITextField *)textView
 {
     [self animateTextField: textView up: NO];
 }
 - (void) animateTextField: (UITextField *) textView up: (BOOL) up
 {
-    const int movementDistance = 216; // sliding distance
+    const int movementDistance = 197; // sliding distance
     const float movementDuration = 0.3f;
     int movement = (up ? -movementDistance : movementDistance);
     [UIView beginAnimations: @"anim" context: nil];
@@ -193,4 +194,8 @@ PFUser *otherguy;
     self.chat_input_box.placeholder = @"Type message here..";
     
 }
+
+
+
+
 @end

@@ -23,4 +23,5 @@
 @property NSMutableArray *chat_array;
 @property NSMutableArray *chat_table_array;
 
+
 @end

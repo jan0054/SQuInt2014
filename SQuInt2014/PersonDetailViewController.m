@@ -331,6 +331,7 @@ NSString *conv_objid;
             controller.conversation_objid = conv_objid;
             controller.other_guy_objid = the_user.objectId;
             controller.other_guy_name = the_user[@"username"];
+            controller.otherguy = the_user;
 
         }
         else if (is_new_conv==1)
@@ -339,6 +340,7 @@ NSString *conv_objid;
             controller.conversation_objid = conv_objid;
             controller.other_guy_objid = the_user.objectId;
             controller.other_guy_name = the_user[@"username"];
+            controller.otherguy = the_user;
         }
     }
 }

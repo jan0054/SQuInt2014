@@ -16,13 +16,15 @@
 @end
 
 PFObject *conversation;
-PFUser *otherguy;
+
 
 @implementation ChatViewController
 @synthesize is_new_conv;
 @synthesize conversation_objid;
 @synthesize chat_array;
 @synthesize chat_table_array;
+@synthesize otherguy;
+@synthesize pullrefresh;
 
 - (void)viewDidLoad
 {
@@ -35,7 +37,22 @@ PFUser *otherguy;
     self.chat_table.backgroundColor = [UIColor clearColor];
     self.send_chat_button.titleLabel.textColor = [UIColor nu_bright_orange];
     
+    //Pull To Refresh Controls
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.chat_table addSubview:pullrefresh];
     
+}
+
+
+
+//called when pulling downward on the tableview
+- (void)refreshctrl:(id)sender
+{
+    //refresh code here
+    [self get_chat_info];
+    // End Refreshing
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 //dismiss keyboard when touched outside
@@ -84,7 +101,7 @@ PFUser *otherguy;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
+    NSLog(@"chat table count: %ld",[self.chat_table_array count]);
     return [self.chat_table_array count];
 }
 
@@ -122,8 +139,12 @@ PFUser *otherguy;
 
 - (void) get_chat_info
 {
+    [self.chat_table_array removeAllObjects];
+    [self.chat_array removeAllObjects];
+    
     if (self.is_new_conv==0)
     {
+        NSLog(@"IS_NEW_CONV 0");
         PFObject *the_conv = [PFObject objectWithoutDataWithClassName:@"conversation" objectId:self.conversation_objid];
         conversation = the_conv;
         
@@ -133,14 +154,15 @@ PFUser *otherguy;
         [query includeKey:@"to"];
         [query orderByAscending:@"createdAt"];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            NSLog(@"chat query success");
-            self.chat_array = [objects mutableCopy];
+            NSLog(@"chat query success with elements: %ld", [objects count]);
+            //self.chat_array = [objects mutableCopy];
             for (PFObject *chat_obj in objects)
             {
+                NSLog(@"FOR LOOP!!!");
                 NSDate *msg_time = chat_obj[@"createdAt"];
                 NSMutableDictionary *chat_dict = [[NSMutableDictionary alloc] init];
                 [chat_dict setObject:chat_obj[@"content"] forKey:@"content"];
-                [chat_dict setObject:msg_time forKey:@"date"];
+                //[chat_dict setObject:msg_time forKey:@"date"];
                 PFUser *from_person = chat_obj[@"from"];
                 PFUser *to_person = chat_obj[@"to"];
                 NSString *from_id = from_person.objectId;
@@ -149,21 +171,26 @@ PFUser *otherguy;
                 if ([from_id isEqualToString:self_id])
                 {
                     [chat_dict setValue:[NSNumber numberWithInt:1] forKey:@"fromme"];
-                    otherguy = to_person;
+                    NSLog(@"from me!");
+                    
                 }
                 else
                 {
                     [chat_dict setValue:[NSNumber numberWithInt:0] forKey:@"fromme"];
-                    otherguy = from_person;
+                    NSLog(@"from other guys!");
                 }
                 
                 [self.chat_table_array addObject:chat_dict];
             }
             [self.chat_table reloadData];
+            NSLog(@"CHAT_TABLE ARRAY: %@", self.chat_table_array);
         }];
     }
     else if (self.is_new_conv==1)
     {
+        PFObject *the_conv = [PFObject objectWithoutDataWithClassName:@"conversation" objectId:self.conversation_objid];
+        conversation = the_conv;
+        NSLog(@"IS_NEW_CONV 1");
         
     }
         

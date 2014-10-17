@@ -15,6 +15,7 @@
 @property int is_new_conv;
 @property NSString *other_guy_objid;
 @property NSString *other_guy_name;
+@property PFUser *otherguy;
 
 @property (strong, nonatomic) IBOutlet UITextField *chat_input_box;
 @property (strong, nonatomic) IBOutlet UIButton *send_chat_button;
@@ -22,6 +23,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *chat_table;
 @property NSMutableArray *chat_array;
 @property NSMutableArray *chat_table_array;
-
+@property UIRefreshControl *pullrefresh;
 
 @end

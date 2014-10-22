@@ -14,11 +14,11 @@
 		<string>https://github.com/jan0054/SQuInt2014.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>SQuInt2014.xcworkspace</string>
+	<string>squint ios source/SQuInt2014.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>AE2E8BE307BF3E7BFEF942CC21B8B6F411892F54</key>
-		<string>..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/jan0054/SQuInt2014.git</string>

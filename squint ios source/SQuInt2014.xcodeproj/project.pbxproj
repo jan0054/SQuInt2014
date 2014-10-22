@@ -483,6 +483,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = tapgo;
 				TargetAttributes = {
+					B43D265918FFC9980072B753 = {
+						DevelopmentTeam = GW5Z7US9NS;
+					};
 					B43D267D18FFC9980072B753 = {
 						TestTargetID = B43D265918FFC9980072B753;
 					};

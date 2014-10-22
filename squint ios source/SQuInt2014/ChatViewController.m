@@ -120,6 +120,7 @@ PFObject *conversation;
     {
         //msg is them to me
         chatyoucell.chat_content_label.text = [chat_dict objectForKey:@"content"];
+        chatyoucell.chat_time_label.text = [chat_dict objectForKey:@"time"];
         chatyoucell.chat_person_label.text = self.other_guy_name;
         return chatyoucell;
     }
@@ -127,6 +128,7 @@ PFObject *conversation;
     {
         //msg is me to them
         chatmecell.chat_content_label.text = [chat_dict objectForKey:@"content"];
+        chatmecell.chat_time_label.text = [chat_dict objectForKey:@"time"];
         return chatmecell;
     }
     
@@ -134,11 +136,12 @@ PFObject *conversation;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    //do nothing when tapping chat elements (yet)
 }
 
 - (void) get_chat_info
 {
+    //reset the arrays used to store chat elements
     [self.chat_table_array removeAllObjects];
     [self.chat_array removeAllObjects];
     
@@ -154,15 +157,25 @@ PFObject *conversation;
         [query includeKey:@"to"];
         [query orderByAscending:@"createdAt"];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            NSLog(@"chat query success with elements: %ld", [objects count]);
+            
+            NSLog(@"chat query success with # of chat elements: %ld", [objects count]);
+            
             //self.chat_array = [objects mutableCopy];
+            
+            //loop for each chat element
             for (PFObject *chat_obj in objects)
             {
-                NSLog(@"FOR LOOP!!!");
-                NSDate *msg_time = chat_obj[@"createdAt"];
+                NSLog(@"FOR LOOP - chat objects");
+                
+                NSDate *msg_time = chat_obj.createdAt;
+                NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+                [dateFormat setDateFormat: @"MM-dd HH:mm"];
+                NSString *dateString = [dateFormat stringFromDate:msg_time];
+                NSLog(@"DATE:%@", dateString);
                 NSMutableDictionary *chat_dict = [[NSMutableDictionary alloc] init];
+                
                 [chat_dict setObject:chat_obj[@"content"] forKey:@"content"];
-                //[chat_dict setObject:msg_time forKey:@"date"];
+                [chat_dict setObject:dateString forKey:@"time"];
                 PFUser *from_person = chat_obj[@"from"];
                 PFUser *to_person = chat_obj[@"to"];
                 NSString *from_id = from_person.objectId;
@@ -171,19 +184,20 @@ PFObject *conversation;
                 if ([from_id isEqualToString:self_id])
                 {
                     [chat_dict setValue:[NSNumber numberWithInt:1] forKey:@"fromme"];
-                    NSLog(@"from me!");
-                    
+                    NSLog(@"msg is from me");
                 }
                 else
                 {
                     [chat_dict setValue:[NSNumber numberWithInt:0] forKey:@"fromme"];
-                    NSLog(@"from other guys!");
+                    NSLog(@"msg is from other guy");
                 }
                 
                 [self.chat_table_array addObject:chat_dict];
             }
+            
             [self.chat_table reloadData];
             NSLog(@"CHAT_TABLE ARRAY: %@", self.chat_table_array);
+            
         }];
     }
     else if (self.is_new_conv==1)
@@ -201,6 +215,7 @@ PFObject *conversation;
 - (IBAction)send_chat_button_tap:(UIButton *)sender {
     NSString *content = self.chat_input_box.text;
     NSDate *chat_date = [NSDate date];
+
     /*
     NSMutableDictionary *chat_dict = [[NSMutableDictionary alloc] init];
     [chat_dict setObject:content forKey:@"content"];

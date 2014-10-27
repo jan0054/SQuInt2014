@@ -42,6 +42,9 @@ PFObject *conversation;
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
     [self.chat_table addSubview:pullrefresh];
     
+    self.chat_table.estimatedRowHeight = 69;
+    self.chat_table.rowHeight = UITableViewAutomaticDimension;
+    
 }
 
 
@@ -121,7 +124,12 @@ PFObject *conversation;
         //msg is them to me
         chatyoucell.chat_content_label.text = [chat_dict objectForKey:@"content"];
         chatyoucell.chat_time_label.text = [chat_dict objectForKey:@"time"];
-        chatyoucell.chat_person_label.text = self.other_guy_name;
+        chatyoucell.chat_person_label.text = [NSString stringWithFormat:@"%@:",self.other_guy_name];
+        
+
+        //chatyoucell.chat_content_label.backgroundColor = [UIColor whiteColor];
+        //chatyoucell.chat_content_label.layer.cornerRadius = 5;
+        //[chatyoucell.chat_content_label sizeToFit];
         return chatyoucell;
     }
     else
@@ -129,6 +137,13 @@ PFObject *conversation;
         //msg is me to them
         chatmecell.chat_content_label.text = [chat_dict objectForKey:@"content"];
         chatmecell.chat_time_label.text = [chat_dict objectForKey:@"time"];
+        
+
+        
+        //chatmecell.chat_content_label.backgroundColor = [UIColor whiteColor];
+        //chatmecell.chat_content_label.layer.cornerRadius = 5;
+        
+        //[chatmecell.chat_content_label sizeToFit];
         return chatmecell;
     }
     
@@ -137,103 +152,111 @@ PFObject *conversation;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //do nothing when tapping chat elements (yet)
+    [self.chat_input_box resignFirstResponder];
 }
 
 - (void) get_chat_info
 {
+    self.chat_table_array = [[NSMutableArray alloc] init];
+    
     //reset the arrays used to store chat elements
     [self.chat_table_array removeAllObjects];
-    [self.chat_array removeAllObjects];
+
+    NSLog(@"IS_NEW_CONV");
+    PFObject *the_conv = [PFObject objectWithoutDataWithClassName:@"conversation" objectId:self.conversation_objid];
+    conversation = the_conv;
     
-    if (self.is_new_conv==0)
-    {
-        NSLog(@"IS_NEW_CONV 0");
-        PFObject *the_conv = [PFObject objectWithoutDataWithClassName:@"conversation" objectId:self.conversation_objid];
-        conversation = the_conv;
+    PFQuery *query = [PFQuery queryWithClassName:@"chat"];
+    [query whereKey:@"conversation" equalTo:the_conv];
+    [query includeKey:@"from"];
+    [query includeKey:@"to"];
+    [query orderByAscending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
-        PFQuery *query = [PFQuery queryWithClassName:@"chat"];
-        [query whereKey:@"conversation" equalTo:the_conv];
-        [query includeKey:@"from"];
-        [query includeKey:@"to"];
-        [query orderByAscending:@"createdAt"];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"chat query success with # of chat elements: %ld", [objects count]);
+        
+        //loop for each chat element
+        for (PFObject *chat_obj in objects)
+        {
+            NSLog(@"FOR LOOP - chat objects");
             
-            NSLog(@"chat query success with # of chat elements: %ld", [objects count]);
+            NSDate *msg_time = chat_obj.createdAt;
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat: @"MM-dd HH:mm"];
+            NSString *dateString = [dateFormat stringFromDate:msg_time];
+            NSLog(@"DATE:%@", dateString);
+            NSMutableDictionary *chat_dict = [[NSMutableDictionary alloc] init];
             
-            //self.chat_array = [objects mutableCopy];
-            
-            //loop for each chat element
-            for (PFObject *chat_obj in objects)
+            [chat_dict setObject:chat_obj[@"content"] forKey:@"content"];
+            [chat_dict setObject:dateString forKey:@"time"];
+            PFUser *from_person = chat_obj[@"from"];
+            PFUser *to_person = chat_obj[@"to"];
+            NSString *from_id = from_person.objectId;
+            PFUser *self_user = [PFUser currentUser];
+            NSString *self_id =self_user.objectId;
+            if ([from_id isEqualToString:self_id])
             {
-                NSLog(@"FOR LOOP - chat objects");
-                
-                NSDate *msg_time = chat_obj.createdAt;
-                NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-                [dateFormat setDateFormat: @"MM-dd HH:mm"];
-                NSString *dateString = [dateFormat stringFromDate:msg_time];
-                NSLog(@"DATE:%@", dateString);
-                NSMutableDictionary *chat_dict = [[NSMutableDictionary alloc] init];
-                
-                [chat_dict setObject:chat_obj[@"content"] forKey:@"content"];
-                [chat_dict setObject:dateString forKey:@"time"];
-                PFUser *from_person = chat_obj[@"from"];
-                PFUser *to_person = chat_obj[@"to"];
-                NSString *from_id = from_person.objectId;
-                PFUser *self_user = [PFUser currentUser];
-                NSString *self_id =self_user.objectId;
-                if ([from_id isEqualToString:self_id])
-                {
-                    [chat_dict setValue:[NSNumber numberWithInt:1] forKey:@"fromme"];
-                    NSLog(@"msg is from me");
-                }
-                else
-                {
-                    [chat_dict setValue:[NSNumber numberWithInt:0] forKey:@"fromme"];
-                    NSLog(@"msg is from other guy");
-                }
-                
-                [self.chat_table_array addObject:chat_dict];
+                [chat_dict setValue:[NSNumber numberWithInt:1] forKey:@"fromme"];
+                NSLog(@"msg is from me");
+            }
+            else
+            {
+                [chat_dict setValue:[NSNumber numberWithInt:0] forKey:@"fromme"];
+                NSLog(@"msg is from other guy");
             }
             
-            [self.chat_table reloadData];
-            NSLog(@"CHAT_TABLE ARRAY: %@", self.chat_table_array);
-            
-        }];
-    }
-    else if (self.is_new_conv==1)
-    {
-        PFObject *the_conv = [PFObject objectWithoutDataWithClassName:@"conversation" objectId:self.conversation_objid];
-        conversation = the_conv;
-        NSLog(@"IS_NEW_CONV 1");
+            [self.chat_table_array addObject:chat_dict];
+        }
         
-    }
+        [self.chat_table reloadData];
         
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.chat_table_array count] - 1) inSection:0];
+        [self.chat_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+
+    }];
+   
 }
 
 
 
 - (IBAction)send_chat_button_tap:(UIButton *)sender {
+    
     NSString *content = self.chat_input_box.text;
-    NSDate *chat_date = [NSDate date];
 
-    /*
-    NSMutableDictionary *chat_dict = [[NSMutableDictionary alloc] init];
-    [chat_dict setObject:content forKey:@"content"];
-    [chat_dict setValue:[NSNumber numberWithInt:1] forKey:@"fromme"];
-    [chat_dict setObject:chat_date forKey:@"date"];
-    */
     PFObject *new_chat = [PFObject objectWithClassName:@"chat"];
     new_chat[@"content"] = content;
     new_chat[@"conversation"] = conversation;
     new_chat[@"from"] = [PFUser currentUser];
     new_chat[@"to"] = otherguy;
     [new_chat saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@"new chat uploaded successfully");
+        if (succeeded)
+        {
+            NSLog(@"new chat uploaded successfully");
+        }
+        else
+        {
+            NSLog(@"error:%@",error);
+        }
+        
         [self get_chat_info];
     }];
     
     self.chat_input_box.text = @"";
     self.chat_input_box.placeholder = @"Type message here..";
+    
+    conversation[@"last_time"] = [NSDate date];
+    conversation[@"last_msg"] = content;
+    [conversation saveInBackgroundWithBlock:^(BOOL succeededa, NSError *errora) {
+        if (succeededa)
+        {
+            NSLog(@"new chat changed conversation successfully");
+        }
+        else
+        {
+            NSLog(@"error:%@",errora);
+        }
+
+    }];
     
 }
 

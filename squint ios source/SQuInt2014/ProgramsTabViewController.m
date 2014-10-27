@@ -29,27 +29,28 @@ NSString *detail_objid;
 @synthesize session_and_talk;
 @synthesize abstract_array;
 @synthesize pullrefreshtalk;
+@synthesize talk_only;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    
     //initialize elements
     self.session_array = [[NSMutableArray alloc] init];
     self.poster_array = [[NSMutableArray alloc] init];
     self.abstract_array = [[NSMutableArray alloc] init];
     self.session_and_talk = [[NSMutableDictionary alloc] init];
-    
+    self.talk_only = [[NSMutableArray alloc] init];
     self.talktable.tableFooterView = [[UIView alloc] init];
     self.postertable.tableFooterView = [[UIView alloc] init];
     self.abstracttable.tableFooterView = [[UIView alloc] init];
     
     //Pull To Refresh Controls
-    self.pullrefreshtalk = [[UIRefreshControl alloc] init];
-    [pullrefreshtalk addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
-    [self.talktable addSubview:pullrefreshtalk];
+    //self.pullrefreshtalk = [[UIRefreshControl alloc] init];
+    //[pullrefreshtalk addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    //[self.talktable addSubview:pullrefreshtalk];
 
+    //styling
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.bottom_view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.talkview.backgroundColor = [UIColor clearColor];
@@ -58,7 +59,6 @@ NSString *detail_objid;
     self.talktable.backgroundColor = [UIColor clearColor];
     self.postertable.backgroundColor = [UIColor clearColor];
     self.abstracttable.backgroundColor = [UIColor clearColor];
-    
     
     [self get_session_and_talk_data];
     [self get_poster_data];
@@ -84,6 +84,8 @@ NSString *detail_objid;
     }
 }
 
+
+
 - (void) viewDidLayoutSubviews
 {
     if ([self.talktable respondsToSelector:@selector(layoutMargins)]) {
@@ -94,6 +96,7 @@ NSString *detail_objid;
 }
 
 //called when pulling downward on the tableview
+/*
 - (void)refreshctrl:(id)sender
 {
     //refresh code here
@@ -106,6 +109,7 @@ NSString *detail_objid;
     // End Refreshing
     [(UIRefreshControl *)sender endRefreshing];
 }
+*/
 
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
@@ -201,14 +205,13 @@ NSString *detail_objid;
     NSLog(@"User dismissed the signUpViewController");
 }
 
-
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (tableView.tag==1)
     {
-        return self.session_array.count;
-        NSLog(@"talk_session count: %lu", (unsigned long)self.session_array.count);
+        //return self.session_array.count;
+        //NSLog(@"talk_session count: %lu", (unsigned long)self.session_array.count);
+        return 1;
     }
     else if (tableView.tag==2)
     {
@@ -225,10 +228,11 @@ NSString *detail_objid;
 {
     if (tableView.tag==1)
     {
-        PFObject *session_obj = [self.session_array objectAtIndex:section];
-        NSMutableArray *talk_temparray = [self.session_and_talk objectForKey:session_obj.objectId];
-        return [talk_temparray count];
-        NSLog(@"talk count: %lu", [talk_temparray count]);
+        //PFObject *session_obj = [self.session_array objectAtIndex:section];
+        //NSMutableArray *talk_temparray = [self.session_and_talk objectForKey:session_obj.objectId];
+        //return [talk_temparray count];
+        //NSLog(@"talk count: %lu", [talk_temparray count]);
+        return self.talk_only.count;
     }
     else if (tableView.tag==2)
     {
@@ -246,9 +250,10 @@ NSString *detail_objid;
     {
         //init cell and object
         TalkCellTableViewCell *talkcell = [tableView dequeueReusableCellWithIdentifier:@"talkcell"];
-        PFObject *session = [self.session_array objectAtIndex:indexPath.section];
-        NSMutableArray *talks = [self.session_and_talk objectForKey:session.objectId];
-        PFObject *talk = [talks objectAtIndex:indexPath.row];
+        //PFObject *session = [self.session_array objectAtIndex:indexPath.section];
+        //NSMutableArray *talks = [self.session_and_talk objectForKey:session.objectId];
+        //PFObject *talk = [talks objectAtIndex:indexPath.row];
+        PFObject *talk = [self.talk_only objectAtIndex:indexPath.row];
         PFObject *author = talk[@"author"];
         PFObject *location = talk[@"location"];
         
@@ -353,7 +358,7 @@ NSString *detail_objid;
     
     if (self.programseg.selectedSegmentIndex==0)
     {
-        [self.talktable reloadData];
+        //[self.talktable reloadData];
         [UIView animateWithDuration:0.5 animations:^{
             self.talkview.frame= CGRectMake(0, self.talkview.frame.origin.y, self.talkview.frame.size.width, self.talkview.frame.size.height);
             self.posterview.frame= CGRectMake(320, self.posterview.frame.origin.y, self.posterview.frame.size.width, self.posterview.frame.size.height);
@@ -363,7 +368,7 @@ NSString *detail_objid;
     }
     else if (self.programseg.selectedSegmentIndex==1)
     {
-        [self.postertable reloadData];
+        //[self.postertable reloadData];
         [UIView animateWithDuration:0.5 animations:^{
             self.talkview.frame= CGRectMake(-320, self.talkview.frame.origin.y, self.talkview.frame.size.width, self.talkview.frame.size.height);
             self.posterview.frame= CGRectMake(0, self.posterview.frame.origin.y, self.posterview.frame.size.width, self.posterview.frame.size.height);
@@ -373,7 +378,7 @@ NSString *detail_objid;
     }
     else if (self.programseg.selectedSegmentIndex==2)
     {
-        [self.abstracttable reloadData];
+        //[self.abstracttable reloadData];
         [UIView animateWithDuration:0.5 animations:^{
             self.talkview.frame= CGRectMake(-320, self.talkview.frame.origin.y, self.talkview.frame.size.width, self.talkview.frame.size.height);
             self.posterview.frame= CGRectMake(-320, self.posterview.frame.origin.y, self.posterview.frame.size.width, self.posterview.frame.size.height);
@@ -385,6 +390,7 @@ NSString *detail_objid;
 
 - (void) get_session_and_talk_data
 {
+    /*
     PFQuery *sessionquery = [PFQuery queryWithClassName:@"session"];
     [sessionquery orderByDescending:@"start_time"];
     [sessionquery includeKey:@"location"];
@@ -403,6 +409,17 @@ NSString *detail_objid;
                 [self.session_and_talk setObject:[objectss mutableCopy] forKey:session_pfobj.objectId];
             }];
         }
+    }];
+    */
+    
+    PFQuery *talk_subquery = [PFQuery queryWithClassName:@"talk"];
+    [talk_subquery includeKey:@"location"];
+    [talk_subquery includeKey:@"abstract"];
+    [talk_subquery includeKey:@"author"];
+    [talk_subquery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"talk query success with count: %lu", (unsigned long)[objects count]);
+        self.talk_only = [objects mutableCopy];
+        [self.talktable reloadData];
     }];
 }
 

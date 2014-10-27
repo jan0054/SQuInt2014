@@ -17,4 +17,7 @@
 @property NSMutableArray *conversation_array;
 @property NSMutableArray *talked_to_array;
 @property NSMutableArray *talked_from_array;
+
+@property UIRefreshControl *pullrefresh;
+
 @end

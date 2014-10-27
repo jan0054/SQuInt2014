@@ -25,6 +25,7 @@ PFUser *chosen_guy;
 @synthesize conversation_array;
 @synthesize talked_to_array;
 @synthesize talked_from_array;
+@synthesize pullrefresh;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +35,11 @@ PFUser *chosen_guy;
     self.conversation_array = [[NSMutableArray alloc] init];
     self.talked_to_array = [[NSMutableArray alloc] init];
     self.talked_from_array = [[NSMutableArray alloc] init];
+    
+    //Pull To Refresh Controls
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.conversation_list_table addSubview:pullrefresh];
     
 }
 
@@ -50,6 +56,15 @@ PFUser *chosen_guy;
     }
 }
 
+//called when pulling downward on the tableview
+- (void)refreshctrl:(id)sender
+{
+    //refresh code here
+    [self get_conversations];
+    // End Refreshing
+    [(UIRefreshControl *)sender endRefreshing];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -57,6 +72,7 @@ PFUser *chosen_guy;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"TABLE COUNT: %lu", [self.conversation_array count]);
     return self.conversation_array.count;
 }
 
@@ -129,6 +145,8 @@ PFUser *chosen_guy;
 
 - (void) get_conversations
 {
+    [self.conversation_array removeAllObjects];
+    
     PFUser *currentuser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"conversation"];
     [query orderByDescending:@"createdAt"];
@@ -136,27 +154,29 @@ PFUser *chosen_guy;
     [query includeKey:@"user_b"];
     [query whereKey:@"user_a" equalTo:currentuser];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"conversation query success");
+        NSLog(@"conversation query success with count: %lu", (unsigned long)[objects count]);
         for (PFObject *object in objects)
         {
             [self.conversation_array addObject:object];
             //[self.talked_from_array addObject:object];
         }
         [self.conversation_list_table reloadData];
+        NSLog(@"TABLE RELOADED");
     }];
     PFQuery *query_two = [PFQuery queryWithClassName:@"conversation"];
     [query_two orderByDescending:@"createdAt"];
     [query_two includeKey:@"user_a"];
     [query_two includeKey:@"user_b"];
     [query_two whereKey:@"user_b" equalTo:currentuser];
-    [query_two findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"conversation query two success");
-        for (PFObject *object in objects)
+    [query_two findObjectsInBackgroundWithBlock:^(NSArray *objectss, NSError *error) {
+        NSLog(@"conversation query two success with count: %lu", (unsigned long)[objectss count]);
+        for (PFObject *object in objectss)
         {
             [self.conversation_array addObject:object];
             //[self.talked_to_array addObject:object];
         }
         [self.conversation_list_table reloadData];
+        NSLog(@"TABLE RELOADED");
     }];
 
 

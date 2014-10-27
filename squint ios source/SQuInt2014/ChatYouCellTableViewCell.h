@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ChatYouCellTableViewCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UIView *chat_cell_background_view;
+
 @property (strong, nonatomic) IBOutlet UILabel *chat_person_label;
 @property (strong, nonatomic) IBOutlet UILabel *chat_time_label;
 @property (strong, nonatomic) IBOutlet UILabel *chat_content_label;
-@property (strong, nonatomic) IBOutlet UIView *chat_content_background_view;
 
 @end

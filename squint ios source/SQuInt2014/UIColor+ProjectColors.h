@@ -25,4 +25,5 @@
 + (UIColor*) nu_shade_blue;
 + (UIColor*) nu_deep_blue;
 + (UIColor*) nu_bright_blue;
++ (UIColor*) main_green;
 @end

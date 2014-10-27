@@ -504,11 +504,12 @@ NSString *detail_objid;
 - (IBAction)talk_detail_tap:(UIButton *)sender {
     TalkCellTableViewCell *cell = (TalkCellTableViewCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.talktable indexPathForCell:cell];
-    NSLog(@"poster_detail_tap: %ld, %ld", (long)tapped_path.section, (long)tapped_path.row);
+    //NSLog(@"poster_detail_tap: %ld, %ld", (long)tapped_path.section, (long)tapped_path.row);
     
-    PFObject *session = [self.session_array objectAtIndex:tapped_path.section];
-    NSMutableArray *talks = [self.session_and_talk objectForKey:session.objectId];
-    PFObject *talk = [talks objectAtIndex:tapped_path.row];
+    //PFObject *session = [self.session_array objectAtIndex:tapped_path.section];
+    //NSMutableArray *talks = [self.session_and_talk objectForKey:session.objectId];
+    //PFObject *talk = [talks objectAtIndex:tapped_path.row];
+    PFObject *talk = [self.talk_only objectAtIndex:tapped_path.row];
     detail_objid = talk.objectId;
     detail_type = 0;
     

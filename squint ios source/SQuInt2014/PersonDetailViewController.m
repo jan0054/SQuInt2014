@@ -29,6 +29,8 @@ BOOL chat_enabled;
 NSString *chosen_event_id;
 int is_new_conv;
 NSString *conv_objid;
+int is_self;
+NSString *ab_self;
 
 @implementation PersonDetailViewController
 @synthesize person_objid;
@@ -112,6 +114,7 @@ NSString *conv_objid;
 
 - (void) get_person_data
 {
+    PFUser *cur_user = [PFUser currentUser];
     PFQuery *personquery = [PFQuery queryWithClassName:@"person"];
     [personquery includeKey:@"user"];
     [personquery getObjectInBackgroundWithId:self.person_objid block:^(PFObject *object, NSError *error) {
@@ -160,8 +163,17 @@ NSString *conv_objid;
         }
         else
         {
-            chat_enabled = YES;
             the_user = the_person[@"user"];
+            if ([the_user.objectId isEqualToString:cur_user.objectId])
+            {
+                chat_enabled= NO;
+                is_self = 1;
+            }
+            else
+            {
+                chat_enabled = YES;
+            }
+            
         }
     }];
 }
@@ -332,6 +344,7 @@ NSString *conv_objid;
             controller.other_guy_objid = the_user.objectId;
             controller.other_guy_name = the_user[@"username"];
             controller.otherguy = the_user;
+            controller.ab_self = ab_self;
 
         }
         else if (is_new_conv==1)
@@ -341,6 +354,7 @@ NSString *conv_objid;
             controller.other_guy_objid = the_user.objectId;
             controller.other_guy_name = the_user[@"username"];
             controller.otherguy = the_user;
+            controller.ab_self = ab_self;
         }
     }
 }
@@ -356,12 +370,26 @@ NSString *conv_objid;
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                        message:@"This person is not signed in or has turned off chat"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Done"
-                                              otherButtonTitles:nil];
-        [alert show];
+        if (is_self==1)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                            message:@"Cannot message self"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Done"
+                                                  otherButtonTitles:nil];
+            [alert show];
+
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                            message:@"This person is not signed in or has turned off chat"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Done"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        
     }
 
 }
@@ -379,6 +407,7 @@ NSString *conv_objid;
             is_new_conv=0;
             PFObject *the_conv = [objects objectAtIndex:0];
             conv_objid = the_conv.objectId;
+            ab_self = @"a";
             [self performSegueWithIdentifier:@"personchatsegue" sender:self];
         }
         else if ([objects count]==0)
@@ -393,6 +422,7 @@ NSString *conv_objid;
                     is_new_conv=0;
                     PFObject *the_conv = [objects_b objectAtIndex:0];
                     conv_objid = the_conv.objectId;
+                    ab_self = @"b";
                     [self performSegueWithIdentifier:@"personchatsegue" sender:self];
 
                 }
@@ -405,6 +435,8 @@ NSString *conv_objid;
                     new_conv[@"user_b"] = the_user;
                     new_conv[@"last_msg"] = @"no messages yet";
                     new_conv[@"last_time"] = [NSDate date];
+                    new_conv[@"user_a_unread"] = @0;
+                    new_conv[@"user_b_unread"] = @0;
                     [new_conv saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         NSLog(@"new conversation successfully created");
                         /*
@@ -417,6 +449,7 @@ NSString *conv_objid;
                         }];
                         */
                         conv_objid = new_conv.objectId;
+                        ab_self = @"a";
                         [self performSegueWithIdentifier:@"personchatsegue" sender:self];
                     }];
                 }

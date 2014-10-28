@@ -25,6 +25,7 @@ PFObject *conversation;
 @synthesize chat_table_array;
 @synthesize otherguy;
 @synthesize pullrefresh;
+@synthesize ab_self;
 
 - (void)viewDidLoad
 {
@@ -45,8 +46,9 @@ PFObject *conversation;
     self.chat_table.estimatedRowHeight = 69;
     self.chat_table.rowHeight = UITableViewAutomaticDimension;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushreload:) name:@"gotchatinapp" object:nil];
+    
 }
-
 
 
 //called when pulling downward on the tableview
@@ -93,7 +95,7 @@ PFObject *conversation;
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-
+    
     [self get_chat_info];
 }
 
@@ -104,7 +106,7 @@ PFObject *conversation;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"chat table count: %ld",[self.chat_table_array count]);
+    NSLog(@"chat table count: %ld",(unsigned long)[self.chat_table_array count]);
     return [self.chat_table_array count];
 }
 
@@ -155,6 +157,11 @@ PFObject *conversation;
     [self.chat_input_box resignFirstResponder];
 }
 
+- (void) pushreload: (id) sender
+{
+    [self get_chat_info];
+}
+
 - (void) get_chat_info
 {
     self.chat_table_array = [[NSMutableArray alloc] init];
@@ -173,7 +180,7 @@ PFObject *conversation;
     [query orderByAscending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
-        NSLog(@"chat query success with # of chat elements: %ld", [objects count]);
+        NSLog(@"chat query success with # of chat elements: %ld", (unsigned long)[objects count]);
         
         //loop for each chat element
         for (PFObject *chat_obj in objects)
@@ -210,6 +217,17 @@ PFObject *conversation;
         
         [self.chat_table reloadData];
         
+        //clear unread count
+        if ([ab_self isEqualToString:@"a"])
+        {
+            conversation[@"user_a_unread"] = @0;
+        }
+        else if ([ab_self isEqualToString:@"b"])
+        {
+            conversation[@"user_b_unread"] = @0;
+        }
+        [conversation saveInBackground];
+
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.chat_table_array count] - 1) inSection:0];
         [self.chat_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 
@@ -232,6 +250,24 @@ PFObject *conversation;
         if (succeeded)
         {
             NSLog(@"new chat uploaded successfully");
+            
+            //now send the push notification
+            NSString *pushstr = [NSString stringWithFormat:@"%@: %@",otherguy.username,content];
+            NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  pushstr, @"alert",
+                                  @"Increment", @"badge",
+                                  @"default", @"sound",
+                                  nil];
+            // Create our Installation query
+            PFQuery *pushQuery = [PFInstallation query];
+            [pushQuery whereKey:@"user" equalTo:otherguy];
+            
+            // Send push notification to query
+            PFPush *push = [[PFPush alloc] init];
+            [push setQuery:pushQuery]; // Set our Installation query
+            //[push setMessage:pushstr];
+            [push setData:data];
+            [push sendPushInBackground];
         }
         else
         {
@@ -246,6 +282,15 @@ PFObject *conversation;
     
     conversation[@"last_time"] = [NSDate date];
     conversation[@"last_msg"] = content;
+    if ([ab_self isEqualToString:@"a"])
+    {
+        [conversation incrementKey:@"user_b_unread"];
+    }
+    else if ([ab_self isEqualToString:@"b"])
+    {
+        [conversation incrementKey:@"user_a_unread"];
+    }
+    [conversation saveInBackground];
     [conversation saveInBackgroundWithBlock:^(BOOL succeededa, NSError *errora) {
         if (succeededa)
         {

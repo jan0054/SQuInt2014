@@ -20,6 +20,7 @@ NSString *chosen_conv_id;
 NSString *chosen_conv_other_guy_id;
 NSString *chosen_conv_other_guy_name;
 PFUser *chosen_guy;
+NSString *ab_self;
 
 @implementation ConversationListViewController
 @synthesize conversation_array;
@@ -72,7 +73,7 @@ PFUser *chosen_guy;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"TABLE COUNT: %lu", [self.conversation_array count]);
+    NSLog(@"TABLE COUNT: %lu", (unsigned long)[self.conversation_array count]);
     return self.conversation_array.count;
 }
 
@@ -121,12 +122,14 @@ PFUser *chosen_guy;
         chosen_conv_other_guy_id = user_b.objectId;
         chosen_conv_other_guy_name = user_b[@"username"];
         chosen_guy = user_b;
+        ab_self = @"a";
     }
     else if ([user_b.objectId isEqualToString:cur_user.objectId])
     {
         chosen_conv_other_guy_id = user_a.objectId;
         chosen_conv_other_guy_name = user_a[@"username"];
         chosen_guy = user_a;
+        ab_self = @"b";
     }
     
     [self performSegueWithIdentifier:@"chatsegue" sender:self];
@@ -140,7 +143,7 @@ PFUser *chosen_guy;
     destination.other_guy_objid = chosen_conv_other_guy_id;
     destination.other_guy_name = chosen_conv_other_guy_name;
     destination.otherguy = chosen_guy;
-    
+    destination.ab_self = ab_self;
 }
 
 - (void) get_conversations

@@ -24,5 +24,6 @@
 @property NSMutableArray *chat_array;
 @property NSMutableArray *chat_table_array;
 @property UIRefreshControl *pullrefresh;
+@property NSString *ab_self;
 
 @end

@@ -15,6 +15,7 @@
 #import "UIColor+ProjectColors.h"
 #import "EventDetailViewController.h"
 #import "AbstractPdfViewController.h"
+#import "AppDelegate.h"
 
 @interface ProgramsTabViewController ()
 
@@ -22,6 +23,7 @@
 
 int detail_type; //talk=0, poster=1, abstract=2
 NSString *detail_objid;
+int unread_total;
 
 @implementation ProgramsTabViewController
 @synthesize session_array;
@@ -82,9 +84,14 @@ NSString *detail_objid;
         [self presentViewController:logInViewController animated:YES completion:NULL];
         
     }
+    
 }
 
-
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    [self check_unread_count];
+}
 
 - (void) viewDidLayoutSubviews
 {
@@ -514,6 +521,65 @@ NSString *detail_objid;
     detail_type = 0;
     
     [self performSegueWithIdentifier:@"programeventsegue" sender:self];
+}
+
+- (void) check_unread_count
+{
+    unread_total = 0;
+    if ([PFUser currentUser])
+    {
+        PFUser *currentuser = [PFUser currentUser];
+
+        PFQuery *query = [PFQuery queryWithClassName:@"conversation"];
+        [query orderByDescending:@"createdAt"];
+        [query includeKey:@"user_a"];
+        [query includeKey:@"user_b"];
+        [query includeKey:@"user_a_unread"];
+        [query includeKey:@"user_b_unread"];
+        [query whereKey:@"user_a" equalTo:currentuser];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            NSLog(@"conversation query one success with count: %lu", (unsigned long)[objects count]);
+            for (PFObject *object in objects)
+            {
+                NSNumber *unreadanum = object[@"user_a_unread"];
+                unread_total += [unreadanum intValue];
+                UITabBarItem *tbItem = (UITabBarItem *)[[self tabBarController].tabBar.items objectAtIndex:1];
+                if (unread_total>0) {
+                    tbItem.badgeValue = [NSString stringWithFormat:@"%i", unread_total];
+                }
+                else
+                {
+                    tbItem.badgeValue = nil;
+                }
+                
+            }
+        }];
+        
+        PFQuery *query_two = [PFQuery queryWithClassName:@"conversation"];
+        [query_two orderByDescending:@"createdAt"];
+        [query_two includeKey:@"user_a"];
+        [query_two includeKey:@"user_b"];
+        [query_two whereKey:@"user_b" equalTo:currentuser];
+        [query_two findObjectsInBackgroundWithBlock:^(NSArray *objectss, NSError *error) {
+            NSLog(@"conversation query two success with count: %lu", (unsigned long)[objectss count]);
+            for (PFObject *object in objectss)
+            {
+                NSNumber *unreadanum = object[@"user_b_unread"];
+                unread_total += [unreadanum intValue];
+                UITabBarItem *tbItem = (UITabBarItem *)[[self tabBarController].tabBar.items objectAtIndex:1];
+                if (unread_total>0) {
+                    tbItem.badgeValue = [NSString stringWithFormat:@"%i", unread_total];
+                }
+                else
+                {
+                    tbItem.badgeValue = nil;
+                }
+            }
+        }];
+        
+        
+    }
+    
 }
 
 

@@ -16,10 +16,25 @@
 {
     [Parse setApplicationId:@"PLlbyPCGMrfHvghx1sllgLmNRIwz00l7PHYZdAvd"
                   clientKey:@"9LIHOaADcFXDINWNOvCO5Rr9XYKd1jV2A3aB70Ca"];
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
-     UIRemoteNotificationTypeAlert|
-     UIRemoteNotificationTypeSound];
+    //[PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    // Register for Push Notitications, if running iOS 8
+     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+         UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                         UIUserNotificationTypeBadge |
+                                                         UIUserNotificationTypeSound);
+         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                                  categories:nil];
+         [application registerUserNotificationSettings:settings];
+         [application registerForRemoteNotifications];
+         NSLog(@"IOS8 PUSH");
+     } else {
+         // Register for Push Notifications before iOS 8
+         [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                          UIRemoteNotificationTypeAlert |
+                                                          UIRemoteNotificationTypeSound)];
+         NSLog(@"IOS<=7 PUSH");
+     }
     
     // This sets the background color of the navigation
     [[UINavigationBar appearance] setBarTintColor:[UIColor main_blue]];
@@ -40,23 +55,26 @@
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
     
     
-    
     return YES;
 }
 
-- (void)application:(UIApplication *)application
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    currentInstallation.channels = @[@"global"];
+    currentInstallation.channels = @[ @"global" ];
     [currentInstallation saveInBackground];
+    NSLog(@"REG PUSH CALLBACK");
+}
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"REMOTE REG ERROR:%@", error);
 }
 
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
+    //[PFPush handlePush:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotchatinapp" object:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -79,6 +97,11 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if (currentInstallation.badge != 0) {
+        currentInstallation.badge = 0;
+        [currentInstallation saveEventually];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

@@ -66,6 +66,7 @@
     [currentInstallation saveInBackground];
     NSLog(@"REG PUSH CALLBACK");
 }
+
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     NSLog(@"REMOTE REG ERROR:%@", error);

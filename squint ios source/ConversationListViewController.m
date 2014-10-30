@@ -93,10 +93,26 @@ NSString *ab_self;
     if ([user_a.objectId isEqualToString:currentuser.objectId])
     {
         conversationcell.conversation_name_label.text = user_b[@"username"];
+        
+        //since user is a, check unread msgs for a
+        NSNumber *uansnum = conv[@"user_a_unread"];
+        int uaint = [uansnum intValue];
+        if (uaint==0)
+        {
+            conversationcell.conversation_new_image.hidden=YES;
+        }
     }
     else if ([user_b.objectId isEqualToString:currentuser.objectId])
     {
         conversationcell.conversation_name_label.text = user_a[@"username"];
+        
+        //since user is b, check unread msgs for b
+        NSNumber *ubnsnum = conv[@"user_b_unread"];
+        int ubint = [ubnsnum intValue];
+        if (ubint==0)
+        {
+            conversationcell.conversation_new_image.hidden=YES;
+        }
     }
     conversationcell.conversation_msg_label.text = conv[@"last_msg"];
     

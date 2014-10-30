@@ -18,5 +18,9 @@
 - (IBAction)person_detail_button_tap:(UIButton *)sender;
 @property int from_event;
 @property NSString *event_author_id;
+@property (strong, nonatomic) IBOutlet UIButton *chat_float;
+- (IBAction)chat_float_tap:(UIButton *)sender;
+
+- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
 
 @end

@@ -291,6 +291,7 @@ int unread_total;
         talkcell.talk_location_label.textColor = [UIColor light_blue];
         talkcell.talk_time_label.textColor = [UIColor light_blue];
         talkcell.talk_card_view.layer.cornerRadius = 5;
+        talkcell.talk_author_label.textColor = [UIColor light_blue];
         
         return talkcell;
     }
@@ -323,6 +324,7 @@ int unread_total;
         postercell.poster_trim_view.backgroundColor = [UIColor light_blue];
         postercell.poster_location_label.textColor = [UIColor light_blue];
         postercell.poster_card_view.layer.cornerRadius = 5;
+        postercell.poster_author_label.textColor = [UIColor light_blue];
         
         return postercell;
     }
@@ -545,11 +547,11 @@ int unread_total;
                 unread_total += [unreadanum intValue];
                 UITabBarItem *tbItem = (UITabBarItem *)[[self tabBarController].tabBar.items objectAtIndex:1];
                 if (unread_total>0) {
-                    tbItem.badgeValue = [NSString stringWithFormat:@"%i", unread_total];
+                    //tbItem.badgeValue = [NSString stringWithFormat:@"%i", unread_total];
                 }
                 else
                 {
-                    tbItem.badgeValue = nil;
+                    //tbItem.badgeValue = nil;
                 }
                 
             }
@@ -568,11 +570,11 @@ int unread_total;
                 unread_total += [unreadanum intValue];
                 UITabBarItem *tbItem = (UITabBarItem *)[[self tabBarController].tabBar.items objectAtIndex:1];
                 if (unread_total>0) {
-                    tbItem.badgeValue = [NSString stringWithFormat:@"%i", unread_total];
+                    //tbItem.badgeValue = [NSString stringWithFormat:@"%i", unread_total];
                 }
                 else
                 {
-                    tbItem.badgeValue = nil;
+                    //tbItem.badgeValue = nil;
                 }
             }
         }];

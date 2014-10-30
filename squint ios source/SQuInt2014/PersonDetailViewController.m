@@ -168,6 +168,10 @@ NSString *ab_self;
             {
                 chat_enabled= NO;
                 is_self = 1;
+                self.person_chat_button.titleLabel.textColor = [UIColor lightGrayColor];
+                [self.person_chat_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+                [self.person_chat_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
+                [self.person_chat_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
             }
             else
             {

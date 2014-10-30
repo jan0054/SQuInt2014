@@ -25,5 +25,8 @@
 @property NSMutableArray *chat_table_array;
 @property UIRefreshControl *pullrefresh;
 @property NSString *ab_self;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *textfieldbottom;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *sendmessagebottom;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tablebottom;
 
 @end

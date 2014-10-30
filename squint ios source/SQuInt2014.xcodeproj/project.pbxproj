@@ -27,6 +27,9 @@
 		B4163D7619FFB60F0064B68E /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = B4163D6C19FFB60F0064B68E /* Icon-Small.png */; };
 		B4163D7719FFB60F0064B68E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4163D6D19FFB60F0064B68E /* Icon-Small@2x.png */; };
 		B4163D7819FFB60F0064B68E /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4163D6E19FFB60F0064B68E /* Icon-Small@3x.png */; };
+		B4163D7A1A023E290064B68E /* chatfloat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4163D791A023E290064B68E /* chatfloat@2x.png */; };
+		B4163D7D1A023FA70064B68E /* chatfloat_grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4163D7B1A023FA70064B68E /* chatfloat_grey@2x.png */; };
+		B4163D7E1A023FA70064B68E /* chatfloat_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4163D7C1A023FA70064B68E /* chatfloat_orange@2x.png */; };
 		B43D265E18FFC9980072B753 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D265D18FFC9980072B753 /* Foundation.framework */; };
 		B43D266018FFC9980072B753 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D265F18FFC9980072B753 /* CoreGraphics.framework */; };
 		B43D266218FFC9980072B753 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D266118FFC9980072B753 /* UIKit.framework */; };
@@ -131,6 +134,9 @@
 		B4163D6C19FFB60F0064B68E /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
 		B4163D6D19FFB60F0064B68E /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		B4163D6E19FFB60F0064B68E /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
+		B4163D791A023E290064B68E /* chatfloat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatfloat@2x.png"; sourceTree = "<group>"; };
+		B4163D7B1A023FA70064B68E /* chatfloat_grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatfloat_grey@2x.png"; sourceTree = "<group>"; };
+		B4163D7C1A023FA70064B68E /* chatfloat_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatfloat_orange@2x.png"; sourceTree = "<group>"; };
 		B43D265A18FFC9980072B753 /* SQuInt2014.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SQuInt2014.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43D265D18FFC9980072B753 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B43D265F18FFC9980072B753 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -381,6 +387,9 @@
 		B43D269618FFD03A0072B753 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B4163D7B1A023FA70064B68E /* chatfloat_grey@2x.png */,
+				B4163D7C1A023FA70064B68E /* chatfloat_orange@2x.png */,
+				B4163D791A023E290064B68E /* chatfloat@2x.png */,
 				B4163D6519FFB60F0064B68E /* Icon-40.png */,
 				B4163D6619FFB60F0064B68E /* Icon-40@2x.png */,
 				B4163D6719FFB60F0064B68E /* Icon-40@3x.png */,
@@ -583,14 +592,17 @@
 				B4163D7619FFB60F0064B68E /* Icon-Small.png in Resources */,
 				B4163D5F19FFB5FD0064B68E /* Icon-Small-50.png in Resources */,
 				B4632EE419D4047200A9B743 /* poi_placeholder@2x.png in Resources */,
+				B4163D7E1A023FA70064B68E /* chatfloat_orange@2x.png in Resources */,
 				B4163D7019FFB60F0064B68E /* Icon-40@2x.png in Resources */,
 				B4F74E6219B5A1FD00F3A565 /* settings@2x.png in Resources */,
 				B4163D7719FFB60F0064B68E /* Icon-Small@2x.png in Resources */,
 				B4163D7819FFB60F0064B68E /* Icon-Small@3x.png in Resources */,
 				B4163D6219FFB5FD0064B68E /* Icon@2x.png in Resources */,
 				B4BC89DE19D0AC2B00F1A9AD /* cancelwhite@2x.png in Resources */,
+				B4163D7D1A023FA70064B68E /* chatfloat_grey@2x.png in Resources */,
 				B499BD1519051DDA00C99CFE /* profile_pic@2x.png in Resources */,
 				B4163D7119FFB60F0064B68E /* Icon-40@3x.png in Resources */,
+				B4163D7A1A023E290064B68E /* chatfloat@2x.png in Resources */,
 				B4CD802219E3DAC9009B416F /* action_web_yellow.png in Resources */,
 				B43D26D2190130020072B753 /* positions@2x.png in Resources */,
 				B4163D6419FFB5FD0064B68E /* iTunesArtwork@2x.png in Resources */,

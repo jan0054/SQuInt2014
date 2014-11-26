@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="false" android:drawable="@drawable/preference_toggle_bg_off" />
+    <item android:state_checked="true" android:drawable="@drawable/preference_toggle_bg_on" />
+</selector>
+
+<!-- From: file:/Users/csjan/Desktop/first_party_projects/squint/SQuInt2014/squint%20android%20source/studio_r01/app/src/main/res/drawable/btn_toggle_background.xml -->

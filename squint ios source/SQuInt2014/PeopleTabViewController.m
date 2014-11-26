@@ -52,6 +52,19 @@ int unread_two;
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
+    
+    //check login status to determine chat button display
+    if (![PFUser currentUser])
+    {
+        self.chat_float.hidden=YES;
+        self.chat_float.userInteractionEnabled=NO;
+    }
+    else
+    {
+        self.chat_float.hidden=NO;
+        self.chat_float.userInteractionEnabled=YES;
+    }
+    
     if (from_event==1)
     {
         [self chose_person_with_id:event_author_id];

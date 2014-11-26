@@ -62,6 +62,8 @@ int unread_total;
     self.postertable.backgroundColor = [UIColor clearColor];
     self.abstracttable.backgroundColor = [UIColor clearColor];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self get_session_and_talk_data];
     [self get_poster_data];
     [self get_abstract_data];
@@ -89,8 +91,11 @@ int unread_total;
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:YES];
-    [self check_unread_count];
+    [super viewDidAppear:animated];
+    //[self.programseg setSelectedSegmentIndex:0];
+    
+    [self check_selected_seg];
+    //[self check_unread_count];
 }
 
 - (void) viewDidLayoutSubviews
@@ -100,6 +105,7 @@ int unread_total;
         self.postertable.layoutMargins = UIEdgeInsetsZero;
         self.abstracttable.layoutMargins = UIEdgeInsetsZero;
     }
+    [self check_selected_seg];
 }
 
 //called when pulling downward on the tableview
@@ -141,6 +147,11 @@ int unread_total;
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED");
+    
+    //turn on notifications (push)
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:1 forKey:@"notifications"];
+    [defaults synchronize];
     
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -195,6 +206,11 @@ int unread_total;
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED");
+    
+    //turn on notifications (push)
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:1 forKey:@"notifications"];
+    [defaults synchronize];
     
     // Dismiss the PFSignUpViewController
     [self dismissViewControllerAnimated:YES completion:^{
@@ -499,6 +515,7 @@ int unread_total;
     
     [self performSegueWithIdentifier:@"programeventsegue" sender:self];
 }
+
 - (IBAction)abstract_detail_tap:(UIButton *)sender {
     AbstractCellTableViewCell *cell = (AbstractCellTableViewCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.abstracttable indexPathForCell:cell];
@@ -583,6 +600,42 @@ int unread_total;
     }
     
 }
+
+- (void) check_selected_seg
+{
+    int sel_index = self.programseg.selectedSegmentIndex;
+    if (sel_index==0)
+    {
+        //talk seg selected
+        self.talkview.frame= CGRectMake(0, self.talkview.frame.origin.y, self.talkview.frame.size.width, self.talkview.frame.size.height);
+        self.posterview.frame= CGRectMake(320, self.posterview.frame.origin.y, self.posterview.frame.size.width, self.posterview.frame.size.height);
+        self.abstractview.frame= CGRectMake(320, self.abstractview.frame.origin.y, self.abstractview.frame.size.width, self.abstractview.frame.size.height);
+
+
+        NSLog(@"CHECK SEG: TALK");
+    }
+    else if (sel_index==1)
+    {
+        //poster seg selected
+        self.talkview.frame= CGRectMake(-320, self.talkview.frame.origin.y, self.talkview.frame.size.width, self.talkview.frame.size.height);
+        self.posterview.frame= CGRectMake(0, self.posterview.frame.origin.y, self.posterview.frame.size.width, self.posterview.frame.size.height);
+        self.abstractview.frame= CGRectMake(320, self.abstractview.frame.origin.y, self.abstractview.frame.size.width, self.abstractview.frame.size.height);
+
+
+        NSLog(@"CHECK SEG: POSTER");
+    }
+    else if (sel_index==2)
+    {
+        //abstract seg selected
+        self.talkview.frame= CGRectMake(-320, self.talkview.frame.origin.y, self.talkview.frame.size.width, self.talkview.frame.size.height);
+        self.posterview.frame= CGRectMake(-320, self.posterview.frame.origin.y, self.posterview.frame.size.width, self.posterview.frame.size.height);
+        self.abstractview.frame= CGRectMake(0, self.abstractview.frame.origin.y, self.abstractview.frame.size.width, self.abstractview.frame.size.height);
+
+        NSLog(@"CHECK SEG: ABSTRACT");
+        NSLog(@"COORD:%f", self.talkview.frame.origin.x);
+    }
+}
+
 
 
 @end

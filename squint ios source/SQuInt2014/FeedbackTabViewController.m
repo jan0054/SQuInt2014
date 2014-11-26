@@ -41,6 +41,11 @@
 
 -(void) log_out
 {
+    //turn off notifications (push)
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:0 forKey:@"notifications"];
+    [defaults synchronize];
+    
     [PFUser logOut];
 }
 
@@ -90,6 +95,12 @@
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED");
+    
+    //turn on notifications (push)
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:1 forKey:@"notifications"];
+    [defaults synchronize];
+    
     [self.settingstable reloadData];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -146,6 +157,12 @@
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED");
+    
+    //turn on notifications (push)
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:1 forKey:@"notifications"];
+    [defaults synchronize];
+    
     [self.settingstable reloadData];
     // Dismiss the PFSignUpViewController
     [self dismissViewControllerAnimated:YES completion:^{
@@ -173,7 +190,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 5;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -216,6 +233,7 @@
         }
         return logincell;
     }
+    /*
     else if (indexPath.row==1)
     {
         pushcell.push_status_label.text = @"Notifications are OFF";
@@ -233,7 +251,8 @@
         }
         return pushcell;
     }
-    else if (indexPath.row==2)
+    */
+    else if (indexPath.row==1)
     {
         generalsettingcell.general_name_label.text = @"About Us";
         generalsettingcell.general_name_label.textColor = [UIColor whiteColor];
@@ -246,7 +265,7 @@
         generalsettingcell.selectionStyle = UITableViewCellSelectionStyleNone;
         return generalsettingcell;
     }
-    else if (indexPath.row==3)
+    else if (indexPath.row==2)
     {
         generalsettingcell.general_name_label.text = @"Feedback";
         generalsettingcell.general_name_label.textColor = [UIColor whiteColor];
@@ -277,17 +296,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==2)
+    if (indexPath.row==1)
     {
         [self performSegueWithIdentifier:@"aboutsegue" sender:self];
     }
-    else if (indexPath.row ==3)
+    else if (indexPath.row ==2)
     {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
     }
-    else if (indexPath.row==4)
+    else if (indexPath.row==3)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://tapgo.cc/tw/?page_id=1060"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://tapgo.cc/tw/?page_id=1145"]];
     }
 }
 
@@ -306,6 +325,11 @@
 
 
 
+
+
+- (IBAction)notification_switch_action:(UISwitch *)sender {
+    
+}
 
 
 @end

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/csjan/Desktop/first_party_projects/squint/SQuInt2014/squint android source/studio_r01/app/build/intermediates/pre-dexed/debug/support-v4-18.0.0-76053dfbbc48e9013b302bdba2be15a08f291af7.jar"
+        jar="/Users/csjan/Desktop/android-sdk-macosx/extras/android/m2repository/com/android/support/support-v4/18.0.0/support-v4-18.0.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="44ec51e9d395a47aab135e5e1b556c0007442156"/>
+    <item
+        dex="/Users/csjan/Desktop/first_party_projects/squint/SQuInt2014/squint android source/studio_r01/app/build/intermediates/pre-dexed/debug/android-support-v13-7306a166f9880071a7f821cf9bdd664d1e0491cf.jar"
+        jar="/Users/csjan/Desktop/first_party_projects/squint/SQuInt2014/squint android source/studio_r01/app/libs/android-support-v13.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="0c39cec0634e45ef67a1041708cf2d63b1a816b7"/>
+    <item
+        dex="/Users/csjan/Desktop/first_party_projects/squint/SQuInt2014/squint android source/studio_r01/app/build/intermediates/pre-dexed/debug/Parse-1.5.0-75586f391fd9074a4b2ae2ec81db4012ea854fe4.jar"
+        jar="/Users/csjan/Desktop/first_party_projects/squint/SQuInt2014/squint android source/studio_r01/app/libs/Parse-1.5.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="8a675f7e3312d8b28188ec653bbea6d435aaa7d1"/>
+
+</pre-dex-items>

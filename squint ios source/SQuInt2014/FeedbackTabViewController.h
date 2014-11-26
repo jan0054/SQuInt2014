@@ -20,6 +20,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *settingstable;
 - (IBAction)login_button_tap:(UIButton *)sender;
 
+- (IBAction)notification_switch_action:(UISwitch *)sender;
+
 
 
 @end

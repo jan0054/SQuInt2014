@@ -315,7 +315,7 @@ PFObject *conversation;
         }
         else
         {
-            NSLog(@"error:%@",error);
+            NSLog(@"push error:%@",error);
         }
         
         [self get_chat_info];

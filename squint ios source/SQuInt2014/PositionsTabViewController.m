@@ -115,6 +115,11 @@ int unread_total;
     // Pass the selected object to the new view controller.
     PositionDetailViewController *destination = [segue destinationViewController];
     destination.career_objid = tapped_objid;
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Career" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    [backButton setTitleTextAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0] , NSFontAttributeName, nil] forState:UIControlStateNormal];
+    self.navigationItem.backBarButtonItem = backButton;
+    
 }
 
 - (void) check_unread_count

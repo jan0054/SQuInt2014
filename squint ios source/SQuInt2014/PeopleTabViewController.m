@@ -157,6 +157,9 @@ int unread_two;
     {
         PersonDetailViewController *destination = [segue destinationViewController];
         destination.person_objid = tapped_person_objid;
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Attendees" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        [backButton setTitleTextAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0] , NSFontAttributeName, nil] forState:UIControlStateNormal];
+        self.navigationItem.backBarButtonItem = backButton;
     }
 }
 

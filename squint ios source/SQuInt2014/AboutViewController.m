@@ -30,6 +30,14 @@
     self.company_trim_view.backgroundColor = [UIColor light_blue];
     self.company_background_view.layer.cornerRadius = 5;
     
+    //add shadow to views
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.company_background_view.bounds];
+    self.company_background_view.layer.masksToBounds = NO;
+    self.company_background_view.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.company_background_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    self.company_background_view.layer.shadowOpacity = 0.3f;
+    self.company_background_view.layer.shadowPath = shadowPath.CGPath;
+
 }
 
 

@@ -42,6 +42,22 @@ NSString *abstract_id;
     [self.eventdetail_abstract_button setTitleColor: [UIColor nu_bright_orange] forState:UIControlStateNormal];
     [self.eventdetail_abstract_button setTitleColor: [UIColor nu_bright_orange] forState:UIControlStateHighlighted];
     
+    //add shadow to views
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.eventdetail_card_view.bounds];
+    self.eventdetail_card_view.layer.masksToBounds = NO;
+    self.eventdetail_card_view.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.eventdetail_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    self.eventdetail_card_view.layer.shadowOpacity = 0.3f;
+    self.eventdetail_card_view.layer.shadowPath = shadowPath.CGPath;
+    
+    UIBezierPath *shadowPatha = [UIBezierPath bezierPathWithRect:self.eventdetail_description_card_view.bounds];
+    self.eventdetail_description_card_view.layer.masksToBounds = NO;
+    self.eventdetail_description_card_view.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+    self.eventdetail_description_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    self.eventdetail_description_card_view.layer.shadowOpacity = 0.3f;
+    self.eventdetail_description_card_view.layer.shadowPath = shadowPatha.CGPath;
+
+    
     if (self.event_type ==0)
     {
         [self get_talk_data];

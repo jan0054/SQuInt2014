@@ -23,6 +23,7 @@ NSString *postermail;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     
     //styling
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
@@ -32,11 +33,24 @@ NSString *postermail;
     self.note_card_view.backgroundColor = [UIColor main_blue];
     self.career_card_view.layer.cornerRadius = 5;
     self.note_card_view.layer.cornerRadius = 3;
-    //self.contact_poster_button.titleLabel.textColor = [UIColor bright_orange];
     [self.contact_poster_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
     [self.contact_poster_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
-    //self.career_trim_view.layer.cornerRadius = 5;
     
+    //add shadow to views
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.career_card_view.bounds];
+    self.career_card_view.layer.masksToBounds = NO;
+    self.career_card_view.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.career_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    self.career_card_view.layer.shadowOpacity = 0.3f;
+    self.career_card_view.layer.shadowPath = shadowPath.CGPath;
+    
+    UIBezierPath *shadowPatha = [UIBezierPath bezierPathWithRect:self.note_card_view.bounds];
+    self.note_card_view.layer.masksToBounds = NO;
+    self.note_card_view.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+    self.note_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    self.note_card_view.layer.shadowOpacity = 0.3f;
+    self.note_card_view.layer.shadowPath = shadowPatha.CGPath;
+
     [self get_career_data];
 
 }

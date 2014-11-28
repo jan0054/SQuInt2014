@@ -312,8 +312,6 @@ NSString *ab_self;
         chosen_event_id = abstract.objectId;
         [self performSegueWithIdentifier:@"authorabstractsegue" sender:self];
     }
-    
-
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -361,6 +359,11 @@ NSString *ab_self;
             controller.ab_self = ab_self;
         }
     }
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    [backButton setTitleTextAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0] , NSFontAttributeName, nil] forState:UIControlStateNormal];
+    self.navigationItem.backBarButtonItem = backButton;
+
 }
 
 

@@ -1217,7 +1217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XiJ-in-k1H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2190" y="-732"/>
+            <point key="canvasLocation" x="1977" y="-846"/>
         </scene>
         <!--Conversations-->
         <scene sceneID="Bp1-6F-Lwm">
@@ -1330,7 +1330,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1o-Xe-kYz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1o-Xe-kYz">
                                 <rect key="frame" x="279" y="484" width="30" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                 <state key="normal" title="Send">
@@ -1341,7 +1341,7 @@
                                     <action selector="send_chat_button_tap:" destination="gUv-4a-dGt" eventType="touchUpInside" id="yDV-A9-c5N"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vee-X6-z94">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vee-X6-z94">
                                 <rect key="frame" x="0.0" y="66" width="320" height="403"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -1455,7 +1455,7 @@
                                     <outlet property="delegate" destination="gUv-4a-dGt" id="bfP-Am-s4i"/>
                                 </connections>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type message here.." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oYw-Lw-PfQ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type message here.." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oYw-Lw-PfQ">
                                 <rect key="frame" x="16" y="484" width="253" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="253" id="r2X-MU-uYO"/>
@@ -1752,8 +1752,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="HXS-K1-AER"/>
-        <segue reference="wxk-LP-p93"/>
         <segue reference="HQY-eb-HiB"/>
+        <segue reference="HXS-K1-AER"/>
+        <segue reference="fTV-ID-Vr6"/>
     </inferredMetricsTieBreakers>
 </document>

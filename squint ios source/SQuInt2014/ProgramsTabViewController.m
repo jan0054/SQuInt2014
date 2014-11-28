@@ -502,6 +502,11 @@ int unread_total;
         controller.from_author = 0;
         controller.abstract_objid = detail_objid;
     }
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Program" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    [backButton setTitleTextAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0] , NSFontAttributeName, nil] forState:UIControlStateNormal];
+    self.navigationItem.backBarButtonItem = backButton;
+
 }
 
 - (IBAction)poster_detail_tap:(UIButton *)sender {

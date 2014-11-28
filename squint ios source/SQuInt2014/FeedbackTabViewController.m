@@ -180,8 +180,6 @@
     NSLog(@"User dismissed the signUpViewController");
 }
 
-
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -189,7 +187,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     return 4;
 }
 
@@ -323,13 +320,19 @@
     }
 }
 
-
-
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    [backButton setTitleTextAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0] , NSFontAttributeName, nil] forState:UIControlStateNormal];
+    self.navigationItem.backBarButtonItem = backButton;
+    
+}
 
 - (IBAction)notification_switch_action:(UISwitch *)sender {
     
 }
-
 
 @end

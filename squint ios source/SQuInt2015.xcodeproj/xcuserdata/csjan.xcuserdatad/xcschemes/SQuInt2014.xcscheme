@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B43D265918FFC9980072B753"
-               BuildableName = "SQuInt2014.app"
-               BlueprintName = "SQuInt2014"
-               ReferencedContainer = "container:SQuInt2014.xcodeproj">
+               BuildableName = "SQuInt2015.app"
+               BlueprintName = "SQuInt2015"
+               ReferencedContainer = "container:SQuInt2015.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B43D267D18FFC9980072B753"
-               BuildableName = "SQuInt2014Tests.xctest"
-               BlueprintName = "SQuInt2014Tests"
-               ReferencedContainer = "container:SQuInt2014.xcodeproj">
+               BuildableName = "SQuInt2015Tests.xctest"
+               BlueprintName = "SQuInt2015Tests"
+               ReferencedContainer = "container:SQuInt2015.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B43D265918FFC9980072B753"
-            BuildableName = "SQuInt2014.app"
-            BlueprintName = "SQuInt2014"
-            ReferencedContainer = "container:SQuInt2014.xcodeproj">
+            BuildableName = "SQuInt2015.app"
+            BlueprintName = "SQuInt2015"
+            ReferencedContainer = "container:SQuInt2015.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B43D265918FFC9980072B753"
-            BuildableName = "SQuInt2014.app"
-            BlueprintName = "SQuInt2014"
-            ReferencedContainer = "container:SQuInt2014.xcodeproj">
+            BuildableName = "SQuInt2015.app"
+            BlueprintName = "SQuInt2015"
+            ReferencedContainer = "container:SQuInt2015.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B43D265918FFC9980072B753"
-            BuildableName = "SQuInt2014.app"
-            BlueprintName = "SQuInt2014"
-            ReferencedContainer = "container:SQuInt2014.xcodeproj">
+            BuildableName = "SQuInt2015.app"
+            BlueprintName = "SQuInt2015"
+            ReferencedContainer = "container:SQuInt2015.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

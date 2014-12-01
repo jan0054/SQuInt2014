@@ -309,6 +309,15 @@ int unread_total;
         talkcell.talk_card_view.layer.cornerRadius = 5;
         talkcell.talk_author_label.textColor = [UIColor light_blue];
         
+        //add shadow to views
+        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:talkcell.talk_card_view.bounds];
+        talkcell.talk_card_view.layer.masksToBounds = NO;
+        talkcell.talk_card_view.layer.shadowColor = [UIColor blackColor].CGColor;
+        talkcell.talk_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+        talkcell.talk_card_view.layer.shadowOpacity = 0.3f;
+        talkcell.talk_card_view.layer.shadowPath = shadowPath.CGPath;
+
+        
         return talkcell;
     }
     else if (tableView.tag==2)
@@ -342,6 +351,14 @@ int unread_total;
         postercell.poster_card_view.layer.cornerRadius = 5;
         postercell.poster_author_label.textColor = [UIColor light_blue];
         
+        //add shadow to views
+        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:postercell.poster_card_view.bounds];
+        postercell.poster_card_view.layer.masksToBounds = NO;
+        postercell.poster_card_view.layer.shadowColor = [UIColor blackColor].CGColor;
+        postercell.poster_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+        postercell.poster_card_view.layer.shadowOpacity = 0.3f;
+        postercell.poster_card_view.layer.shadowPath = shadowPath.CGPath;
+        
         return postercell;
     }
     else
@@ -369,6 +386,14 @@ int unread_total;
         [abstractcell.abstract_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
         abstractcell.abstract_trim_view.backgroundColor = [UIColor light_blue];
         abstractcell.abstract_card_view.layer.cornerRadius = 5;
+        
+        //add shadow to views
+        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:abstractcell.abstract_card_view.bounds];
+        abstractcell.abstract_card_view.layer.masksToBounds = NO;
+        abstractcell.abstract_card_view.layer.shadowColor = [UIColor blackColor].CGColor;
+        abstractcell.abstract_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+        abstractcell.abstract_card_view.layer.shadowOpacity = 0.3f;
+        abstractcell.abstract_card_view.layer.shadowPath = shadowPath.CGPath;
         
         return abstractcell;
     }

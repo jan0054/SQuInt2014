@@ -110,6 +110,15 @@ int unread_two;
     [personcell.person_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
     [personcell.person_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
     
+    //add shadow to views
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:personcell.person_card_view.bounds];
+    personcell.person_card_view.layer.masksToBounds = NO;
+    personcell.person_card_view.layer.shadowColor = [UIColor blackColor].CGColor;
+    personcell.person_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    personcell.person_card_view.layer.shadowOpacity = 0.3f;
+    personcell.person_card_view.layer.shadowPath = shadowPath.CGPath;
+
+    
     return personcell;
 }
 

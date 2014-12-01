@@ -137,21 +137,21 @@
 		B4163D791A023E290064B68E /* chatfloat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatfloat@2x.png"; sourceTree = "<group>"; };
 		B4163D7B1A023FA70064B68E /* chatfloat_grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatfloat_grey@2x.png"; sourceTree = "<group>"; };
 		B4163D7C1A023FA70064B68E /* chatfloat_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatfloat_orange@2x.png"; sourceTree = "<group>"; };
-		B43D265A18FFC9980072B753 /* SQuInt2014.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SQuInt2014.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B43D265A18FFC9980072B753 /* SQuInt2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SQuInt2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43D265D18FFC9980072B753 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B43D265F18FFC9980072B753 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B43D266118FFC9980072B753 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B43D266518FFC9980072B753 /* SQuInt2014-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SQuInt2014-Info.plist"; sourceTree = "<group>"; };
+		B43D266518FFC9980072B753 /* SQuInt2015-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SQuInt2015-Info.plist"; sourceTree = "<group>"; };
 		B43D266718FFC9980072B753 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B43D266918FFC9980072B753 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B43D266B18FFC9980072B753 /* SQuInt2014-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SQuInt2014-Prefix.pch"; sourceTree = "<group>"; };
+		B43D266B18FFC9980072B753 /* SQuInt2015-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SQuInt2015-Prefix.pch"; sourceTree = "<group>"; };
 		B43D266C18FFC9980072B753 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B43D266D18FFC9980072B753 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B43D267018FFC9980072B753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B43D267818FFC9980072B753 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B43D267E18FFC9980072B753 /* SQuInt2014Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SQuInt2014Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B43D267E18FFC9980072B753 /* SQuInt2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SQuInt2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43D267F18FFC9980072B753 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B43D268718FFC9980072B753 /* SQuInt2014Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SQuInt2014Tests-Info.plist"; sourceTree = "<group>"; };
+		B43D268718FFC9980072B753 /* SQuInt2015Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SQuInt2015Tests-Info.plist"; sourceTree = "<group>"; };
 		B43D268918FFC9980072B753 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B43D268B18FFC9980072B753 /* SQuInt2014Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQuInt2014Tests.m; sourceTree = "<group>"; };
 		B43D269818FFD0A40072B753 /* squint_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "squint_logo@2x.png"; sourceTree = "<group>"; };
@@ -275,8 +275,8 @@
 			children = (
 				B43D269718FFD0410072B753 /* Include */,
 				B43D269518FFD02D0072B753 /* Resources */,
-				B43D266318FFC9980072B753 /* SQuInt2014 */,
-				B43D268518FFC9980072B753 /* SQuInt2014Tests */,
+				B43D266318FFC9980072B753 /* SQuInt2015 */,
+				B43D268518FFC9980072B753 /* SQuInt2015Tests */,
 				B43D265C18FFC9980072B753 /* Frameworks */,
 				B43D265B18FFC9980072B753 /* Products */,
 				1E6D221BA96E46BABEB7A66D /* Pods.xcconfig */,
@@ -286,8 +286,8 @@
 		B43D265B18FFC9980072B753 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B43D265A18FFC9980072B753 /* SQuInt2014.app */,
-				B43D267E18FFC9980072B753 /* SQuInt2014Tests.xctest */,
+				B43D265A18FFC9980072B753 /* SQuInt2015.app */,
+				B43D267E18FFC9980072B753 /* SQuInt2015Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -306,7 +306,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B43D266318FFC9980072B753 /* SQuInt2014 */ = {
+		B43D266318FFC9980072B753 /* SQuInt2015 */ = {
 			isa = PBXGroup;
 			children = (
 				B43D266C18FFC9980072B753 /* AppDelegate.h */,
@@ -344,33 +344,35 @@
 				B43D267818FFC9980072B753 /* Images.xcassets */,
 				B43D266418FFC9980072B753 /* Supporting Files */,
 			);
+			name = SQuInt2015;
 			path = SQuInt2014;
 			sourceTree = "<group>";
 		};
 		B43D266418FFC9980072B753 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B43D266518FFC9980072B753 /* SQuInt2014-Info.plist */,
+				B43D266518FFC9980072B753 /* SQuInt2015-Info.plist */,
 				B43D266618FFC9980072B753 /* InfoPlist.strings */,
 				B43D266918FFC9980072B753 /* main.m */,
-				B43D266B18FFC9980072B753 /* SQuInt2014-Prefix.pch */,
+				B43D266B18FFC9980072B753 /* SQuInt2015-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B43D268518FFC9980072B753 /* SQuInt2014Tests */ = {
+		B43D268518FFC9980072B753 /* SQuInt2015Tests */ = {
 			isa = PBXGroup;
 			children = (
 				B43D268B18FFC9980072B753 /* SQuInt2014Tests.m */,
 				B43D268618FFC9980072B753 /* Supporting Files */,
 			);
+			name = SQuInt2015Tests;
 			path = SQuInt2014Tests;
 			sourceTree = "<group>";
 		};
 		B43D268618FFC9980072B753 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B43D268718FFC9980072B753 /* SQuInt2014Tests-Info.plist */,
+				B43D268718FFC9980072B753 /* SQuInt2015Tests-Info.plist */,
 				B43D268818FFC9980072B753 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -503,9 +505,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B43D265918FFC9980072B753 /* SQuInt2014 */ = {
+		B43D265918FFC9980072B753 /* SQuInt2015 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B43D268F18FFC9980072B753 /* Build configuration list for PBXNativeTarget "SQuInt2014" */;
+			buildConfigurationList = B43D268F18FFC9980072B753 /* Build configuration list for PBXNativeTarget "SQuInt2015" */;
 			buildPhases = (
 				6B24FB4E20244EA6B275446C /* Check Pods Manifest.lock */,
 				B43D265618FFC9980072B753 /* Sources */,
@@ -517,14 +519,14 @@
 			);
 			dependencies = (
 			);
-			name = SQuInt2014;
+			name = SQuInt2015;
 			productName = SQuInt2014;
-			productReference = B43D265A18FFC9980072B753 /* SQuInt2014.app */;
+			productReference = B43D265A18FFC9980072B753 /* SQuInt2015.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B43D267D18FFC9980072B753 /* SQuInt2014Tests */ = {
+		B43D267D18FFC9980072B753 /* SQuInt2015Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B43D269218FFC9980072B753 /* Build configuration list for PBXNativeTarget "SQuInt2014Tests" */;
+			buildConfigurationList = B43D269218FFC9980072B753 /* Build configuration list for PBXNativeTarget "SQuInt2015Tests" */;
 			buildPhases = (
 				B43D267A18FFC9980072B753 /* Sources */,
 				B43D267B18FFC9980072B753 /* Frameworks */,
@@ -535,9 +537,9 @@
 			dependencies = (
 				B43D268418FFC9980072B753 /* PBXTargetDependency */,
 			);
-			name = SQuInt2014Tests;
+			name = SQuInt2015Tests;
 			productName = SQuInt2014Tests;
-			productReference = B43D267E18FFC9980072B753 /* SQuInt2014Tests.xctest */;
+			productReference = B43D267E18FFC9980072B753 /* SQuInt2015Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -557,7 +559,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B43D265518FFC9980072B753 /* Build configuration list for PBXProject "SQuInt2014" */;
+			buildConfigurationList = B43D265518FFC9980072B753 /* Build configuration list for PBXProject "SQuInt2015" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -570,8 +572,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B43D265918FFC9980072B753 /* SQuInt2014 */,
-				B43D267D18FFC9980072B753 /* SQuInt2014Tests */,
+				B43D265918FFC9980072B753 /* SQuInt2015 */,
+				B43D267D18FFC9980072B753 /* SQuInt2015Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -730,7 +732,7 @@
 /* Begin PBXTargetDependency section */
 		B43D268418FFC9980072B753 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B43D265918FFC9980072B753 /* SQuInt2014 */;
+			target = B43D265918FFC9980072B753 /* SQuInt2015 */;
 			targetProxy = B43D268318FFC9980072B753 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -846,9 +848,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SQuInt2014/SQuInt2014-Prefix.pch";
-				INFOPLIST_FILE = "SQuInt2014/SQuInt2014-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "SQuInt2014/SQuInt2015-Prefix.pch";
+				INFOPLIST_FILE = "SQuInt2014/SQuInt2015-Info.plist";
+				PRODUCT_NAME = SQuInt2015;
 				PROVISIONING_PROFILE = "810ded44-4fc5-4f48-805b-8341ab17e5d9";
 				WRAPPER_EXTENSION = app;
 			};
@@ -863,9 +865,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SQuInt2014/SQuInt2014-Prefix.pch";
-				INFOPLIST_FILE = "SQuInt2014/SQuInt2014-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "SQuInt2014/SQuInt2015-Prefix.pch";
+				INFOPLIST_FILE = "SQuInt2014/SQuInt2015-Info.plist";
+				PRODUCT_NAME = SQuInt2015;
 				PROVISIONING_PROFILE = "810ded44-4fc5-4f48-805b-8341ab17e5d9";
 				WRAPPER_EXTENSION = app;
 			};
@@ -886,8 +888,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SQuInt2014Tests/SQuInt2014Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "SQuInt2014Tests/SQuInt2015Tests-Info.plist";
+				PRODUCT_NAME = SQuInt2015Tests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -904,8 +906,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SQuInt2014/SQuInt2014-Prefix.pch";
-				INFOPLIST_FILE = "SQuInt2014Tests/SQuInt2014Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "SQuInt2014Tests/SQuInt2015Tests-Info.plist";
+				PRODUCT_NAME = SQuInt2015Tests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -914,7 +916,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B43D265518FFC9980072B753 /* Build configuration list for PBXProject "SQuInt2014" */ = {
+		B43D265518FFC9980072B753 /* Build configuration list for PBXProject "SQuInt2015" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B43D268D18FFC9980072B753 /* Debug */,
@@ -923,7 +925,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B43D268F18FFC9980072B753 /* Build configuration list for PBXNativeTarget "SQuInt2014" */ = {
+		B43D268F18FFC9980072B753 /* Build configuration list for PBXNativeTarget "SQuInt2015" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B43D269018FFC9980072B753 /* Debug */,
@@ -932,7 +934,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B43D269218FFC9980072B753 /* Build configuration list for PBXNativeTarget "SQuInt2014Tests" */ = {
+		B43D269218FFC9980072B753 /* Build configuration list for PBXNativeTarget "SQuInt2015Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B43D269318FFC9980072B753 /* Debug */,

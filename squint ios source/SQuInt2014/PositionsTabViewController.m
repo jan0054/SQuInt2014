@@ -78,6 +78,16 @@ int unread_total;
     careercell.career_card_view.layer.cornerRadius = 5;
     [careercell.career_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
     [careercell.career_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    
+    //add shadow to views
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:careercell.career_card_view.bounds];
+    careercell.career_card_view.layer.masksToBounds = NO;
+    careercell.career_card_view.layer.shadowColor = [UIColor blackColor].CGColor;
+    careercell.career_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    careercell.career_card_view.layer.shadowOpacity = 0.3f;
+    careercell.career_card_view.layer.shadowPath = shadowPath.CGPath;
+    
+    
     return careercell;
 }
 

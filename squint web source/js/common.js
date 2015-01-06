@@ -5,6 +5,7 @@ function getAllAuthor(inputStr)
 	Parse.initialize("PLlbyPCGMrfHvghx1sllgLmNRIwz00l7PHYZdAvd", "Qkfl1VnB7ksIXOQAT5sV5uPFVVCehOVUoSLC0pmx");
 	ListItem = Parse.Object.extend("person");
 	query = new Parse.Query(ListItem);
+	query.limit(500);
 	query.ascending('last_name');
 	query.find({
 		success: function(results){
@@ -33,6 +34,7 @@ function getAllLocation(inputStr)
 	Parse.initialize("PLlbyPCGMrfHvghx1sllgLmNRIwz00l7PHYZdAvd", "Qkfl1VnB7ksIXOQAT5sV5uPFVVCehOVUoSLC0pmx");
 	ListItem = Parse.Object.extend("location");
 	query = new Parse.Query(ListItem);
+	query.limit(500);
 	query.ascending('name');
 	query.find({
 		success: function(results){
@@ -61,6 +63,7 @@ function getAllSession(inputStr)
 	Parse.initialize("PLlbyPCGMrfHvghx1sllgLmNRIwz00l7PHYZdAvd", "Qkfl1VnB7ksIXOQAT5sV5uPFVVCehOVUoSLC0pmx");
 	ListItem = Parse.Object.extend("session");
 	query = new Parse.Query(ListItem);
+	query.limit(500);
 	query.ascending('start_time');
 	query.find({
 		success: function(results){

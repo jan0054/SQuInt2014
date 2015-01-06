@@ -52,6 +52,7 @@
 
 	var sd=talk_datestart.value+'T'+talk_timestart.value+':00.000';
 	var startd = new Date(sd);
+	talk_dateend.value=talk_datestart.value;//start and end at the same day
 	var ed=talk_dateend.value+'T'+talk_timeend.value+':00.000';
 	var endd = new Date(ed);
 
@@ -110,12 +111,12 @@
 				<td width="70%"><select class="SelectSize" id="talk_session"><script>getAllSession('talk_session')</script></select></td>
 			</tr>
 			<tr>
-				<td>*<script>dw(STR_timestart)</script></td>
-				<td><input type="date" class="DateSize" id="talk_datestart"><input type="time" class="TimeSize" id="talk_timestart"></td>
+				<td>*<script>dw(STR_date)</script></td>
+				<td><input type="date" class="DateSize" id="talk_datestart"><input type="date" class="DateSize" id="talk_dateend" style="display:none"></td>
 			</tr>
 			<tr>
-				<td>*<script>dw(STR_timeend)</script></td>
-				<td><input type="date" class="DateSize" id="talk_dateend"><input type="time" class="TimeSize" id="talk_timeend"></td>
+				<td>*<script>dw(STR_time)</script></td>
+				<td><input type="time" class="TimeSize" id="talk_timestart">-<input type="time" class="TimeSize" id="talk_timeend"></td>
 			</tr>
 			<tr>
 			<tr>

@@ -3,7 +3,7 @@
   <meta charset="utf-8">
 
   <title>Data upload</title>
-  <meta name="description" content="My Parse App">
+  <meta name="description" content="My Parse Web">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -24,11 +24,11 @@
 		venue_description.focus();
 		return false;
 	}
-  	if(venue_coordinates.value==""){
+  	/*if(venue_coordinates.value==""){
 		alert(STR_coordinates+AL_empty);
 		venue_coordinates.focus();
 		return false;
-	}
+	}*/
 	Parse.initialize("PLlbyPCGMrfHvghx1sllgLmNRIwz00l7PHYZdAvd", "Qkfl1VnB7ksIXOQAT5sV5uPFVVCehOVUoSLC0pmx");
 	ListItem = Parse.Object.extend("poi");
 	newItem = new ListItem();
@@ -39,7 +39,7 @@
 	newItem.set("address", venue_address.value);
 	newItem.set("url", venue_website.value);
 
-	newItem.set("coord", venue_coordinates.value);
+//	newItem.set("coord", venue_coordinates.value);
 
 	if(venue_photo.value!=""){
 		alert(venue_photo.value);
@@ -66,12 +66,12 @@
 
 <body>
 	<h1><script>dw(TT_addvenue)</script></h1>
-	<span class="notify"><script>dw(STR_1)</script></span>
+	<h2><script>dw(STR_1)</script></h2>
 
 	<div id="add_venue">
 		<table>
 			<tr>
-				<td>*<script>dw(STR_name)</script></td>
+				<td class="tb1">*<script>dw(STR_name)</script></td>
 				<td><input class="InputSize"type="text" id="venue_name"></td>
 			</tr>
 			<tr>
@@ -88,7 +88,7 @@
 			</tr>
 			<tr>
 				<td><script>dw(STR_photo)</script></td>
-				<td><input type="file" id="venue_photo"></td>
+				<td><input type="file" class="FileSize" id="venue_photo"></td>
 			</tr>
 			<tr>
 				<td><script>dw(STR_address)</script></td>
@@ -99,7 +99,7 @@
 				<td><input class="InputSize" type="text" id="venue_website"></td>
 			</tr>
 			<tr>
-			<td colspan=2><script>dw('<input type="button" id="add_venue_submit" value="'+BT_add+'" onClick="addVenue();">')</script></td>
+			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_venue_submit" value="'+BT_add+'" onClick="addVenue();">')</script></td>
 			</tr>
 		</table>
 	</div>

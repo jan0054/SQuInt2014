@@ -3,8 +3,7 @@
   <meta charset="utf-8">
 
   <title>Data upload</title>
-  <meta name="description" content="My Parse App">
-  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="My Parse Web">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
@@ -53,13 +52,13 @@
 
 <body>
 	<h1><script>dw(TT_addperson)</script></h1>
-	<span class="notify"><script>dw(STR_1)</script></span>
+	<h2><script>dw(STR_1)</script></h2>
 
 	<div id="add_person">
 		<table>
 			<tr>
-				<td>*<script>dw(STR_firstname)</script></td>
-				<td><input class="InputSize"type="text" id="person_firstname"></td>
+				<td class="tb1">*<script>dw(STR_firstname)</script></td>
+				<td><input class="InputSize" type="text" id="person_firstname"></td>
 			</tr>
 			<tr>
 				<td>*<script>dw(STR_lastname)</script></td>
@@ -78,7 +77,7 @@
 				<td><input class="InputSize" type="text" id="person_webpage"></td>
 			</tr>
 			<tr>
-			<td colspan=2><script>dw('<input type="button" id="add_person_submit" value="'+BT_add+'" onClick="addPerson();">')</script></td>
+			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_person_submit" value="'+BT_add+'" onClick="addPerson();">')</script></td>
 			</tr>
 		</table>
 	</div>

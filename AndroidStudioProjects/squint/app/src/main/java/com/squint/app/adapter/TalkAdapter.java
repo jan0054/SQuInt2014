@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import com.parse.ParseObject;
 import com.squint.app.R;
@@ -42,6 +43,7 @@ public class TalkAdapter extends BaseAdapter {
 		inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.data = data;
 		sdf = new SimpleDateFormat("MM-dd hh:mm a", Locale.getDefault());
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 		Log.d(TAG, "FEED SIZE: " + Integer.toString(data.size()));
 	}
 

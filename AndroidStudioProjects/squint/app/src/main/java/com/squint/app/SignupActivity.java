@@ -61,7 +61,8 @@ public class SignupActivity extends BaseActivity {
                     installation.put("user",ParseUser.getCurrentUser());
                     installation.saveInBackground();
 
-					toMainPage();
+                    toPreferencePage();
+					//toMainPage();
 				} else {
 					Log.d(TAG, "Sign Up: " + "failed");
 					onSignupFailed(e.getCode(), e.getMessage());
@@ -85,6 +86,11 @@ public class SignupActivity extends BaseActivity {
 	    startActivity(intent);
 	    overridePendingTransition (R.anim.page_left_slide_in, R.anim.page_left_slide_out);
 	}
-	
+
+    private void toPreferencePage()
+    {
+        Intent intent = new Intent(this, UserPreferenceActivity.class);
+        startActivity(intent);
+    }
 	
 }

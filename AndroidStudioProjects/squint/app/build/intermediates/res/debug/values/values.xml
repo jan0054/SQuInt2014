@@ -135,6 +135,7 @@
     <string name="switch_poster">Posters</string>
     <string name="switch_talk">Talks</string>
     <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_user_preference">UserPreferenceActivity</string>
     <string name="title_conversation">Conversation</string>
     <string name="title_login">Login</string>
     <string name="title_section1">Program</string>

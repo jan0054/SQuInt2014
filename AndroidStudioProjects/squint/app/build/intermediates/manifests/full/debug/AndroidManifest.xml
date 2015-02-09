@@ -136,6 +136,11 @@
                 <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name="com.squint.app.UserPreferenceActivity"
+            android:label="@string/title_activity_user_preference" >
+        </activity>
     </application>
 
 </manifest>

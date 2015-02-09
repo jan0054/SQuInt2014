@@ -91,6 +91,10 @@ public class AbstractDetailsActivity extends BaseActivity {
 		mContent.setText(intent.getStringExtra(EXTRA_ABSTRACT_CONTENT));
 		
 		mPdf.setContentDescription(intent.getStringExtra(EXTRA_ABSTRACT_PDF));
+        if (mPdf.getContentDescription().toString().length() < 1)
+        {
+            mPdf.setTextColor(getResources().getColor(R.color.company_gray_light));
+        }
 		mPdf.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -125,9 +129,14 @@ public class AbstractDetailsActivity extends BaseActivity {
 	}
 	
 	private void openPdf(String url) {
-		Intent intent = new Intent(Intent.ACTION_VIEW);
-		intent.setDataAndType(Uri.parse(_PARAMS.GOOGLE_DOCS_URL_EXTERNAL + url), "text/html");
-		startActivity(intent);
+        if (url.length() > 1)
+        {
+            //non-empty url
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.parse(_PARAMS.GOOGLE_DOCS_URL_EXTERNAL + url), "text/html");
+            startActivity(intent);
+        }
+
 	}
 	
 	/*

@@ -132,7 +132,12 @@ public class AbstractAdapter extends BaseAdapter {
 	}
 	
 	private String getPdfUrl(ParseObject object) {
-		return object.getParseFile("pdf").getUrl();
+        if (object.has("pdf")) {
+            return object.getParseFile("pdf").getUrl();
+        }
+        else {
+            return  "";
+        }
 	}
 	
 }

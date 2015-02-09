@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:background="@drawable/stage"
+			  android:orientation="vertical" >
+	<LinearLayout android:id="@+id/feed_container"
+			      android:layout_width="match_parent"
+			      android:layout_height="wrap_content"
+			      android:layout_margin="12dp"
+			      android:background="@drawable/list_item"
+			      android:orientation="vertical" >
+		<View android:layout_width="match_parent"
+		      android:layout_height="3dp"
+		      android:background="@color/list_item_header" />
+
+		<TextView
+		    android:id="@+id/institution"
+		    android:layout_width="match_parent"
+		    android:layout_height="24dp"
+		    android:layout_marginLeft="16dp"
+		    android:layout_marginRight="16dp"
+		    android:layout_marginTop="20dp"
+		    android:fontFamily="sans-serif-thin"
+		    android:gravity="center|left"
+		    android:text="@string/institution"
+		    android:textColor="@color/list_item_level_1"
+		    android:textSize="18sp"
+		     />
+
+		<TextView
+		    android:id="@+id/position"
+		    android:layout_width="match_parent"
+		    android:layout_height="24dp"
+		    android:layout_marginTop="10dp"
+		    android:layout_marginRight="16dp"
+		    android:layout_marginLeft="16dp"
+		    android:fontFamily="sans-serif-thin"
+		    android:gravity="center|left"
+		    android:maxHeight="30dp"
+		    android:maxWidth="300dp"
+		    android:text="@string/position"
+		    android:textColor="@color/list_item_level_2"
+		    android:textSize="14sp" />
+		<TextView
+		    android:id="@+id/location"
+		    android:layout_width="match_parent"
+		    android:layout_height="24dp"
+		    android:layout_marginTop="12dp"
+		    android:layout_marginBottom="6dp"
+		    android:layout_marginLeft="16dp"
+		    android:layout_marginRight="16dp"
+		    android:gravity="center|left"
+		    android:text="@string/location"
+		    android:fontFamily="sans-serif-thin"
+		    android:textColor="@color/list_item_level_1"
+		    android:textSize="12sp" />
+		<TextView
+		    android:id="@+id/description"
+		    android:layout_width="match_parent"
+		    android:layout_height="200dp"
+		    android:padding="16dp"
+		    android:layout_marginBottom="5dp"
+		    android:layout_marginLeft="16dp"
+		    android:layout_marginRight="16dp"
+		    android:background="@drawable/diagram_roundcap"
+		    android:text="@string/description"
+		    android:fontFamily="sans-serif-thin"
+		    android:maxLines="10"
+		    android:textColor="@color/list_item_level_1"
+            android:scrollbars = "vertical"
+		    android:textSize="14sp" />
+		<TextView
+		    android:id="@+id/contact"
+		    android:layout_width="wrap_content"
+		    android:layout_height="24dp"
+		    android:layout_marginTop="5dp"
+		    android:layout_marginBottom="30dp"
+		    android:layout_marginLeft="16dp"
+		    android:layout_marginRight="16dp"
+		    android:layout_gravity="left"
+		    android:text="@string/contact"
+            android:fontFamily="sans-serif"
+		    android:textColor="@color/list_action_text"
+		    android:textSize="16sp" />
+	</LinearLayout>
+</LinearLayout>
+	

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.squint.app"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="13"
+    android:versionName="1.03" >
 
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="21" />
-    <!-- For accessing Internet -->
- ​
+
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -19,16 +18,19 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-    <!--
-  IMPORTANT: Change "com.parse.tutorials.pushnotifications.permission.C2D_MESSAGE" in the lines below
-  to match your app's package name + ".permission.C2D_MESSAGE".
-    -->
+
     <permission
         android:name="com.squint.app.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
     <uses-permission android:name="com.squint.app.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:name="com.squint.app.squintApplication"
@@ -126,7 +128,6 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-<!--                   IMPORTANT: Change "com.parse.tutorials.pushnotifications" to match your app's package name. -->
                 <category android:name="com.squint.app" />
             </intent-filter>
         </receiver>
@@ -139,6 +140,15 @@
                 <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name="com.squint.app.UserPreferenceActivity"
+            android:label="@string/title_activity_user_preference" >
+        </activity>
+        <activity
+            android:name="com.squint.app.DiscussionActivity"
+            android:label="@string/title_activity_discussion" >
+        </activity>
     </application>
 
 </manifest>

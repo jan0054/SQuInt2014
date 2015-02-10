@@ -135,7 +135,7 @@ public class MainActivity extends BaseActivity {
           	  break;
       	  case 4:
       		  if (!isLogin()) configOptions(OPTION_NONE, OPTION_LOGIN);          	  
-      		  else configOptions(OPTION_NONE, OPTION_LOGOUT);          	  
+      		  else configOptions(OPTION_USER, OPTION_LOGOUT);
           	  break;          	  
           default:
       		  clearOptions();
@@ -234,7 +234,16 @@ public class MainActivity extends BaseActivity {
 					toast("Please log in first!");
 					toLoginPage(ConversationActivity.class);
 				}
-				break;				
+				break;
+             case OPTION_USER:
+                 ParseUser selfuser = ParseUser.getCurrentUser();
+                 if (selfuser != null) {
+                     toPage(new Intent(), UserPreferenceActivity.class);
+                 } else {
+                     toast("Please log in first!");
+                     toLoginPage(ConversationActivity.class);
+                 }
+                break;
 			}
 		}
 	}

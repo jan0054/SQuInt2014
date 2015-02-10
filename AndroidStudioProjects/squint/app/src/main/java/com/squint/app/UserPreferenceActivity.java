@@ -38,6 +38,8 @@ public class UserPreferenceActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_preference);
+        mTitle.setText(getString(R.string.title_conversation));
+        configOptions(OPTION_NONE, OPTION_NONE);
 
         save_preference = (TextView) findViewById(R.id.save_preference);
         save_preference.setOnClickListener(new View.OnClickListener() {
@@ -194,7 +196,7 @@ public class UserPreferenceActivity extends BaseActivity {
         }
         toMainPage();
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -216,7 +218,7 @@ public class UserPreferenceActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+*/
     private void toMainPage() {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);

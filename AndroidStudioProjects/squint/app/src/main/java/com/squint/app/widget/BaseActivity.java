@@ -42,6 +42,7 @@ public class BaseActivity extends FragmentActivity implements OnClickListener {
 	public final static int OPTION_TALK			= R.drawable.actionbar_message;
 	public final static int OPTION_LOGIN 		= R.drawable.actionbar_login;
 	public final static int OPTION_LOGOUT		= R.drawable.actionbar_logout;
+    public final static int OPTION_USER         = R.drawable.actionbar_list;
 	
 	public static final String ACTION_FROM = "com.squint.app.action.from";
 	public static final String ACTION_TO = "com.squint.app.action.to";

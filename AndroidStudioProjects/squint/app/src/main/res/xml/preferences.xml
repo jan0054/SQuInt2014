@@ -25,4 +25,5 @@
 		            android:title="@string/pref_title_terms"
 		            android:icon="@drawable/preference_arrow" />
 
+
 </PreferenceScreen>

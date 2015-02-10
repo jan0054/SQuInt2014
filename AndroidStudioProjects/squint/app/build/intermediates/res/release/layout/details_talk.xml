@@ -118,6 +118,19 @@
             android:fontFamily="sans-serif"
 		    android:textColor="@color/list_action_text"
 		    android:textSize="16sp" />
+        <TextView
+            android:id="@+id/btn_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:text="Add to Calendar"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/list_action_text"
+            android:textSize="16sp" />
     
 	</LinearLayout>
 </LinearLayout>

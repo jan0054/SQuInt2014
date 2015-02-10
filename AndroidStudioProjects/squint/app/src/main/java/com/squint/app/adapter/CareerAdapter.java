@@ -28,6 +28,10 @@ public class CareerAdapter extends BaseAdapter {
 	public static final String 			EXTRA_CAREER_POSTEDBY		= "com.squint.data.career.POSTEDBY";
 	public static final String 			EXTRA_CAREER_DESCRIPTION	= "com.squint.data.career.DESCRIPTION";
 	public static final String 			EXTRA_CAREER_EMAIL			= "com.squint.data.career.EMAIL";
+    public static final String 			EXTRA_CAREER_NAME			= "com.squint.data.career.NAME";
+    public static final String 			EXTRA_CAREER_TIME			= "com.squint.data.career.TIME";
+    public static final String 			EXTRA_CAREER_TYPE			= "com.squint.data.career.TYPE";
+    public static final String 			EXTRA_CAREER_LINK			= "com.squint.data.career.LINK";
 	
 	
 	private Context 					context;
@@ -39,6 +43,7 @@ public class CareerAdapter extends BaseAdapter {
 		  public TextView position;
 		  public TextView contact;
 		  public TextView institution;
+          public TextView ctype;
 	}
 
 	public CareerAdapter(Context context, List<ParseObject> data) {
@@ -70,9 +75,10 @@ public class CareerAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.item_career, null);
 			holder = new ViewHolder();
-			holder.position = (TextView) convertView.findViewById(R.id.name);
+			holder.position = (TextView) convertView.findViewById(R.id.position);
 			holder.institution = (TextView) convertView.findViewById(R.id.institution);
-			holder.contact = (TextView) convertView.findViewById(R.id.contact);
+			holder.contact = (TextView) convertView.findViewById(R.id.author);
+            holder.ctype = (TextView) convertView.findViewById(R.id.type);
 
 		} else holder = (ViewHolder) convertView.getTag();
 		
@@ -80,6 +86,7 @@ public class CareerAdapter extends BaseAdapter {
 		holder.position.setText(getPosition(item));
 		holder.institution.setText(getInstitution(item));
 		holder.contact.setText(context.getString(R.string.post_by) + " " + getPostedBy(item));
+        holder.ctype.setText(getTypeString(item));
 		convertView.setTag(holder);
 		holder.position.setTag(item);
 		
@@ -95,6 +102,12 @@ public class CareerAdapter extends BaseAdapter {
 				intent.putExtra(EXTRA_CAREER_DESCRIPTION, getDescription(item));
 				intent.putExtra(EXTRA_CAREER_POSTEDBY, getPostedBy(item));
 				intent.putExtra(EXTRA_CAREER_EMAIL, getEmail(item));
+                intent.putExtra(EXTRA_CAREER_NAME, getContactname(item));
+                intent.putExtra(EXTRA_CAREER_TIME, getDatetime(item));
+
+                intent.putExtra(EXTRA_CAREER_TYPE, (int)getType(item));
+                intent.putExtra(EXTRA_CAREER_LINK, getWeblink(item));
+
 				context.sendBroadcast(intent);						
 			}
 		});
@@ -123,13 +136,49 @@ public class CareerAdapter extends BaseAdapter {
 		return object.getString("position");		
 	}
 
+    private String getDatetime(ParseObject object) {
+        return object.getString("time_duration");
+    }
+
+    private String getContactname(ParseObject object) {
+        return object.getString("contact_name");
+    }
+
 	private String getEmail(ParseObject object) {
-		ParseObject po = object.getParseObject("posted_by");
-		return po.getString("email");		
+        return object.getString("contact_email");
 	}
-	
+
+    private String getWeblink(ParseObject object) {
+        String weblink =  object.getString("link");
+        if (weblink.length()>5)
+        {
+            return weblink;
+        }
+        else
+        {
+            return  "";
+        }
+    }
+
+    private int getType (ParseObject object) {
+        int offerseek = object.getInt("offer_seek");
+        return  offerseek;
+    }
+
+    private String getTypeString(ParseObject object) {
+        int offerseek = object.getInt("offer_seek");
+        if (offerseek == 1)
+        {
+            return "Seeking position:";
+        }
+        else
+        {
+            return  "Position available";
+        }
+    }
+
 	private String getDescription(ParseObject object) {
-		return object.getString("note");		
+		return object.getString("description");
 	}
 	
 }

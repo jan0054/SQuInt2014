@@ -31,7 +31,11 @@ public class CareerDetailsActivity extends BaseActivity {
 	private TextView mPostedBy;
 	private TextView mDescription;
 	private TextView mEmail;
-
+    private TextView mType;
+    private TextView mDatetime;
+    private TextView mContactname;
+    private TextView mWeblink;
+    private int ctype;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,16 +45,36 @@ public class CareerDetailsActivity extends BaseActivity {
 		configOptions(OPTION_BACK, OPTION_NONE);
 		
 		Intent intent 	= getIntent();
+        mType           = (TextView)findViewById(R.id.type);
 		mInstitution 	= (TextView)findViewById(R.id.institution);
 		mPosition 		= (TextView)findViewById(R.id.position);
-		mPostedBy 		= (TextView)findViewById(R.id.location);
+		mPostedBy 		= (TextView)findViewById(R.id.postedby);
 		mDescription 	= (TextView)findViewById(R.id.description);
 		mEmail			= (TextView)findViewById(R.id.contact);
-		
-		mInstitution.setText(intent.getStringExtra(CareerAdapter.EXTRA_CAREER_INSTITUTION));
+        mDatetime		= (TextView)findViewById(R.id.datetime);
+        mContactname	= (TextView)findViewById(R.id.name);
+		mWeblink        = (TextView)findViewById(R.id.weblink);
+
+        ctype = intent.getExtras().getInt(CareerAdapter.EXTRA_CAREER_TYPE);
+        if (ctype == 1)
+        {
+            //seek
+            mType.setText("Seeking position");
+            mInstitution.setText("Degree:"+" "+intent.getStringExtra(CareerAdapter.EXTRA_CAREER_INSTITUTION));
+            mDatetime.setText("Degree date:"+" "+intent.getStringExtra(CareerAdapter.EXTRA_CAREER_TIME));
+        }
+        else
+        {
+            //offer
+            mType.setText("Position available");
+            mInstitution.setText("Institution:"+" "+intent.getStringExtra(CareerAdapter.EXTRA_CAREER_INSTITUTION));
+            mDatetime.setText("Date/Duration:"+" "+intent.getStringExtra(CareerAdapter.EXTRA_CAREER_TIME));
+        }
 		mPosition.setText(intent.getStringExtra(CareerAdapter.EXTRA_CAREER_POSITION));
-		mPostedBy.setText(getString(R.string.post_by) + " " + intent.getStringExtra(CareerAdapter.EXTRA_CAREER_POSTEDBY));
+		mPostedBy.setText("Posted by:" + " " + intent.getStringExtra(CareerAdapter.EXTRA_CAREER_POSTEDBY));
 		mDescription.setText(intent.getStringExtra(CareerAdapter.EXTRA_CAREER_DESCRIPTION));
+        mContactname.setText("Contact:"+" "+intent.getStringExtra(CareerAdapter.EXTRA_CAREER_NAME));
+
 		
 		final String email = intent.getStringExtra(CareerAdapter.EXTRA_CAREER_EMAIL);
 		mEmail.setOnClickListener(new OnClickListener() {
@@ -63,7 +87,24 @@ public class CareerDetailsActivity extends BaseActivity {
 				}	
 			}		
 		});
-		
+
+        final String weblink = intent.getStringExtra(CareerAdapter.EXTRA_CAREER_LINK);
+        if (weblink.length()>1)
+        {
+            mWeblink.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(weblink));
+                    startActivity(browserIntent);
+                }
+            });
+        }
+        else
+        {
+            //no valid weblink
+            mWeblink.setVisibility(View.INVISIBLE);
+        }
+
 		mDescription.setMovementMethod(new ScrollingMovementMethod());
 		
 		

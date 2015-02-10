@@ -28,7 +28,7 @@
         android:layout_below="@+id/convauthor"
         android:textColor="@color/tab_unselected"
         android:textSize="13sp"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="sans-serif"
         android:text="last_msg" />
 
 

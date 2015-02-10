@@ -112,4 +112,4 @@
             android:src="@drawable/action_navigate"
             android:tint="@android:color/white" />
     </LinearLayout>
-</RelativeLayout><!-- From: file:/Users/csjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/item_venue.xml -->
+</RelativeLayout><!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/item_venue.xml -->

@@ -60,6 +60,7 @@
     <string name="pref_title_about">About Us</string>
     <string name="pref_title_feedback">Feedback</string>
     <string name="pref_title_terms">Privacy and Terms</string>
+    <string name="pref_title_user">User Preferences</string>
     <string name="action_email_us">Email Us</string>
     <string name="action_close">Close</string>
     <string name="pref_subject_about">Ashvale Digital Ltd.</string>
@@ -86,5 +87,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_user_preference">UserPreferenceActivity</string>
+    <string name="title_activity_discussion">DiscussionActivity</string>
 
 </resources>

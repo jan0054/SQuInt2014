@@ -14,7 +14,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
         android:layout_toLeftOf="@+id/more"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="sans-serif"
         android:gravity="center|left"
         android:text="@string/name"
         android:textColor="@android:color/white"
@@ -28,7 +28,7 @@
         android:layout_below="@+id/name"
         android:layout_marginBottom="16dp"
         android:layout_toLeftOf="@+id/more"
-        android:fontFamily="sans-serif-thin"
+        android:fontFamily="sans-serif-light"
         android:gravity="center|left"
         android:text="@string/institution"
         android:textColor="@android:color/white"
@@ -53,4 +53,4 @@
         android:layout_height="3dp"
         android:background="@color/list_item_header" />
 
-</RelativeLayout><!-- From: file:/Users/csjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/item_people.xml -->
+</RelativeLayout><!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/item_people.xml -->

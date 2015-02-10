@@ -53,6 +53,9 @@ public class PeopleDetailsActivity extends BaseActivity {
 	public static final String 			EXTRA_PERSON_INSTITUTION	= "com.squint.data.person.INSTITUTION";
 	public static final String 			EXTRA_PERSON_EMAIL			= "com.squint.data.person.EMAIL";
 	public static final String 			EXTRA_PERSON_WEBSITE		= "com.squint.data.person.WEBSITE";
+    public static final String 			EXTRA_PERSON_CHATON		    = "com.squint.data.person.CHATON";
+    public static final String 			EXTRA_PERSON_EMAILON		= "com.squint.data.person.EMAILON";
+    public static final String 			EXTRA_PERSON_ISUSER		    = "com.squint.data.person.ISUSER";
 
 	
 	private IntentFilter			filter	 = null;  
@@ -65,6 +68,9 @@ public class PeopleDetailsActivity extends BaseActivity {
 	private TextView mMessage;
 
     public String conv_objid;
+    public int chat_on;
+    public int email_on;
+    private String email;
 	
 	// ParseObject
     public ParseUser                      personuser;
@@ -101,9 +107,11 @@ public class PeopleDetailsActivity extends BaseActivity {
 		
 		Intent intent 	= getIntent();
 		oId	= intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_ID);
-		final String email 		= intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_EMAIL);
+		email 		            = intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_EMAIL);
 		final String website 	= intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_WEBSITE);
-		
+        chat_on                 = intent.getExtras().getInt(PeopleAdapter.EXTRA_PERSON_CHATON);
+        email_on                = intent.getExtras().getInt(PeopleAdapter.EXTRA_PERSON_EMAILON);
+
 		// Retrieve the person data
 		//mPeopleDAO = new PeopleDAO(this, oid);	
 		
@@ -134,28 +142,26 @@ public class PeopleDetailsActivity extends BaseActivity {
 		
 		mAuthor.setText(intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_NAME));
 		mInstitution.setText(intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_INSTITUTION));
-		mEmail.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				try {
-					if (email != null && !email.isEmpty()) sendEmail("", "", new String[] {email}, null);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}	
-			}		
-		});
-		
-		mWebsite.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {			
-				if (website != null && !website.isEmpty()) getSite(website);		
-			}			
-		});
 
+        if (website.length()<=1)
+        {
+            //no valid website
+            mWebsite.setTextColor(getResources().getColor(R.color.button_title));
+        }
+        else
+        {
+            mWebsite.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (website != null && !website.isEmpty()) getSite(website);
+                }
+            });
+        }
+
+        //set up email stuff
+        checkSelfPriv();
+        //set up chat stuff
         checkIsUser();
-
-
-
 
 	}
 	
@@ -352,7 +358,7 @@ public class PeopleDetailsActivity extends BaseActivity {
 
     public void checkIsUser()
     {
-        //check if this person is user
+        //check if target person is user
         ParseQuery<ParseObject> personquery = ParseQuery.getQuery("person");
         personquery.include("user");
         personquery.getInBackground(oId, new GetCallback<ParseObject>() {
@@ -363,7 +369,13 @@ public class PeopleDetailsActivity extends BaseActivity {
                     {
                         //the person is a user, check if it is self
                         ParseUser currentUser = ParseUser.getCurrentUser();
-                        String self_id = currentUser.getObjectId();
+                        String self_id = "";
+                        int self_chat_on = 0;
+                        if (currentUser != null)
+                        {
+                            self_id= currentUser.getObjectId();
+                            self_chat_on = currentUser.getInt("chat_on");
+                        }
                         personuser = object.getParseUser("user");
                         String personuser_id = personuser.getObjectId();
                         if (self_id.equals(personuser_id))
@@ -374,27 +386,35 @@ public class PeopleDetailsActivity extends BaseActivity {
                         }
                         else
                         {
-                            //set the onclick listener for the chat button
-                            mMessage.setOnClickListener(new OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    if (oId != null && !oId.isEmpty()) {
-                                        ParseUser user = ParseUser.getCurrentUser();
-                                        if (user != null)
-                                        {
-                                            //getConversation(user.getObjectId(), oId);
-                                            processConversation(personuser);
-                                        }
-                                        else {
-                                            // If user not signed in
-                                            toast("Please sign in first!");
-                                            toLoginPage(MessageActivity.class, oId);
+                            //target person is user and not self, check both chat_on to see if can chat
+                            if (chat_on==1 && self_chat_on==1)
+                            {
+                                //both sides chat_on=1, set onclick for chat button
+                                mMessage.setOnClickListener(new OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        if (oId != null && !oId.isEmpty()) {
+                                            ParseUser user = ParseUser.getCurrentUser();
+                                            if (user != null)
+                                            {
+                                                //getConversation(user.getObjectId(), oId);
+                                                processConversation(personuser);
+                                            }
+                                            else {
+                                                // If user not signed in
+                                                toast("Please sign in first!");
+                                                toLoginPage(MessageActivity.class, oId);
+                                            }
                                         }
                                     }
-                                }
-                            });
+                                });
+                            }
+                            else
+                            {
+                                //someone doesn't want to chat
+                                mMessage.setTextColor(getResources().getColor(R.color.button_title));
+                            }
                         }
-
                     }
                     else
                     {
@@ -407,6 +427,50 @@ public class PeopleDetailsActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    public void checkSelfPriv()
+    {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
+        if (currentUser == null)
+        {
+            //not logged in, cant use email
+            mEmail.setTextColor(getResources().getColor(R.color.button_title));
+        }
+        else
+        {
+            //logged in, check if is person
+            int isperson = currentUser.getInt("isperson");
+            if (isperson != 1)
+            {
+                //not a person, can't use email
+                mEmail.setTextColor(getResources().getColor(R.color.button_title));
+            }
+            else
+            {
+                //finally, check if target person wants to share email
+                if (email_on == 1 && email.length()>1)
+                {
+                    mEmail.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            try {
+                                if (email != null && !email.isEmpty()) sendEmail("", "", new String[] {email}, null);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+                else
+                {
+                    //email set to private or no valid email string
+                    mEmail.setTextColor(getResources().getColor(R.color.button_title));
+                }
+            }
+
+        }
     }
 
     public void goChat(String convid)
@@ -435,11 +499,19 @@ public class PeopleDetailsActivity extends BaseActivity {
         ParseQuery<ParseObject> mainQuery = ParseQuery.or(queries);
         mainQuery.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
-            public void done(ParseObject object, ParseException e) {
+            public void done(ParseObject object, final ParseException e) {
                 if (e == null) {
-                    if (object == null)
+
+                    //found existing conversation
+                    conv_objid = object.getObjectId();
+                    goChat(conv_objid);
+                }
+                else
+                {
+                    Log.d(TAG, "conversation search error: "+e);
+                    if (e.getMessage().equals("no results found for query"))
                     {
-                        //no conversations found, create a new one
+                        //no existing conversation, create new
                         ParseObject new_conv = new ParseObject("conversation");
                         new_conv.put("last_msg", "no messages yet");
                         Date date = new Date();
@@ -482,20 +554,9 @@ public class PeopleDetailsActivity extends BaseActivity {
                             }
                         });
                     }
-                    else
-                    {
-                        //found existing conversation
-                        conv_objid = object.getObjectId();
-                        goChat(conv_objid);
-                    }
-
-                } else {
-                    // something went wrong searching the conversation
-                    Log.d(TAG, "conversation search error");
                 }
             }
         });
-
     }
 	
 }

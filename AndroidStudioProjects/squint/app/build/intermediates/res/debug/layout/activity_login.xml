@@ -67,4 +67,4 @@
 	    	android:textColor="@color/signup_button_text"
 	    	android:text="@string/signup" />	
 	    	
-</LinearLayout><!-- From: file:/Users/csjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/activity_login.xml -->
+</LinearLayout><!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/activity_login.xml -->

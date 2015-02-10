@@ -8,4 +8,4 @@
           android:color="@color/pref_selected" />
     <item android:color="@color/pref_unselected"/>
 </selector>
-<!-- From: file:/Users/csjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/color/pref_color_selector.xml -->
+<!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/color/pref_color_selector.xml -->

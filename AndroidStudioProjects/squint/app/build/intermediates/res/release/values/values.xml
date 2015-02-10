@@ -127,6 +127,7 @@
     <string name="pref_title_feedback">Feedback</string>
     <string name="pref_title_notification">Notification</string>
     <string name="pref_title_terms">Privacy and Terms</string>
+    <string name="pref_title_user">User Preferences</string>
     <string name="signup">Sign up</string>
     <string name="signup_reminder">Don\'t have an account yet?</string>
     <string name="skip"><u>Skip</u></string>
@@ -135,6 +136,8 @@
     <string name="switch_poster">Posters</string>
     <string name="switch_talk">Talks</string>
     <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_discussion">DiscussionActivity</string>
+    <string name="title_activity_user_preference">UserPreferenceActivity</string>
     <string name="title_conversation">Conversation</string>
     <string name="title_login">Login</string>
     <string name="title_section1">Program</string>

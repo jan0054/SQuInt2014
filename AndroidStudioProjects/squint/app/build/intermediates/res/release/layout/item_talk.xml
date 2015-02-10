@@ -79,7 +79,7 @@
 
 			<TextView
 			    android:id="@+id/start_time"
-			    android:layout_width="200dp"
+			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:layout_marginRight="16dp"
 			    android:layout_weight="2"
@@ -98,6 +98,7 @@
 				      android:layout_weight="1"
 				      android:text="@string/more"
 				      android:textColor="@color/list_action_text"
+                      android:maxLines="1"
 				      android:textSize="14sp" />
 	    </LinearLayout>
 </RelativeLayout>

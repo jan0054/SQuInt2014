@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/csjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="detail_action">
         <item>@string/action_email_us</item>
@@ -14,7 +14,7 @@
         <item>@string/pref_title_about</item>
         <item>@string/pref_title_terms</item>
     </string-array>
-    <!-- From: file:/Users/csjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="actionbar_bottom">#3E5378</color>
     <color name="actionbar_divider">#2B394F</color>
@@ -82,14 +82,14 @@
     <color name="warning">#DD7777</color>
     <color name="white">#FFFFFF</color>
     <declare-styleable name="TintableImageView"><attr format="reference|color" name="tint"/></declare-styleable>
-    <!-- From: file:/Users/csjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="padding_horizontal">40dp</dimen>
     <dimen name="preference_item_height">56dp</dimen>
     <dimen name="preference_title">16sp</dimen>
-    <!-- From: file:/Users/csjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="abstract_btn">Attachment</string>
     <string name="action_close">Close</string>
@@ -127,6 +127,7 @@
     <string name="pref_title_feedback">Feedback</string>
     <string name="pref_title_notification">Notification</string>
     <string name="pref_title_terms">Privacy and Terms</string>
+    <string name="pref_title_user">User Preferences</string>
     <string name="signup">Sign up</string>
     <string name="signup_reminder">Don\'t have an account yet?</string>
     <string name="skip"><u>Skip</u></string>
@@ -135,6 +136,7 @@
     <string name="switch_poster">Posters</string>
     <string name="switch_talk">Talks</string>
     <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_discussion">DiscussionActivity</string>
     <string name="title_activity_user_preference">UserPreferenceActivity</string>
     <string name="title_conversation">Conversation</string>
     <string name="title_login">Login</string>
@@ -147,7 +149,7 @@
     <string name="unknown">(Unknown)</string>
     <string name="username">Username</string>
     <string name="website">Website</string>
-    <!-- From: file:/Users/csjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="ActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
 		<item name="android:background">@drawable/actionbar_gradient_background</item>

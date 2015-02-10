@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 import com.squint.app.R;
 
 import android.content.Context;
@@ -25,7 +26,9 @@ public class PeopleAdapter extends BaseAdapter {
 	public static final String 			EXTRA_PERSON_INSTITUTION	= "com.squint.data.person.INSTITUTION";
 	public static final String 			EXTRA_PERSON_EMAIL			= "com.squint.data.person.EMAIL";
 	public static final String 			EXTRA_PERSON_WEBSITE		= "com.squint.data.person.WEBSITE";
-	
+    public static final String 			EXTRA_PERSON_CHATON		    = "com.squint.data.person.CHATON";
+    public static final String 			EXTRA_PERSON_EMAILON		= "com.squint.data.person.EMAILON";
+    public static final String 			EXTRA_PERSON_ISUSER		    = "com.squint.data.person.ISUSER";
 	
 	private Context 					context;
 	private final LayoutInflater 		inflater;
@@ -85,6 +88,9 @@ public class PeopleAdapter extends BaseAdapter {
 				intent.putExtra(EXTRA_PERSON_INSTITUTION, getInstitution(item));
 				intent.putExtra(EXTRA_PERSON_EMAIL, getEmail(item));
 				intent.putExtra(EXTRA_PERSON_WEBSITE, getWebsite(item));
+                intent.putExtra(EXTRA_PERSON_CHATON, getChat_on(item));
+                intent.putExtra(EXTRA_PERSON_EMAILON, getEmail_on(item));
+                intent.putExtra(EXTRA_PERSON_ISUSER, getIs_user(item));
 				context.sendBroadcast(intent);						
 			}
 		});
@@ -115,5 +121,14 @@ public class PeopleAdapter extends BaseAdapter {
 	private String getWebsite(ParseObject object) {
 		return object.getString("link");		
 	}
-	
+
+    private int getChat_on(ParseObject object) {
+        return object.getInt("chat_on");
+    }
+
+    private int getEmail_on(ParseObject object) {
+        return object.getInt("email_on");
+    }
+
+    private int getIs_user(ParseObject object) { return object.getInt("is_user");}
 }

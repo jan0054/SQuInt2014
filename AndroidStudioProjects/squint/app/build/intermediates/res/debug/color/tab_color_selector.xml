@@ -5,4 +5,4 @@
     <item android:state_selected="true" android:color="@color/tab_selected" />
     <item android:color="@color/tab_unselected"/>
 </selector>
-<!-- From: file:/Users/csjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/color/tab_color_selector.xml -->
+<!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/color/tab_color_selector.xml -->

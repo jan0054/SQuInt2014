@@ -25,5 +25,6 @@
 		            android:title="@string/pref_title_terms"
 		            android:icon="@drawable/preference_arrow" />
 
+
 </PreferenceScreen>
 <!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/xml/preferences.xml -->

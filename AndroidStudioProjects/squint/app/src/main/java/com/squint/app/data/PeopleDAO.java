@@ -66,8 +66,9 @@ public class PeopleDAO {
 	
 	private void loadData() {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_PERSON);
-		query.orderByDescending("createdAt");
-		//query.setLimit(ITEM_LIMIT);
+        query.orderByAscending("last_name");
+        query.whereNotEqualTo("debug", 1);
+		query.setLimit(500);
 		//query.whereNear(key, point);
 		//query.whereContains(key, substring);
 		//String[] names = {"userid"};

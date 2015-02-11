@@ -1,7 +1,11 @@
 package com.squint.app.data;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -35,10 +39,14 @@ public class TalkDAO {
 	private ParseObject			mUser;
 	private List<ParseObject>	mData;
 	
-	
-	public TalkDAO(Context context) {
+	public ArrayList<String> search_array;
+    public int talk_day;
+
+	public TalkDAO(Context context, ArrayList<String> searcharray, int talkday) {
 		mContext = context;
 		mData = new ArrayList<ParseObject>();
+        search_array = searcharray;
+        talk_day = talkday;
 		query(null);
 	}
 	
@@ -55,6 +63,17 @@ public class TalkDAO {
 		query.orderByAscending(START_TIME);
 		//query.setLimit(ITEM_LIMIT);
 		if (object != null) query.whereEqualTo(AUTHOR, object);
+        if (search_array != null && search_array.size()>0)
+        {
+            query.whereContainsAll("words", search_array);
+        }
+        if (talk_day != 0)
+        {
+            Date startdate = getStartTimeForDay(talk_day).getTime();
+            Date enddate = getStartTimeForDay(talk_day+1).getTime();
+            query.whereGreaterThan("start_time",startdate);
+            query.whereLessThan("start_time",enddate);
+        }
 		query.include(AUTHOR);
 		query.include(LOCATION);
 		query.include(SESSION);
@@ -82,9 +101,12 @@ public class TalkDAO {
 		
 	// Send intent as callback for finished tasks
 	private void onReceived(List<ParseObject> objects) {		
-		if (objects == null) return;
+		if (objects == null){
+            Log.d(TAG, "talkDAO = 0");
+            return;
+        }
 		else {
-			Log.d(TAG, "Size: " + objects.size());
+			Log.d(TAG, "SSize: " + objects.size());
 			mData = objects;
 			Intent intent = new Intent(ACTION_LOAD_DATA);
 			if (objects.size() > 0) intent.putExtra(DATA, mData.get(0).getObjectId());
@@ -95,4 +117,33 @@ public class TalkDAO {
 	private void onFailed(_ERROR.PARSE_ERROR error) {
 		Log.d(TAG, "Error: " + error.getMessage());
 	}
+
+    public Calendar getStartTimeForDay(int day_num) {
+        Calendar day1 = new GregorianCalendar(2015,02,19,01,01);
+        day1.setTimeZone(TimeZone.getTimeZone("GMT"));
+        Calendar day2 = new GregorianCalendar(2015,02,20,01,01);
+        day2.setTimeZone(TimeZone.getTimeZone("GMT"));
+        Calendar day3 = new GregorianCalendar(2015,02,21,01,01);
+        day3.setTimeZone(TimeZone.getTimeZone("GMT"));
+        Calendar day4 = new GregorianCalendar(2015,02,22,01,01);
+        day4.setTimeZone(TimeZone.getTimeZone("GMT"));
+        List<Calendar> daylist = new ArrayList<Calendar>();
+        daylist.add(day1);
+        daylist.add(day2);
+        daylist.add(day3);
+        daylist.add(day4);
+        if (day_num<1)
+        {
+            return day1;
+        }
+        else if (day_num>4)
+        {
+            return  day4;
+        }
+        else
+        {
+            return daylist.get(day_num-1);
+        }
+    }
+
 }

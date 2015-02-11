@@ -29,10 +29,13 @@ public class PosterDAO {
 	private Context				mContext;
 	private ParseObject			mUser;
 	private List<ParseObject>	mData;
-	
-	public PosterDAO(Context context) {
+
+    public ArrayList<String> search_array;
+
+	public PosterDAO(Context context, ArrayList<String> searcharray) {
 		mContext = context;
 		mData = new ArrayList<ParseObject>();
+        search_array = searcharray;
 		query(null);
 	}
 	
@@ -48,6 +51,10 @@ public class PosterDAO {
 		query.orderByDescending("name");
 		//query.setLimit(ITEM_LIMIT);
 		if (object != null) query.whereEqualTo(AUTHOR, object);
+        if (search_array != null && search_array.size()>0)
+        {
+            query.whereContainsAll("words", search_array);
+        }
 		query.include(AUTHOR);
 		query.include(LOCATION);
 		query.include(ABSTRACT);

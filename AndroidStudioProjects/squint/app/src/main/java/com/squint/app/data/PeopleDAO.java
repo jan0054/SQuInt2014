@@ -34,10 +34,13 @@ public class PeopleDAO {
 	private Context				mContext;
 	private List<ParseObject> 	mData;
 	private ParseObject			mObject = null;
+
+    public ArrayList<String> search_array;
 	
-	public PeopleDAO(Context context) {
+	public PeopleDAO(Context context, ArrayList<String> searcharray) {
 		mContext = context;
 		mData = new ArrayList<ParseObject>();
+        search_array = searcharray;
 		loadData();
 	}
 	
@@ -69,6 +72,10 @@ public class PeopleDAO {
         query.orderByAscending("last_name");
         query.whereNotEqualTo("debug", 1);
 		query.setLimit(500);
+        if (search_array != null && search_array.size()>0)
+        {
+            query.whereContainsAll("words", search_array);
+        }
 		//query.whereNear(key, point);
 		//query.whereContains(key, substring);
 		//String[] names = {"userid"};
@@ -104,7 +111,10 @@ public class PeopleDAO {
 			mData = objects;
 			Log.d(TAG, "Person: " + objects.size());
 			Intent intent = new Intent(ACTION_LOAD_DATA);
-			intent.putExtra(DATA, mData.get(0).getObjectId());
+            if (objects.size() > 0)
+            {
+                intent.putExtra(DATA, mData.get(0).getObjectId());
+            }
 			mContext.sendBroadcast(intent);
 		}	
 	}

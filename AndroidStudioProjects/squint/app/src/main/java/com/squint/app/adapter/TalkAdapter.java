@@ -29,6 +29,8 @@ public class TalkAdapter extends BaseAdapter {
 	private SimpleDateFormat 		sdf;
 	private List<ParseObject>	 	data;
 
+    public String search_input;
+
 	private static class ViewHolder {
 		  //public ImageView image;
 		  public TextView name;

@@ -1,5 +1,6 @@
 package com.squint.app;
 
+import com.parse.ParseUser;
 import com.squint.app.widget.BaseActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -72,6 +73,22 @@ public class TalkDetailsActivity extends BaseActivity {
         mDetails 		= (TextView)findViewById(R.id.author_details);
         mCalendar       = (TextView)findViewById(R.id.btn_calendar);
         mDescription.setMovementMethod(new ScrollingMovementMethod());
+
+        TextView mDiscuss = (TextView)findViewById(R.id.btn_discussion);
+        ParseUser cur_user = ParseUser.getCurrentUser();
+        if (cur_user != null)
+        {
+            int isperson = cur_user.getInt("isperson");
+            if (isperson != 1)
+            {
+                mDiscuss.setTextColor(getResources().getColor(R.color.button_title));
+            }
+        }
+        else
+        {
+            mDiscuss.setTextColor(getResources().getColor(R.color.button_title));
+        }
+
 	}
 	
 	@Override
@@ -191,4 +208,21 @@ public class TalkDetailsActivity extends BaseActivity {
 	private String getAbstractPdf() {
 		return absPdf;
 	}
+
+    public void goDiscuss(View view) {
+        ParseUser cur_user = ParseUser.getCurrentUser();
+        if (cur_user != null)
+        {
+            int isperson = cur_user.getInt("isperson");
+            if (isperson == 1)
+            {
+                Log.d(TAG, "DISCUSS: " + oid);
+                Intent discussionIntent = new Intent(this, DiscussionActivity.class);
+                discussionIntent.putExtra("event_objid",  oid);
+                discussionIntent.putExtra("event_type",  0);
+                startActivity(discussionIntent);
+            }
+        }
+
+    }
 }

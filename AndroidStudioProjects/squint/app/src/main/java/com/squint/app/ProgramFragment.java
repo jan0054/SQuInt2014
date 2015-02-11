@@ -1,9 +1,11 @@
 package com.squint.app;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.parse.ParseObject;
+import com.parse.codec.binary.StringUtils;
 import com.squint.app.adapter.AbstractAdapter;
 import com.squint.app.adapter.PosterAdapter;
 import com.squint.app.adapter.TalkAdapter;
@@ -17,12 +19,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.sax.Element;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -48,12 +54,22 @@ public class ProgramFragment extends Fragment implements OnClickListener {
 	private Button mTalk;
 	private Button mPoster;
 	private Button mAbstract;
-    
+
+    //search and day filter stuff
+    public int selected_seg;
+    public EditText searchinput;
+    public Button dosearch;
+    public Button cancelsearch;
+    public int talkday;
+    public ArrayList<String> searcharray;
     
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		mTalkDAO = new TalkDAO(mContext);
-		mPosterDAO = new PosterDAO(mContext);
+        selected_seg = 0;
+        talkday = 0;
+        searcharray = new ArrayList<String>();
+		mTalkDAO = new TalkDAO(mContext, searcharray, talkday);
+		mPosterDAO = new PosterDAO(mContext, searcharray);
 		mAbstractDAO = new AbstractDAO(mContext);
 		mTalkData	= new ArrayList<ParseObject>();
 		mPosterData	= new ArrayList<ParseObject>();	
@@ -65,6 +81,42 @@ public class ProgramFragment extends Fragment implements OnClickListener {
 		mTalk.setOnClickListener(this);
 		mPoster.setOnClickListener(this);
 		mAbstract.setOnClickListener(this);
+
+        searchinput = (EditText)v.findViewById(R.id.searchinput);
+        dosearch = (Button)v.findViewById(R.id.dosearch);
+        cancelsearch = (Button)v.findViewById(R.id.cancelsearch);
+        dosearch.setOnClickListener(this);
+        cancelsearch.setOnClickListener(this);
+        searchinput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(s.length() == 0)
+                {
+                    Log.d(TAG, "Backspaced to empty");
+                    searcharray.clear();
+                    switch (selected_seg)
+                    {
+                        case 0:
+                            mTalkDAO = new TalkDAO(mContext, searcharray, talkday);
+                            mList.setAdapter(mTalkAdapter);
+                            break;
+                        case 1:
+                            mPosterDAO = new PosterDAO(mContext, searcharray);
+                            mList.setAdapter(mPosterAdapter);
+                            break;
+                    }
+                }
+            }
+        });
 		
 		mList = (ListView) v.findViewById(android.R.id.list);
 		mList.setEmptyView(v.findViewById(android.R.id.empty));
@@ -76,7 +128,8 @@ public class ProgramFragment extends Fragment implements OnClickListener {
         return v;	
         
 	}
-	
+
+
 	public static ProgramFragment newInstance(Context context) {
 		mContext = context;
         return new ProgramFragment();
@@ -155,6 +208,14 @@ public class ProgramFragment extends Fragment implements OnClickListener {
     	Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
 	}
 
+    public void setSearchString()
+    {
+        String raw_input = searchinput.getText().toString();
+        String lower_raw = raw_input.toLowerCase();
+        String [] split_string = lower_raw.split("\\s+");
+        searcharray = new ArrayList<String>(Arrays.asList(split_string));
+    }
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -166,6 +227,9 @@ public class ProgramFragment extends Fragment implements OnClickListener {
 			mTalk.setEnabled(false);
 			mPoster.setEnabled(true);
 			mAbstract.setEnabled(true);
+            selected_seg = 0;
+            searchinput.setText("");
+            searcharray.clear();
 			//toast("Talk");
 			break;
 		case R.id.switch_poster:
@@ -175,7 +239,10 @@ public class ProgramFragment extends Fragment implements OnClickListener {
 			mAbstract.setSelected(false);
 			mTalk.setEnabled(true);
 			mPoster.setEnabled(false);
-			mAbstract.setEnabled(true);			
+			mAbstract.setEnabled(true);
+            selected_seg = 1;
+            searchinput.setText("");
+            searcharray.clear();
 			//toast("Poster");
 			break;
 		case R.id.switch_abstract:
@@ -185,11 +252,46 @@ public class ProgramFragment extends Fragment implements OnClickListener {
 			mAbstract.setSelected(true);
 			mTalk.setEnabled(true);
 			mPoster.setEnabled(true);
-			mAbstract.setEnabled(false);			
+			mAbstract.setEnabled(false);
+            selected_seg = 2;
+            searchinput.setText("");
+            searcharray.clear();
 			//toast("Abstract");
 			break;
+        case R.id.cancelsearch:
+            //cancel search button
+            Log.d(TAG, "Cancel search");
+            searchinput.setText("");
+            searcharray.clear();
+            switch (selected_seg)
+            {
+                case 0:
+                    mTalkDAO = new TalkDAO(mContext, searcharray, talkday);
+                    mList.setAdapter(mTalkAdapter);
+                    break;
+                case 1:
+                    mPosterDAO = new PosterDAO(mContext, searcharray);
+                    mList.setAdapter(mPosterAdapter);
+                    break;
+            }
+            break;
+        case R.id.dosearch:
+            //do search button
+            Log.d(TAG, "Do search");
+            switch (selected_seg)
+            {
+                case 0:
+                    setSearchString();
+                    mTalkDAO = new TalkDAO(mContext, searcharray, talkday);
+                    mList.setAdapter(mTalkAdapter);
+                    break;
+                case 1:
+                    setSearchString();
+                    mPosterDAO = new PosterDAO(mContext, searcharray);
+                    mList.setAdapter(mPosterAdapter);
+                    break;
+            }
+            break;
 		}
-		
 	}	
-
 }

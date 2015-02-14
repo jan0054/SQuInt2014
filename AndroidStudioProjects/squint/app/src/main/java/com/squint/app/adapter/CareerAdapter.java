@@ -150,7 +150,7 @@ public class CareerAdapter extends BaseAdapter {
 
     private String getWeblink(ParseObject object) {
         String weblink =  object.getString("link");
-        if (weblink.length()>5)
+        if (weblink != null)
         {
             return weblink;
         }

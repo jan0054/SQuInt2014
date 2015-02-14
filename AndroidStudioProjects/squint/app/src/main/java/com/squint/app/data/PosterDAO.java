@@ -48,8 +48,8 @@ public class PosterDAO {
 	
 	private void query(ParseObject object) {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_POSTER);
-		query.orderByDescending("name");
-		//query.setLimit(ITEM_LIMIT);
+		query.orderByAscending("name");
+		query.setLimit(500);
 		if (object != null) query.whereEqualTo(AUTHOR, object);
         if (search_array != null && search_array.size()>0)
         {

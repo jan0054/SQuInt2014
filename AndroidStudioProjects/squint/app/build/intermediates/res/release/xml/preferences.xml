@@ -19,7 +19,14 @@
        			    android:layout="@layout/preference_row_arrow"
 		            android:title="@string/pref_title_feedback"
 		            android:icon="@drawable/preference_arrow" />
-	    
+        <Preference android:key="PREF_TECH"
+                    android:layout="@layout/preference_row_arrow"
+                    android:title="@string/pref_title_tech"
+                    android:icon="@drawable/preference_arrow" />
+        <Preference android:key="PREF_ADMIN"
+                    android:layout="@layout/preference_row_arrow"
+                    android:title="@string/pref_title_admin"
+                    android:icon="@drawable/preference_arrow" />
 	    <Preference android:key="PREF_TERMS"
        			    android:layout="@layout/preference_row_arrow"
 		            android:title="@string/pref_title_terms"

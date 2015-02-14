@@ -9,11 +9,17 @@ public class _PARAMS {
 	 * http://docs.google.com/gview?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0">
 	 */
 	// Settings
-	public static final String FEEDBACK_EMAIL = "service@tapgo.cc";
-	public static final String FEEDBACK_TITLE = "Suggestion about Squint";
+	public static final String FEEDBACK_EMAIL = "jan0054@gmail.com";
+    public static final String TECH_EMAIL = "ideutsch@unm.edu";
+    public static final String ADMIN_EMAIL = "vbird@unm.edu";
+	public static final String FEEDBACK_TITLE = "Suggestions for SQuInT app:";
+    public static final String TECH_TITLE = "Technical assistance for SQuInT app:";
+    public static final String ADMIN_TITLE = "Administrative assistance for SQuInT workshop:";
 	public static final String FEEDBACK_CONTENT = "";
-	public static final String CONTACTUS_EMAIL = "sales@tapgo.cc";
-	public static final String CONTACTUS_TITLE = "About Squint";
+    public static final String TECH_CONTENT = "";
+    public static final String ADMIN_CONTENT = "";
+	public static final String CONTACTUS_EMAIL = "jan0054@gmail.com";
+	public static final String CONTACTUS_TITLE = "About Colloquium.me";
 	public static final String CONTACTUS_CONTENT = "";
 	
 	

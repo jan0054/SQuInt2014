@@ -27,9 +27,10 @@ public class TalkDetailsActivity extends BaseActivity {
 	public static final String 		EXTRA_TALK_ABSTRACT_ID 	    	= "com.squint.data.talk.ABSTRACT_ID";
 	public static final String 		EXTRA_TALK_ABSTRACT_PDF	    	= "com.squint.data.talk.ABSTRACT_PDF";
 	public static final String 		EXTRA_TALK_ABSTRACT_CONTENT   	= "com.squint.data.talk.ABSTRACT_CONTENT";
-    public static final String 		EXTRA_TALK_AUTHOR_INSTITUTION = "com.squint.data.talk.AUTHOR_INSITUTION";
-    public static final String 		EXTRA_TALK_AUTHOR_EMAIL		  = "com.squint.data.talk.AUTHOR_EMAIL";
-    public static final String 		EXTRA_TALK_AUTHOR_WEBSITE	  = "com.squint.data.talk.AUTHOR_WEBSITE";
+    public static final String 		EXTRA_TALK_AUTHOR_INSTITUTION   = "com.squint.data.talk.AUTHOR_INSITUTION";
+    public static final String 		EXTRA_TALK_AUTHOR_EMAIL		    = "com.squint.data.talk.AUTHOR_EMAIL";
+    public static final String 		EXTRA_TALK_AUTHOR_WEBSITE	    = "com.squint.data.talk.AUTHOR_WEBSITE";
+    public static final String 		EXTRA_TALK_SESSION	            = "com.squint.data.talk.SESSION";
 
     public String cal_talk_name;
     public String cal_talk_location;
@@ -44,7 +45,8 @@ public class TalkDetailsActivity extends BaseActivity {
 	private TextView 		mAbstract;
     private TextView 		mDetails;
     private TextView        mCalendar;
-	
+	private TextView        mSession;
+
 	// ParseObject
 	private static String  oid;
 	private static String  authorId;
@@ -54,6 +56,7 @@ public class TalkDetailsActivity extends BaseActivity {
     private static String  website;
     private static String  email;
     private static String  institution;
+    private static String  session;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,7 @@ public class TalkDetailsActivity extends BaseActivity {
 		mAbstract		= (TextView)findViewById(R.id.btn_abstract);
         mDetails 		= (TextView)findViewById(R.id.author_details);
         mCalendar       = (TextView)findViewById(R.id.btn_calendar);
+        mSession        = (TextView)findViewById(R.id.session);
         mDescription.setMovementMethod(new ScrollingMovementMethod());
 
         TextView mDiscuss = (TextView)findViewById(R.id.btn_discussion);
@@ -103,6 +107,9 @@ public class TalkDetailsActivity extends BaseActivity {
         cal_talk_location = intent.getStringExtra(EXTRA_TALK_LOCATION_NAME);
         cal_talk_start_time = intent.getStringExtra(EXTRA_TALK_START_TIME);
 
+        session = intent.getStringExtra(EXTRA_TALK_SESSION);
+
+        mSession.setText(session);
 		mName.setText(intent.getStringExtra(EXTRA_TALK_NAME));
 		mAuthor.setText(intent.getStringExtra(EXTRA_TALK_AUTHOR));
 		mLocation.setText(intent.getStringExtra(EXTRA_TALK_LOCATION_NAME));

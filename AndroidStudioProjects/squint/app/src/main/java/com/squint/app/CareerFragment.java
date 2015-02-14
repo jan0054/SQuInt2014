@@ -17,6 +17,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,7 +33,10 @@ public class CareerFragment extends Fragment {
 	public static List<ParseObject> mData;
 	public ListView 				mList;
 	public static CareerAdapter		mAdapter;
-    
+
+    public EditText searchinput;
+    public Button dosearch;
+    public Button cancelsearch;
     
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +48,14 @@ public class CareerFragment extends Fragment {
 		mList.setEmptyView(v.findViewById(android.R.id.empty));
 		mAdapter = new CareerAdapter(mContext, mData);
 		mList.setAdapter(mAdapter);
+
+        searchinput = (EditText)v.findViewById(R.id.searchinput);
+        dosearch = (Button)v.findViewById(R.id.dosearch);
+        cancelsearch = (Button)v.findViewById(R.id.cancelsearch);
+        searchinput.setVisibility(View.GONE);
+        dosearch.setVisibility(View.GONE);
+        cancelsearch.setVisibility(View.GONE);
+
         return v;	
         
 	}

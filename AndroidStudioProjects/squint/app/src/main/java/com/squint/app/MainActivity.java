@@ -8,8 +8,10 @@ import com.squint.app.widget.BaseActivity;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -27,7 +29,9 @@ public class MainActivity extends BaseActivity {
     public TabHost 				mTabHost;
 	SectionsPagerAdapter 		mSectionsPagerAdapter;
 	ViewPager 					mViewPager;	
-	
+
+    public int day;
+
 	// Tab
 	public static final int[] TAB_TITLES = {R.string.title_section1,
 											R.string.title_section2,
@@ -75,8 +79,25 @@ public class MainActivity extends BaseActivity {
         mTabHost.setup();
 		initTabs();
 		mViewPager.setCurrentItem(0);
-		
+
 	}
+
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            day = intent.getIntExtra("day",0);
+            //toast("got intent:"+day);
+
+            ProgramFragment fragment = (ProgramFragment) getFragmentManager().findFragmentByTag(makeFragmentName(mViewPager.getId(),0));
+            if (fragment != null) {
+                fragment.refreshDay(day);
+            }
+
+        }
+    };
+    private static String makeFragmentName(int viewId, int index) {
+        return "android:switcher:" + viewId + ":" + index;
+    }
 	
 	@SuppressLint("InflateParams")
 	private View createTabView(final int id) {
@@ -122,13 +143,15 @@ public class MainActivity extends BaseActivity {
       	  // Configure title and options
       	  switch(id) {
       	  case 0:
-      		  clearOptions();
+              configOptions(OPTION_NONE, OPTION_DAYS);
+      		  //clearOptions();
       		  break;
       	  case 1:
       		  configOptions(OPTION_NONE, OPTION_TALK);          	  
           	  break;
       	  case 2:
-      		  clearOptions();
+      		  //clearOptions();
+              configOptions(OPTION_NONE, OPTION_CAREER);
           	  break;
       	  case 3:
       		  clearOptions();
@@ -148,11 +171,13 @@ public class MainActivity extends BaseActivity {
 	@Override  
     protected void onResume() {
         super.onResume();
+        this.registerReceiver(mMessageReceiver, new IntentFilter("day_intent"));
     }
 
 	@Override  
     protected void onPause() {  
-        super.onPause();  
+        super.onPause();
+        this.unregisterReceiver(mMessageReceiver);
     }
 
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -165,7 +190,13 @@ public class MainActivity extends BaseActivity {
 		public Fragment getItem(int position) {
 
 			switch (position) {
-            case 0: return ProgramFragment.newInstance(getBaseContext());
+            case 0:
+                //ProgramFragment pf = new ProgramFragment();
+                //Bundle args = new Bundle();
+                //args.putInt("day", day);
+                //pf.setArguments(args);
+                //return pf;
+                return ProgramFragment.newInstance(getBaseContext());
             case 1: return PeopleFragment.newInstance(getBaseContext());
             case 2: return CareerFragment.newInstance(getBaseContext());
             case 3: return VenueFragment.newInstance(getBaseContext());

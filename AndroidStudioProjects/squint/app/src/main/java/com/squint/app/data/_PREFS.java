@@ -26,6 +26,8 @@ public class _PREFS {
     public static final String ABOUT			= "PREF_ABOUT";
     public static final String FEEDBACK			= "PREF_FEEDBACK";
     public static final String TERMS			= "PREF_TERMS";
+    public static final String TECH			    = "PREF_TECH";
+    public static final String ADMIN			= "PREF_ADMIN";
     public static final String USER             = "PREF_USER";
 
 	public _PREFS(Context context) {

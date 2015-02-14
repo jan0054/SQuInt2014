@@ -301,3 +301,9 @@ ADDED from AndroidManifest.xml:148:9
 		ADDED from AndroidManifest.xml:150:13
 	android:name
 		ADDED from AndroidManifest.xml:149:13
+activity#com.squint.app.UploadCareerActivity
+ADDED from AndroidManifest.xml:152:9
+	android:label
+		ADDED from AndroidManifest.xml:154:13
+	android:name
+		ADDED from AndroidManifest.xml:153:13

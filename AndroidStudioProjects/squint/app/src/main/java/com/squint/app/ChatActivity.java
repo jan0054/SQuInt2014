@@ -124,9 +124,7 @@ public class ChatActivity extends BaseActivity implements  AdapterView.OnItemCli
         @Override
         public void onReceive(Context context, Intent intent) {
             chatAdapter.loadObjects();
-            // Extract data included in the Intent
             //String message = intent.getStringExtra("message");
-
         }
     };
 

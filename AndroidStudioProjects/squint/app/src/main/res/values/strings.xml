@@ -59,11 +59,13 @@
     <string name="pref_title_notification">Notification</string>
     <string name="pref_title_about">About Us</string>
     <string name="pref_title_feedback">Feedback</string>
+    <string name="pref_title_tech">Technical Assistance</string>
+    <string name="pref_title_admin">Administrative Assistance</string>
     <string name="pref_title_terms">Privacy and Terms</string>
     <string name="pref_title_user">User Preferences</string>
     <string name="action_email_us">Email Us</string>
     <string name="action_close">Close</string>
-    <string name="pref_subject_about">Ashvale Digital Ltd.</string>
+    <string name="pref_subject_about">Colloquium.me</string>
     <string name="pref_subject_terms">Privacy Policy and Terms of Service</string>
 
     <string-array name="detail_title">
@@ -79,6 +81,18 @@
         <item>@string/action_close</item>
     </string-array>
 
+    <string-array name="days_array">
+        <item>All</item>
+        <item>Feb 19</item>
+        <item>Feb 20</item>
+        <item>Feb 21</item>
+    </string-array>
+    <string-array name="career_array">
+        <item>New</item>
+        <item>Position Available</item>
+        <item>Seeking Position</item>
+    </string-array>
+
     <!-- ERROR - NETWORK -->
     <string name="dialog_network_error_content">No internet connection. Please check your network settings</string>
     <string name="dialog_network_error_title">Network connection error</string>
@@ -88,5 +102,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_user_preference">UserPreferenceActivity</string>
     <string name="title_activity_discussion">DiscussionActivity</string>
+    <string name="title_activity_upload_career">UploadCareerActivity</string>
 
 </resources>

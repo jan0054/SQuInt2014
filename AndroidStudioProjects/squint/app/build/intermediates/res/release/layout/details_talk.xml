@@ -29,6 +29,21 @@
 		    android:textColor="@color/list_item_level_1"
 		    android:textSize="18sp"
 		     />
+        <TextView
+            android:id="@+id/session"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:maxLines="4"
+            android:text="session"
+            android:textColor="@color/list_item_level_1"
+            android:textSize="14sp"
+            />
 
 		<TextView
 		    android:id="@+id/author"

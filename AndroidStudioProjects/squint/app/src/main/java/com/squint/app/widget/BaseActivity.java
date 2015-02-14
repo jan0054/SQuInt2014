@@ -7,6 +7,7 @@ import com.parse.ParsePush;
 import com.parse.SaveCallback;
 import com.squint.app.LoginActivity;
 import com.squint.app.R;
+import com.squint.app.UploadCareerActivity;
 import com.squint.app.data._PARAMS;
 import com.squint.app.squintApplication;
 
@@ -23,10 +24,13 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class BaseActivity extends FragmentActivity implements OnClickListener {
+public class BaseActivity extends FragmentActivity implements OnClickListener, AdapterView.OnItemSelectedListener {
 	
 	public static final String		TAG = BaseActivity.class.getSimpleName();
 	
@@ -36,14 +40,18 @@ public class BaseActivity extends FragmentActivity implements OnClickListener {
 	public TintableImageView	mOptionRight;
 	public TintableImageView	mOptionExtraLeft;
 	public TintableImageView	mOptionExtraRight;
-	
+    public Spinner dayspinner;
+    public Spinner careerspinner;
+
 	public final static int OPTION_NONE			= 0;
 	public final static int OPTION_BACK			= R.drawable.actionbar_back;
 	public final static int OPTION_TALK			= R.drawable.actionbar_message;
 	public final static int OPTION_LOGIN 		= R.drawable.actionbar_login;
 	public final static int OPTION_LOGOUT		= R.drawable.actionbar_logout;
     public final static int OPTION_USER         = R.drawable.actionbar_list;
-	
+	public final static int OPTION_DAYS         = 98;
+    public final static int OPTION_CAREER       = 99;
+
 	public static final String ACTION_FROM = "com.squint.app.action.from";
 	public static final String ACTION_TO = "com.squint.app.action.to";
 	public static final String USER_TO = "com.squint.app.user.to";
@@ -98,9 +106,97 @@ public class BaseActivity extends FragmentActivity implements OnClickListener {
 		mOptionRight.setOnClickListener(this);
 		mOptionExtraLeft.setOnClickListener(this);
 		mOptionExtraRight.setOnClickListener(this);
-		
-		
+
+        dayspinner = (Spinner) findViewById(R.id.dayspinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.days_array, R.layout.spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        dayspinner.setAdapter(adapter);
+        dayspinner.setOnItemSelectedListener(this);
+
+
+
+        careerspinner = (Spinner) findViewById(R.id.careerspinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
+                R.array.career_array, R.layout.spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        careerspinner.setAdapter(adapter2);
+        careerspinner.setOnItemSelectedListener(this);
+
 	}
+
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+        switch (parent.getId())
+        {
+            case R.id.careerspinner:
+                //post career spinner
+                if (pos == 1)
+                {
+                    //offer
+                    Intent postCareerIntent = new Intent(this, UploadCareerActivity.class);
+                    postCareerIntent.putExtra("career_type",  0);
+                    startActivity(postCareerIntent);
+                    careerspinner.setSelection(0);
+                    break;
+                }
+                else if (pos == 2)
+                {
+                    //seek
+                    Intent postCareerIntent = new Intent(this, UploadCareerActivity.class);
+                    postCareerIntent.putExtra("career_type",  1);
+                    startActivity(postCareerIntent);
+                    careerspinner.setSelection(0);
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+
+            case R.id.dayspinner:
+                //select_day spinner
+                switch (pos)
+                {
+                    case 0:
+                        updateDaySpinner(this,0);
+
+                        break;
+                    case 1:
+                        updateDaySpinner(this,1);
+                        break;
+                    case 2:
+                        updateDaySpinner(this,2);
+                        break;
+                    case 3:
+                        updateDaySpinner(this,3);
+                        break;
+                }
+
+                break;
+        }
+    }
+
+    static void updateDaySpinner(Context context, int day) {
+
+        Intent dayIntent = new Intent("day_intent");
+        //put whatever data you want to send, if any
+        dayIntent.putExtra("day", day);
+        //send broadcast
+        context.sendBroadcast(dayIntent);
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
+    }
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -159,6 +255,8 @@ public class BaseActivity extends FragmentActivity implements OnClickListener {
     	mOptionRight.setImageDrawable(null);
     	mOptionLeft.setVisibility(View.GONE);
     	mOptionRight.setVisibility(View.GONE);
+        dayspinner.setVisibility(View.GONE);
+        careerspinner.setVisibility(View.GONE);
     }
     
     public void configOptions(int leftDrawableId, int rightDrawableId) {
@@ -166,17 +264,40 @@ public class BaseActivity extends FragmentActivity implements OnClickListener {
 	    	mOptionLeft.setImageResource(leftDrawableId);
 	    	mOptionLeft.setTag(leftDrawableId);
 	    	mOptionLeft.setVisibility(View.VISIBLE);
-    	} else {
+    	}
+
+        else {
 	    	mOptionLeft.setImageDrawable(null);
 	    	mOptionLeft.setVisibility(View.GONE);    		
     	}
-    	if (rightDrawableId != OPTION_NONE) {
+        if (rightDrawableId == OPTION_DAYS)
+        {
+            mOptionRight.setImageDrawable(null);
+            mOptionRight.setVisibility(View.GONE);
+            dayspinner.setVisibility(View.VISIBLE);
+            careerspinner.setVisibility(View.GONE);
+            Log.d(TAG, "SPINNER DAY");
+        }
+        else if (rightDrawableId == OPTION_CAREER)
+        {
+            mOptionRight.setImageDrawable(null);
+            mOptionRight.setVisibility(View.GONE);
+            careerspinner.setVisibility(View.VISIBLE);
+            dayspinner.setVisibility(View.GONE);
+            Log.d(TAG, "SPINNER CAREER");
+        }
+    	else if (rightDrawableId != OPTION_NONE) {
 	    	mOptionRight.setImageResource(rightDrawableId);
 	    	mOptionRight.setTag(rightDrawableId);
 	    	mOptionRight.setVisibility(View.VISIBLE);
-    	} else {
+            dayspinner.setVisibility(View.GONE);
+            careerspinner.setVisibility(View.GONE);
+    	}
+        else {
     		mOptionRight.setImageDrawable(null);
-    		mOptionRight.setVisibility(View.GONE);    		
+    		mOptionRight.setVisibility(View.GONE);
+            dayspinner.setVisibility(View.GONE);
+            careerspinner.setVisibility(View.GONE);
     	}
     }
     

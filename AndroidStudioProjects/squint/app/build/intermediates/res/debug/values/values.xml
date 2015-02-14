@@ -2,6 +2,17 @@
 <resources>
     <!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string-array name="career_array">
+        <item>New</item>
+        <item>Position Available</item>
+        <item>Seeking Position</item>
+    </string-array>
+    <string-array name="days_array">
+        <item>All</item>
+        <item>Feb 19</item>
+        <item>Feb 20</item>
+        <item>Feb 21</item>
+    </string-array>
     <string-array name="detail_action">
         <item>@string/action_email_us</item>
         <item>@string/action_close</item>
@@ -121,11 +132,13 @@
     <string name="pdf">Open</string>
     <string name="position">POSITION</string>
     <string name="post_by">Posted by:</string>
-    <string name="pref_subject_about">Ashvale Digital Ltd.</string>
+    <string name="pref_subject_about">Colloquium.me</string>
     <string name="pref_subject_terms">Privacy Policy and Terms of Service</string>
     <string name="pref_title_about">About Us</string>
+    <string name="pref_title_admin">Administrative Assistance</string>
     <string name="pref_title_feedback">Feedback</string>
     <string name="pref_title_notification">Notification</string>
+    <string name="pref_title_tech">Technical Assistance</string>
     <string name="pref_title_terms">Privacy and Terms</string>
     <string name="pref_title_user">User Preferences</string>
     <string name="signup">Sign up</string>
@@ -137,6 +150,7 @@
     <string name="switch_talk">Talks</string>
     <string name="title_activity_chat">ChatActivity</string>
     <string name="title_activity_discussion">DiscussionActivity</string>
+    <string name="title_activity_upload_career">UploadCareerActivity</string>
     <string name="title_activity_user_preference">UserPreferenceActivity</string>
     <string name="title_conversation">Conversation</string>
     <string name="title_login">Login</string>

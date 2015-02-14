@@ -43,7 +43,9 @@ public class SettingsFragment extends PreferenceFragment
 		private ListView 			lv;
 		public static final String SETTINGS_ABOUT = "com.squint.app.settings.about";
 		public static final String SETTINGS_TERMS = "com.squint.app.settings.terms";
-		public static final String SETTINGS_FEEDBACK = "com.squint.app.settings.feedback";		
+		public static final String SETTINGS_FEEDBACK = "com.squint.app.settings.feedback";
+        public static final String SETTINGS_TECH = "com.squint.app.settings.tech";
+        public static final String SETTINGS_ADMIN = "com.squint.app.settings.admin";
 		
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
@@ -130,6 +132,35 @@ public class SettingsFragment extends PreferenceFragment
 				}
 			});
 
+            Preference tech = (Preference) findPreference(_PREFS.TECH);
+            tech.setOnPreferenceClickListener(new OnPreferenceClickListener(){
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Log.d(TAG, preference.getKey());
+                    try {
+                        sendEmail(_PARAMS.TECH_TITLE, _PARAMS.TECH_CONTENT, new String[]{_PARAMS.TECH_EMAIL}, null);
+                    } catch (Exception e){
+                        e.getStackTrace();
+                    }
+
+                    return false;
+                }
+            });
+
+            Preference admin = (Preference) findPreference(_PREFS.ADMIN);
+            admin.setOnPreferenceClickListener(new OnPreferenceClickListener(){
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Log.d(TAG, preference.getKey());
+                    try {
+                        sendEmail(_PARAMS.ADMIN_TITLE, _PARAMS.ADMIN_CONTENT, new String[]{_PARAMS.ADMIN_EMAIL}, null);
+                    } catch (Exception e){
+                        e.getStackTrace();
+                    }
+
+                    return false;
+                }
+            });
 
 		}	
 		

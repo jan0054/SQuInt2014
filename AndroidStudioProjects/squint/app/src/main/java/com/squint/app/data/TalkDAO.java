@@ -73,6 +73,7 @@ public class TalkDAO {
             Date enddate = getStartTimeForDay(talk_day+1).getTime();
             query.whereGreaterThan("start_time",startdate);
             query.whereLessThan("start_time",enddate);
+            Log.d(TAG, "DATE constraint " + talk_day +" | "+ startdate);
         }
 		query.include(AUTHOR);
 		query.include(LOCATION);
@@ -106,7 +107,7 @@ public class TalkDAO {
             return;
         }
 		else {
-			Log.d(TAG, "SSize: " + objects.size());
+			Log.d(TAG, "Talk query results: " + objects.size());
 			mData = objects;
 			Intent intent = new Intent(ACTION_LOAD_DATA);
 			if (objects.size() > 0) intent.putExtra(DATA, mData.get(0).getObjectId());
@@ -119,13 +120,13 @@ public class TalkDAO {
 	}
 
     public Calendar getStartTimeForDay(int day_num) {
-        Calendar day1 = new GregorianCalendar(2015,02,19,01,01);
+        Calendar day1 = new GregorianCalendar(2015,01,19,01,01);
         day1.setTimeZone(TimeZone.getTimeZone("GMT"));
-        Calendar day2 = new GregorianCalendar(2015,02,20,01,01);
+        Calendar day2 = new GregorianCalendar(2015,01,20,01,01);
         day2.setTimeZone(TimeZone.getTimeZone("GMT"));
-        Calendar day3 = new GregorianCalendar(2015,02,21,01,01);
+        Calendar day3 = new GregorianCalendar(2015,01,21,01,01);
         day3.setTimeZone(TimeZone.getTimeZone("GMT"));
-        Calendar day4 = new GregorianCalendar(2015,02,22,01,01);
+        Calendar day4 = new GregorianCalendar(2015,01,22,01,01);
         day4.setTimeZone(TimeZone.getTimeZone("GMT"));
         List<Calendar> daylist = new ArrayList<Calendar>();
         daylist.add(day1);

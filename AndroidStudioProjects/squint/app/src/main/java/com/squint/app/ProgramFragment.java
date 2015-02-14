@@ -65,6 +65,8 @@ public class ProgramFragment extends Fragment implements OnClickListener {
     
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Bundle args = getArguments();
+        //talkday = args.getInt("day", 0);
         selected_seg = 0;
         talkday = 0;
         searcharray = new ArrayList<String>();
@@ -128,6 +130,7 @@ public class ProgramFragment extends Fragment implements OnClickListener {
         return v;	
         
 	}
+
 
 
 	public static ProgramFragment newInstance(Context context) {
@@ -214,6 +217,14 @@ public class ProgramFragment extends Fragment implements OnClickListener {
         String lower_raw = raw_input.toLowerCase();
         String [] split_string = lower_raw.split("\\s+");
         searcharray = new ArrayList<String>(Arrays.asList(split_string));
+    }
+
+    public void refreshDay(int day)
+    {
+        Log.d(TAG, "Day refreshed");
+        talkday = day;
+        mTalkDAO = new TalkDAO(mContext, searcharray, talkday);
+        //mList.setAdapter(mTalkAdapter);
     }
 
 	@Override

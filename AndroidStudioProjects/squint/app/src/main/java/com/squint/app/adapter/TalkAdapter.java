@@ -104,6 +104,7 @@ public class TalkAdapter extends BaseAdapter {
 				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_START_TIME, getStartTime(item));
 				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_DESCRIPTION, getDescription(item));
 				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_LOCATION_NAME, getLocationName(item));
+                intent.putExtra(TalkDetailsActivity.EXTRA_TALK_SESSION, getSessionName(item));
 				if (getAbstractExist(item))
                 {
                     intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_ID, getAbstractId(item));
@@ -228,5 +229,10 @@ public class TalkAdapter extends BaseAdapter {
     private String getAuthorWebsite(ParseObject object) {
         ParseObject authortemp = object.getParseObject("author");
         return  (authortemp == null) ? context.getString(R.string.unknown) : authortemp.getString("link");
+    }
+
+    private String getSessionName(ParseObject object){
+        ParseObject session = object.getParseObject("session");
+        return session.getString("name");
     }
 }

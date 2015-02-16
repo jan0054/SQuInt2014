@@ -28,6 +28,11 @@
 		person_institution.focus();
 		return false;
 	}
+  	if(person_email.value==""){
+		alert(STR_email+AL_empty);
+		person_email.focus();
+		return false;
+	}
 	Parse.initialize("PLlbyPCGMrfHvghx1sllgLmNRIwz00l7PHYZdAvd", "Qkfl1VnB7ksIXOQAT5sV5uPFVVCehOVUoSLC0pmx");
 	ListItem = Parse.Object.extend("person");
 
@@ -94,7 +99,7 @@
 				<td><input class="InputSize" type="text" id="person_institution"></td>
 			</tr>
 			<tr>
-				<td><script>dw(STR_email)</script></td>
+				<td>*<script>dw(STR_email)</script></td>
 				<td><input class="InputSize" type="text" id="person_email"></td>
 			</tr>
 			<tr>

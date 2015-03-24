@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ThirdViewController : UIViewController
+@interface ThirdViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+- (IBAction)camera_tap:(UIButton *)sender;
+- (IBAction)upload_tap:(UIButton *)sender;
+- (IBAction)library_tap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *preview_imageview;
 
 
 @end

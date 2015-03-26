@@ -11,8 +11,12 @@
 		B43AB1281AC16FE800FB107A /* DrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43AB1271AC16FE800FB107A /* DrawerTableViewController.m */; };
 		B43AB12B1AC1956600FB107A /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43AB12A1AC1956600FB107A /* SettingsTableViewController.m */; };
 		B43AB12E1AC1959800FB107A /* ConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43AB12D1AC1959800FB107A /* ConversationViewController.m */; };
-		B43AB1311AC195A600FB107A /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43AB1301AC195A600FB107A /* TimelineViewController.m */; };
 		B43AB1341AC195B500FB107A /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43AB1331AC195B500FB107A /* NewsViewController.m */; };
+		B46062131AC3F16E00356BDF /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B46062121AC3F16E00356BDF /* NewPostViewController.m */; };
+		B46062161AC3F91500356BDF /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B46062151AC3F91500356BDF /* TimelineViewController.m */; };
+		B460621C1AC4040000356BDF /* CustomLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B46062191AC4040000356BDF /* CustomLogInViewController.m */; };
+		B460621D1AC4040000356BDF /* CustomSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B460621B1AC4040000356BDF /* CustomSignUpViewController.m */; };
+		B46062201AC4044400356BDF /* UIColor+ProjectColors.m in Sources */ = {isa = PBXBuildFile; fileRef = B460621F1AC4044400356BDF /* UIColor+ProjectColors.m */; };
 		B4D8CD3C1AC16327004F7218 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D8CD3B1AC16327004F7218 /* main.m */; };
 		B4D8CD3F1AC16327004F7218 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D8CD3E1AC16327004F7218 /* AppDelegate.m */; };
 		B4D8CD421AC16327004F7218 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D8CD411AC16327004F7218 /* ViewController.m */; };
@@ -41,10 +45,18 @@
 		B43AB12A1AC1956600FB107A /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		B43AB12C1AC1959800FB107A /* ConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationViewController.h; sourceTree = "<group>"; };
 		B43AB12D1AC1959800FB107A /* ConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationViewController.m; sourceTree = "<group>"; };
-		B43AB12F1AC195A600FB107A /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
-		B43AB1301AC195A600FB107A /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		B43AB1321AC195B500FB107A /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		B43AB1331AC195B500FB107A /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		B46062111AC3F16E00356BDF /* NewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostViewController.h; sourceTree = "<group>"; };
+		B46062121AC3F16E00356BDF /* NewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostViewController.m; sourceTree = "<group>"; };
+		B46062141AC3F91500356BDF /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
+		B46062151AC3F91500356BDF /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
+		B46062181AC4040000356BDF /* CustomLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLogInViewController.h; sourceTree = "<group>"; };
+		B46062191AC4040000356BDF /* CustomLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLogInViewController.m; sourceTree = "<group>"; };
+		B460621A1AC4040000356BDF /* CustomSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSignUpViewController.h; sourceTree = "<group>"; };
+		B460621B1AC4040000356BDF /* CustomSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSignUpViewController.m; sourceTree = "<group>"; };
+		B460621E1AC4044400356BDF /* UIColor+ProjectColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ProjectColors.h"; sourceTree = "<group>"; };
+		B460621F1AC4044400356BDF /* UIColor+ProjectColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ProjectColors.m"; sourceTree = "<group>"; };
 		B4D8CD361AC16327004F7218 /* a_gentle_sunset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = a_gentle_sunset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D8CD3A1AC16327004F7218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4D8CD3B1AC16327004F7218 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -97,6 +109,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B46062171AC403E100356BDF /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B460621E1AC4044400356BDF /* UIColor+ProjectColors.h */,
+				B460621F1AC4044400356BDF /* UIColor+ProjectColors.m */,
+				B46062181AC4040000356BDF /* CustomLogInViewController.h */,
+				B46062191AC4040000356BDF /* CustomLogInViewController.m */,
+				B460621A1AC4040000356BDF /* CustomSignUpViewController.h */,
+				B460621B1AC4040000356BDF /* CustomSignUpViewController.m */,
+			);
+			name = utilities;
+			sourceTree = "<group>";
+		};
 		B4D8CD2D1AC16327004F7218 = {
 			isa = PBXGroup;
 			children = (
@@ -125,16 +150,19 @@
 				B4D8CD401AC16327004F7218 /* ViewController.h */,
 				B4D8CD411AC16327004F7218 /* ViewController.m */,
 				B4D8CD431AC16327004F7218 /* Main.storyboard */,
+				B46062141AC3F91500356BDF /* TimelineViewController.h */,
+				B46062151AC3F91500356BDF /* TimelineViewController.m */,
+				B46062111AC3F16E00356BDF /* NewPostViewController.h */,
+				B46062121AC3F16E00356BDF /* NewPostViewController.m */,
 				B43AB1321AC195B500FB107A /* NewsViewController.h */,
 				B43AB1331AC195B500FB107A /* NewsViewController.m */,
-				B43AB12F1AC195A600FB107A /* TimelineViewController.h */,
-				B43AB1301AC195A600FB107A /* TimelineViewController.m */,
 				B43AB12C1AC1959800FB107A /* ConversationViewController.h */,
 				B43AB12D1AC1959800FB107A /* ConversationViewController.m */,
 				B43AB1291AC1956600FB107A /* SettingsTableViewController.h */,
 				B43AB12A1AC1956600FB107A /* SettingsTableViewController.m */,
 				B43AB1261AC16FE800FB107A /* DrawerTableViewController.h */,
 				B43AB1271AC16FE800FB107A /* DrawerTableViewController.m */,
+				B46062171AC403E100356BDF /* utilities */,
 				B4D8CD461AC16327004F7218 /* Images.xcassets */,
 				B4D8CD481AC16327004F7218 /* LaunchScreen.xib */,
 				B4D8CD391AC16327004F7218 /* Supporting Files */,
@@ -303,10 +331,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B46062131AC3F16E00356BDF /* NewPostViewController.m in Sources */,
 				B4D8CD421AC16327004F7218 /* ViewController.m in Sources */,
-				B43AB1311AC195A600FB107A /* TimelineViewController.m in Sources */,
+				B46062161AC3F91500356BDF /* TimelineViewController.m in Sources */,
+				B460621D1AC4040000356BDF /* CustomSignUpViewController.m in Sources */,
+				B460621C1AC4040000356BDF /* CustomLogInViewController.m in Sources */,
 				B4D8CD3F1AC16327004F7218 /* AppDelegate.m in Sources */,
 				B43AB1341AC195B500FB107A /* NewsViewController.m in Sources */,
+				B46062201AC4044400356BDF /* UIColor+ProjectColors.m in Sources */,
 				B43AB12B1AC1956600FB107A /* SettingsTableViewController.m in Sources */,
 				B43AB12E1AC1959800FB107A /* ConversationViewController.m in Sources */,
 				B43AB1281AC16FE800FB107A /* DrawerTableViewController.m in Sources */,

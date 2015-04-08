@@ -28,13 +28,7 @@ BOOL is_new_photo;
 
 
 
-- (IBAction)cancel_button_tap:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
-- (IBAction)post_button_tap:(UIButton *)sender {
-
-}
 
 - (IBAction)camera_button_tap:(UIButton *)sender {
     [self newPhoto:nil];
@@ -42,6 +36,15 @@ BOOL is_new_photo;
 
 - (IBAction)library_button_tap:(UIButton *)sender {
     [self useLibrary:nil];
+}
+
+- (IBAction)post_button_tap:(UIBarButtonItem *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)cancel_button_tap:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) newPhoto:(id)sender

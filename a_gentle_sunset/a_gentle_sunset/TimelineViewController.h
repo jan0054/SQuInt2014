@@ -11,5 +11,6 @@
 #import <ParseUI.h>
 
 @interface TimelineViewController : PFQueryTableViewController
+- (IBAction)new_post_button_tap:(UIBarButtonItem *)sender;
 
 @end

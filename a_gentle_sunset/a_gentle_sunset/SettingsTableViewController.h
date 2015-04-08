@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import <ParseUI.h>
 
 @interface SettingsTableViewController : UITableViewController
+@property (strong, nonatomic) IBOutlet UIButton *login_button;
+- (IBAction)login_button_tap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIButton *push_button;
+- (IBAction)push_button_tap:(UIButton *)sender;
 
 @end

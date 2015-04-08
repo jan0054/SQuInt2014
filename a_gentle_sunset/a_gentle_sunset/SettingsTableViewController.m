@@ -9,6 +9,8 @@
 #import "SettingsTableViewController.h"
 #import "MMDrawerBarButtonItem.h"
 #import "UIViewController+MMDrawerController.h"
+#import "CustomLogInViewController.h"
+#import "CustomSignUpViewController.h"
 
 @interface SettingsTableViewController ()
 
@@ -19,6 +21,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLeftMenuButton];
+    self.tableView.allowsSelection = NO;
+    
+    if ([PFUser currentUser])
+    {
+        [self.login_button setTitle:@"登出" forState:UIControlStateNormal];
+        [self.login_button setTitle:@"登出" forState:UIControlStateHighlighted];
+    }
+    else
+    {
+        [self.login_button setTitle:@"登入" forState:UIControlStateNormal];
+        [self.login_button setTitle:@"登入" forState:UIControlStateHighlighted];
+    }
 }
 
 - (void)setupLeftMenuButton {
@@ -30,19 +44,14 @@
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return 3;
 }
 
 /*
@@ -98,5 +107,150 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)push_button_tap:(UIButton *)sender {
+    
+}
+
+- (IBAction)login_button_tap:(UIButton *)sender {
+    if ([PFUser currentUser])
+    {
+        [self log_out];
+    }
+    else
+    {
+        [self log_in];
+    }
+}
+
+- (void) log_in {
+    // Customize the Log In View Controller
+    CustomLogInViewController *logInViewController = [[CustomLogInViewController alloc] init];
+    [logInViewController setDelegate:self];
+    [logInViewController setFields: PFLogInFieldsDismissButton | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword ];
+    
+    // Create the sign up view controller
+    CustomSignUpViewController *signUpViewController = [[CustomSignUpViewController alloc] init];
+    [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+    
+    // Assign our sign up controller to be displayed from the login controller
+    [logInViewController setSignUpController:signUpViewController];
+    
+    // Present the log in view controller
+    [self presentViewController:logInViewController animated:YES completion:NULL];
+
+}
+
+- (void) log_out {
+    [PFUser logOut];
+    
+    [self.login_button setTitle:@"登入" forState:UIControlStateNormal];
+    [self.login_button setTitle:@"登入" forState:UIControlStateHighlighted];
+    
+    // DIS-Associate the device with logged out user
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    [installation removeObjectForKey:@"user"];
+    [installation saveInBackground];
+    NSLog(@"USER INSTALLATION DIS-ASSOCIATED: %@", installation.objectId);
+}
+
+// Sent to the delegate to determine whether the log in request should be submitted to the server.
+- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
+    // Check if both fields are completed
+    if (username && password && username.length != 0 && password.length != 0) {
+        return YES; // Begin login process
+    }
+    
+    [[[UIAlertView alloc] initWithTitle:@"錯誤"
+                                message:@"請填寫所有欄位"
+                               delegate:nil
+                      cancelButtonTitle:@"確定"
+                      otherButtonTitles:nil] show];
+    return NO; // Interrupt login process
+}
+
+// Sent to the delegate when a PFUser is logged in.
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+    
+    // Associate the device with a user
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    installation[@"user"] = [PFUser currentUser];
+    [installation saveInBackground];
+    NSLog(@"USER INSTALLATION ASSOCIATED: %@ to %@",[PFUser currentUser].objectId, installation.objectId);
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"log in controller dismissed");
+        [self.login_button setTitle:@"登出" forState:UIControlStateNormal];
+        [self.login_button setTitle:@"登出" forState:UIControlStateHighlighted];
+    }];
+}
+
+// Sent to the delegate when the log in attempt fails.
+- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
+    NSLog(@"Failed to log in...");
+}
+
+// Sent to the delegate when the log in screen is dismissed.
+- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
+    [self.navigationController popViewControllerAnimated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:@"本App需登入方可正常使用"
+                                                   delegate:self
+                                          cancelButtonTitle:@"確定"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+// Sent to the delegate to determine whether the sign up request should be submitted to the server.
+- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
+    BOOL informationComplete = YES;
+    
+    // loop through all of the submitted data
+    for (id key in info) {
+        NSString *field = [info objectForKey:key];
+        if (!field || field.length == 0) { // check completion
+            informationComplete = NO;
+            break;
+        }
+    }
+    
+    // Display an alert if a field wasn't completed
+    if (!informationComplete) {
+        [[[UIAlertView alloc] initWithTitle:@"錯誤"
+                                    message:@"請填寫所有欄位"
+                                   delegate:nil
+                          cancelButtonTitle:@"確定"
+                          otherButtonTitles:nil] show];
+    }
+    
+    return informationComplete;
+}
+
+// Sent to the delegate when a PFUser is signed up.
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    
+    // Associate the device with a user
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    installation[@"user"] = [PFUser currentUser];
+    [installation saveInBackground];
+    NSLog(@"USER INSTALLATION ASSOCIATED");
+    
+    // Dismiss the PFSignUpViewController
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"sign up controller dismissed");
+        [self.login_button setTitle:@"登出" forState:UIControlStateNormal];
+        [self.login_button setTitle:@"登出" forState:UIControlStateHighlighted];
+    }];
+}
+
+// Sent to the delegate when the sign up attempt fails.
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
+    NSLog(@"Failed to sign up");
+}
+
+// Sent to the delegate when the sign up screen is dismissed.
+- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
+    NSLog(@"User dismissed the signUpViewController");
+}
 
 @end
